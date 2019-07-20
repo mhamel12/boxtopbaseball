@@ -24,13 +24,11 @@ import argparse, csv, datetime, glob, os, re, sys
 from collections import defaultdict
 from shutil import copyfile
 
-# TBD - should make season and output filename command-line args for flexibility.
+# TBD - should make season a command-line arg for flexibility.
 # This is used to find roster files, build the output filename and 
 # backup filename, and to simplify date entry by concatenating this
 # to the month/day info inputed by the user.
 season = "1938"
-# I'm calling this "EBA" since A is AL and N is NL... so using A for AA makes some sense
-output_filename = season + "MINAA.EBA"
 
 DEBUG_ON = False
 
@@ -262,6 +260,50 @@ def get_fielding_play_info(prompt,home_team,road_team):
             
     return (d,d_event_strings)
        
+# Obtain list of player id's who hit and were hit by pitcher.
+def get_batting_play_info(prompt,home_team,road_team):
+    d_event_strings = defaultdict() # dictionary to store play info (player1 to player2 on a DP for example)
+    d_event_strings[home_team] = []
+    d_event_strings[road_team] = []
+
+    menu_option_1 = "Next " + prompt
+    all_plays_entered = False
+    
+    print("%s" % (prompt))
+    while not all_plays_entered:
+        response = display_menu_get_selection([menu_option_1,"Done"],"")
+        if response == "Done":
+            all_plays_entered = True
+        else:
+            # get list of names that participated in this play
+            list_of_pids = []
+            print("Enter name(s) for %s (Pitcher): " % (prompt))
+            (player,pid,tm) = get_player_name_and_id_and_team([home_team,road_team])
+            list_of_pids.append(pid)
+            current_team = tm
+            print("Enter name(s) for %s (Batter): " % (prompt))
+            (player,pid,tm) = get_player_name_and_id_and_team([home_team,road_team])
+            list_of_pids.append(pid)
+            current_team = tm
+            
+            print("Number of %s: " % (prompt))
+            number_of_plays = get_number()
+
+            # Now build a string that represents the entire play, and add it to the strings 
+            # dictionary, adding it one time for each time this combination completed such a play.
+            detail_line = ""
+            for pid in list_of_pids:
+                if len(detail_line) > 0:
+                    # do not add comma if this is the first player in the list
+                    detail_line = detail_line + ","
+                detail_line = detail_line + pid
+            count = 0
+            while count < number_of_plays:
+                d_event_strings[current_team].append(detail_line)
+                count += 1
+            
+    return (d_event_strings)
+       
 # For statistics that do not appear in the box score table, we ask the user 
 # to enter the names of the players who had one or more of that particular stat.
 def get_stats_summary_info(prompt,home_team,road_team):
@@ -321,8 +363,6 @@ def get_pitching_summary_info(team_list):
                 
                 ip_times_3 = (innings * 3) + thirdinnings
                 
-                print("HBP: ")
-                hbp = get_number()
                 print("Wild pitches: ")
                 wp = get_number()
                 print("Balks: ")
@@ -335,8 +375,8 @@ def get_pitching_summary_info(team_list):
                 # Full line looks as follows, we only do part of it here.
                 # stat,pline,id,side,seq,ip*3,no-out,bfp,h,2b,3b,hr,r,er,bb,ibb,k,hbp,wp,balk,sh,sf
                 #
-                # In this function, we return: pid,seq,ip*3,no-out,bfp,hits,runs,walks,strikeouts,hbp,wp,balk
-                stats_line = pid + "," + str(sequence) + "," + str(ip_times_3) + "," + str(extra_batters) + "," + str(approx_batters_faced) + "," + str(hits) + "," + str(runs) + "," + str(walks) + "," + str(strikeouts) + "," + str(hbp) + "," + str(wp) + "," + str(balk)
+                # In this function, we return: pid,seq,ip*3,no-out,bfp,hits,runs,walks,strikeouts,wp,balk
+                stats_line = pid + "," + str(sequence) + "," + str(ip_times_3) + "," + str(extra_batters) + "," + str(approx_batters_faced) + "," + str(hits) + "," + str(runs) + "," + str(walks) + "," + str(strikeouts) + "," + str(wp) + "," + str(balk)
                 
                 d[tm].append(stats_line)
                 sequence = sequence + 1
@@ -528,8 +568,12 @@ def time_to_quit():
 
 # No command-line arguments are needed, but argparse will automatically print this
 # help message and then exit.
-parser = argparse.ArgumentParser(description='Create or add box scores to a Retrosheet event file. No command-line arguments are supported or required.') 
+parser = argparse.ArgumentParser(description='Create or add box scores to a Retrosheet event file.')
+parser.add_argument('event_file', help="Event file (script will append new box scores to this file)") 
+
 args = parser.parse_args()
+
+output_filename = args.event_file
 
 list_of_teams = []    
     
@@ -582,9 +626,9 @@ while not quit_script:
     game_number = get_number_max_allowed(2)
     
     game_id = home_team + re.sub("/","",date) + str(game_number)
-    print("GM: %s" % (game_id))
     
     output_file.write("\n")
+    output_file.write("id,%s\n" % (game_id))
     output_file.write("version,BOXTOP1\n")
     output_file.write("info,visteam,%s\n" % (road_team))
     output_file.write("info,hometeam,%s\n" % (home_team))
@@ -656,7 +700,7 @@ while not quit_script:
     sb_dict = get_stats_summary_info("SBs",home_team,road_team)
     sh_dict = get_stats_summary_info("Sacrifice Hits",home_team,road_team)
     sf_dict = get_stats_summary_info("Sacrifice Flies",home_team,road_team)
-    hbp_dict = get_stats_summary_info("HBP",home_team,road_team)
+# TBD no longer needed    hbp_dict = get_stats_summary_info("HBP",home_team,road_team)
     passed_balls_dict = get_stats_summary_info("Passed Balls",home_team,road_team)
     
     # Get pitching stats
@@ -720,6 +764,8 @@ while not quit_script:
     (dp_count_dict, dp_event_dict) = get_fielding_play_info("Double Play",home_team,road_team)
     print("\n")
     (tp_count_dict, tp_event_dict) = get_fielding_play_info("Triple Play",home_team,road_team)
+    print("\n")
+    hbp_event_dict = get_batting_play_info("HBP",home_team,road_team)
     
     ###################################################################### 
     # At this point we have most of the information we need.
@@ -756,7 +802,14 @@ while not quit_script:
             retrosheet_bline += add_stat_conditionally(tm,pid,rbi_dict)
             retrosheet_bline += add_stat_conditionally(tm,pid,sh_dict)
             retrosheet_bline += add_stat_conditionally(tm,pid,sf_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,hbp_dict)
+            
+            hbp = 0
+            # Use the hbp_event_dict[] to fill in hbp
+            for hit_batter in hbp_event_dict[tm]:
+                if hit_batter.split(",")[1] == pid:
+                    hbp += 1
+                    
+            retrosheet_bline += ",%s" % (str(hbp))
             
             # LIMITATION: No walk or strikeout info for individual batters, so we omit that info.
             retrosheet_bline += ",-1,-1,-1"
@@ -879,6 +932,19 @@ while not quit_script:
     for tm in [road_team,home_team]:
         for pinfo in p_dict[tm]:
             pid = pinfo.split(",")[0] 
+            
+            hbp = 0
+            # Use the hbp_event_dict[] to fill in hbp.
+            # This dict is indexed by the team of the BATTER, which is why we use "opponent" here.
+            if tm == road_team:
+                opponent = home_team
+            else:
+                opponent = road_team
+            for hit_batter in hbp_event_dict[opponent]:
+                # look up the pitcher pid in the dict
+                if hit_batter.split(",")[0] == pid:
+                    hbp += 1
+                    
             #                                                                seq                         ip*3
             retrosheet_pline = "stat,pline," + pid + "," + str(side) + "," + pinfo.split(",")[1] + "," + pinfo.split(",")[2] + ","
             #                   no-out                      bfp                         hits
@@ -887,8 +953,8 @@ while not quit_script:
             retrosheet_pline += "-1,-1,-1,"
             #                   runs      LIMITATION: no ER   walks    LIMITATION: no IBB   strikeouts    
             retrosheet_pline += pinfo.split(",")[6] + ",-1," + pinfo.split(",")[7] + ",-1," + pinfo.split(",")[8] + ","
-            #                   hbp                         wp                           balk
-            retrosheet_pline += pinfo.split(",")[9] + "," + pinfo.split(",")[10] + "," + pinfo.split(",")[11] + ","
+            #                   hbp         wp                           balk
+            retrosheet_pline += str(hbp) + "," + pinfo.split(",")[9] + "," + pinfo.split(",")[10] + ","
             # LIMITATION: We do not know SH/SF by pitcher
             retrosheet_pline += "-1,-1"
             
@@ -948,7 +1014,7 @@ while not quit_script:
     #
     # event,dpline,side of team who turned the DP,player-id (who turned the DP)...
     # event,tpline,side of team who turned the TP,player-id (who turned the TP)...
-    # TBD if we do HBP: event,hpline,side of pitcher's team,pitcher-id,batter-id
+    # event,hpline,side of pitcher's team,pitcher-id,batter-id
     #
     # LIMITATION: I am omitting HR, SB, CS events since the inning/outs for when these events 
     # occurred are not listed in 1938 box scores.
@@ -965,6 +1031,14 @@ while not quit_script:
     for event_line in tp_event_dict[home_team]:
         output_file.write("event,tpline,%d,%s\n" % (HOME_ID,event_line))
 
+    # HBP is a special case. The dictionaries are indexed by the 
+    # batter's team, but are written to the EBx file with the id of
+    # the pitcher's team.
+    for event_line in hbp_event_dict[road_team]:
+        output_file.write("event,hpline,%d,%s\n" % (HOME_ID,event_line))
+        
+    for event_line in hbp_event_dict[home_team]:
+        output_file.write("event,hpline,%d,%s\n" % (ROAD_ID,event_line))
         
     print("Any comments to add? (leave blank to skip): ")
     comments = get_string()

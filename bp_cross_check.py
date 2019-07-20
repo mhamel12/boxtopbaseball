@@ -126,6 +126,7 @@ def clear_stats():
         stats_list[tm]["AB"] = 0
         stats_list[tm]["Runs"] = 0
         stats_list[tm]["Hits"] = 0
+        stats_list[tm]["RBI"] = 0
         stats_list[tm]["Putouts"] = 0
         stats_list[tm]["Assists"] = 0
         stats_list[tm]["Errors"] = 0
@@ -180,8 +181,6 @@ def update_team_stats_list_conditionally(tm,category,number):
 # The majority of stats checking is done here, once we are sure that we have read in
 # all data for this game.        
 def check_stats():
-    print("\n\nChecking %s at %s, %s (%s)" % (s_team_names["road"],s_team_names["home"],s_date_of_game,s_game_number_this_date))
-    
     # Check for any pid's on the wrong team.
     for tm in ["road","home"]:
         for p in list_of_pitchers[tm]:
@@ -201,7 +200,8 @@ def check_stats():
     for tm in ["road","home"]:
         for stat in team_stats_list[tm]:
             if team_stats_list[tm][stat] != stats_list[tm][stat]:
-                print("MISMATCH: %s %s (sum of players=%d, team total=%d)" % (s_team_names[tm],stat,stats_list[tm][stat],team_stats_list[tm][stat]))
+                if stats_list[tm][stat] != -1: # skip cases where a stat is not available for the players
+                    print("MISMATCH: %s %s (sum of players=%d, team total=%d)" % (s_team_names[tm],stat,stats_list[tm][stat],team_stats_list[tm][stat]))
     
     # Compare batters against opposing pitchers
     for tm in ["road","home"]:
@@ -211,7 +211,8 @@ def check_stats():
             pitching_tm = "road"
         for stat in ["Runs","Hits"]:
             if pitching_stats_list[pitching_tm][stat] != stats_list[tm][stat]:
-                print("MISMATCH: %s %s (sum of players=%d, opposing pitcher totals=%d %s)" % (s_team_names[tm],stat,stats_list[tm][stat],pitching_stats_list[pitching_tm][stat],s_team_names[pitching_tm]))
+                if stats_list[tm][stat] != -1: # skip cases where a stat is not available for the players
+                    print("MISMATCH: %s %s (sum of players=%d, opposing pitcher totals=%d %s)" % (s_team_names[tm],stat,stats_list[tm][stat],pitching_stats_list[pitching_tm][stat],s_team_names[pitching_tm]))
                 
     # Compare line scores
     # Length of home linescore can be one less than road, but only if the home team won
@@ -363,6 +364,8 @@ with open(args.file,'r') as efile:
                     update_stats_list_conditionally(lookup,"Runs",r)
                     h = int(line.split(",")[8])
                     update_stats_list_conditionally(lookup,"Hits",h)
+                    rbi = int(line.split(",")[12])
+                    update_stats_list_conditionally(lookup,"RBI",rbi)
                     bb = int(line.split(",")[16])
                     update_stats_list_conditionally(lookup,"Walks",bb)
                     strikeouts = int(line.split(",")[18])
@@ -457,24 +460,33 @@ with open(args.file,'r') as efile:
             elif line_type == "event":
                 # event,dpline,side of team who turned the DP,player-id (who turned the DP)...
                 # event,tpline,side of team who turned the TP,player-id (who turned the TP)...                
-                # TBD if we do HBP details
+                # event,hpline,side of pitcher's team,pitcher-id,batter-id
                 event_type = line.split(",")[1]
                 side = int(line.split(",")[2])
                 if side == ROAD_ID:
                     lookup = "road"
+                    opponent = "home"
                 else:
                     lookup = "home"
-                    
-                # This checks that all of the players who turned the DP or TP play on the
-                # appropriate team, and that they have an entry in the batting order.
-                # LIMITATION: The batting order check makes the assumption that the
-                # batting order info preceeds the event info in the .EBx file.
+                    opponent = "road"
+
                 pid_list = line.split(",")[3:]
-                for pid in pid_list:
-                    if pid not in player_info[s_team_names[lookup]]:
-                        print("ERROR for %s event: %s not found in %s roster file." % (event_type,pid,s_team_names[lookup]))
-                    if pid not in players_in_batting_order[lookup]:
-                        print("ERROR for %s event: %s not found in %s batting order." % (event_type,pid,s_team_names[lookup]))
+                if event_type == "dpline" or event_type == "tpline":
+                    # This checks that all of the players who turned the DP or TP play on the
+                    # appropriate team, and that they have an entry in the batting order.
+                    # LIMITATION: The batting order check makes the assumption that the
+                    # batting order info preceeds the event info in the .EBx file.                    
+                    for pid in pid_list:
+                        if pid not in player_info[s_team_names[lookup]]:
+                            print("ERROR for %s event: %s not found in %s roster file." % (event_type,pid,s_team_names[lookup]))
+                        if pid not in players_in_batting_order[lookup]:
+                            print("ERROR for %s event: %s not found in %s batting order." % (event_type,pid,s_team_names[lookup]))
+                elif event_type == "hpline":
+                    # For HBP, the pitcher and batter need to be on different teams.
+                    if pid_list[0] not in player_info[s_team_names[lookup]]:
+                        print("ERROR for HBP: Pitcher %s not found in %s roster file." % (pid_list[0],s_team_names[opponent]))
+                    if pid_list[1] not in player_info[s_team_names[opponent]]:
+                        print("ERROR for HBP: Batter %s not found in %s roster file." % (pid_list[1],s_team_names[lookup]))
                     
             # LIMITATION: The "teamstat" lines are our own invention. 
             # If these lines are not present in the EBx file, these checks will be skipped.
@@ -509,6 +521,9 @@ with open(args.file,'r') as efile:
                     s_date_of_game = line.split(",")[2]
                 elif info_type == "number":
                     s_game_number_this_date = line.split(",")[2]
+                    # Doing this here makes the assumption that team, date, and game number info are at the start
+                    # of the data for each game. We print this here so that it precedes our DP checks above.
+                    print("\n\nChecking %s at %s, %s (%s)" % (s_team_names["road"],s_team_names["home"],s_date_of_game,s_game_number_this_date))                    
                 elif info_type == "usedh":
                     s_usedh = line.split(",")[2]
                     
