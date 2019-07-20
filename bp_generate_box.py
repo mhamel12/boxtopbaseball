@@ -37,9 +37,9 @@ ROAD_ID = 0
 HOME_ID = 1
 
 def get_time_in_hr_min(time_in_min):
-    hours = str(int(time_in_min / 60))
-    min = str(time_in_min % 60)
-    return hours + ":" + min
+    hours = int(time_in_min / 60)
+    min = time_in_min % 60
+    return str(hours) + ":" + str("%02d" % (min))
     
 def get_attendance(att):
     if att == "-1":
@@ -95,6 +95,7 @@ def clear_between_games():
         defensive_positions[tm] = defaultdict()
         dp_dict[tm] = []
         tp_dict[tm] = []
+        hbp_dict[tm] = []
         pitching_plines[tm] = defaultdict()
         pinch_hitters[tm] = defaultdict()
         pinch_runners[tm] = defaultdict()
@@ -108,6 +109,9 @@ def clear_between_games():
         team_totals[tm]["po"] = 0
         team_totals[tm]["assists"] = 0
         team_totals[tm]["errors"] = 0
+        team_totals[tm]["NumberOfDP"] = 0
+        team_totals[tm]["NumberOfTP"] = 0
+        team_totals[tm]["LOB"] = 0
         pitching_totals[tm] = defaultdict()
         pitching_totals[tm]["outs"] = 0
         pitching_totals[tm]["h"] = 0
@@ -163,25 +167,31 @@ def update_pitching_totals_conditionally(tm,category,number):
     else:
         pitching_totals[tm][category] += number
 
+def convert_to_ordinal_string(number):
+    # Apply rules for 1st, 2nd, 3rd, ... 11th, 12th, 13th, ..., 21st, 22nd, ...
+    if number % 10 == 1 and number != 11:
+        return str(number) + "st"
+    if number % 10 == 2 and number != 12: 
+        return str(number) + "nd"
+    if number % 10 == 3 and number != 13:
+        return str(number) + "rd"
+
+    return str(number) + "th"
         
 # If a pitcher fails to record an out in an inning, we will have 'no-out'
 # batters faced info in the .EBx file. Translate that inning into a text
 # string based on the number of outs recorded by that pitcher and all
 # previous pitchers on that team.
 def get_next_inning_based_on_outs(outs):
-    number_of_innings = math.ceil(outs / 3) # should be an even multiple, but let's make sure
+    number_of_innings = math.floor(outs / 3) # should be an even multiple, but let's make sure
     next_inning = number_of_innings + 1
-    
-    # Apply rules for 1st, 2nd, 3rd, ... 11th, 12th, 13th, ..., 21st, 22nd, ...
-    if next_inning % 10 == 1 and next_inning != 11:
-        return next_inning_as_string + "st"
-    if next_inning % 10 == 2 and next_inning != 12: 
-        return next_inning_as_string + "nd"
-    if next_inning % 10 == 3 and next_inning != 13:
-        return next_inning_as_string + "rd"
+    return(convert_to_ordinal_string(next_inning))
 
-    return str(next_inning) + "th"
-
+def get_opponent(team):
+    if team == "road":
+        return "home"
+        
+    return "road"
 
 def print_box():
 #    for item in game_info:
@@ -263,7 +273,17 @@ def print_box():
             
         output_file.write("%-30s%2s  %2s  %2s  %2s      %2s  %2s      %2s  %2s\n" % ("TOTALS",team_totals[tm]["ab"],team_totals[tm]["runs"],team_totals[tm]["hits"],team_totals[tm]["rbi"],team_totals[tm]["bb"],team_totals[tm]["strikeouts"],team_totals[tm]["po"],team_totals[tm]["assists"]))
         
-       
+        ##############################################################
+        #
+        # Pinch-hitters
+        #
+        ph_count = 0
+        for ph in pinch_hitters[tm]:
+            output_file.write("\n%s pinch-hit in the %s inning" % (player_info[game_info[tm]][ph],convert_to_ordinal_string(int(pinch_hitters[tm][ph]))))
+            ph_count += 1
+        if ph_count > 0:
+            output_file.write("\n")
+            
         ##############################################################
         #
         # Fielding summary
@@ -312,7 +332,7 @@ def print_box():
         cs_string = ""
         sh_string = ""
         sf_string = ""
-        hbp_string = ""
+#        hbp_string = ""
         ibb_string = ""
         gidp_string = ""
         reached_on_int_string = ""
@@ -328,7 +348,7 @@ def print_box():
             
             count_sh = int(batting_blines[tm][id][11])
             count_sf = int(batting_blines[tm][id][12])
-            count_hbp = int(batting_blines[tm][id][13])
+#            count_hbp = int(batting_blines[tm][id][13])
             count_ibb = int(batting_blines[tm][id][15])
             count_gidp = int(batting_blines[tm][id][19])
             count_int = int(batting_blines[tm][id][20])
@@ -341,7 +361,7 @@ def print_box():
                             
             sh_string = add_to_line_conditionally(count_sh,sh_string,tm,id)
             sf_string = add_to_line_conditionally(count_sf,sf_string,tm,id)
-            hbp_string = add_to_line_conditionally(count_hbp,hbp_string,tm,id)
+#            hbp_string = add_to_line_conditionally(count_hbp,hbp_string,tm,id)
             ibb_string = add_to_line_conditionally(count_ibb,ibb_string,tm,id)
             gidp_string = add_to_line_conditionally(count_gidp,gidp_string,tm,id)
             reached_on_int_string = add_to_line_conditionally(count_int,reached_on_int_string,tm,id)
@@ -357,8 +377,16 @@ def print_box():
             output_file.write("\nSH: %s" % (sh_string))
         if len(sf_string) > 0:
             output_file.write("\nSF: %s" % (sf_string))
-        if len(hbp_string) > 0:
-            output_file.write("\nHBP: %s" % (hbp_string))
+        if len(hbp_dict[tm]) > 0:
+            output_file.write("\nHBP: ")
+            count_of_hbp = 0
+            for hit_batter in hbp_dict[tm]:
+                if count_of_hbp > 0:
+                    output_file.write(", ")
+                h_hitter = hit_batter.split("-")[0]
+                h_pitcher = hit_batter.split("-")[1]
+                output_file.write("%s (by %s)" % (player_info[game_info[tm]][h_hitter],player_info[game_info[get_opponent(tm)]][h_pitcher]))
+                count_of_hbp += 1
             
         if len(ibb_string) > 0:
             output_file.write("\nIBB: %s" % (ibb_string))
@@ -435,6 +463,8 @@ def print_box():
                 
         output_file.write("\n%-30s%s%s  %2s  %2s  %2s  %2s  %2s  %2s %3s" % ("TOTALS",get_full_innings(pitching_totals[tm]["outs"]),get_partial_innings(pitching_totals[tm]["outs"]),pitching_totals[tm]["h"],pitching_totals[tm]["r"],pitching_totals[tm]["er"],pitching_totals[tm]["bb"],pitching_totals[tm]["so"],pitching_totals[tm]["hr"],pitching_totals[tm]["bfp"]))
         
+        output_file.write("\n")
+        
         # XYZ faced X batters in the Xth inning
         outs_so_far_in_game = 0
         for p in sorted(pitchers_by_slot.keys()):
@@ -444,7 +474,7 @@ def print_box():
             if batters_faced_in_Xth_inning > 0:
                 pitcher_name = player_info[game_info[tm]][id]
                 the_Xth_inning = get_next_inning_based_on_outs(outs_so_far_in_game)
-                output_file.write("\n\n%s faced %d batters in the %s inning" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning))
+                output_file.write("\n%s faced %d batters in the %s inning" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning))
         
         output_file.write("\n")
             
@@ -527,6 +557,7 @@ defensive_dlines = defaultdict()
 defensive_positions = defaultdict()
 dp_dict = defaultdict()
 tp_dict = defaultdict()
+hbp_dict = defaultdict()
 pitching_plines = defaultdict()
 team_totals = defaultdict()
 pitching_totals = defaultdict()
@@ -639,17 +670,22 @@ with open(args.file,'r') as efile:
             elif line_type == "event":
                 # event,dpline,side of team who turned the DP,player-id (who turned the DP)...
                 # event,tpline,side of team who turned the TP,player-id (who turned the TP)...                
-                # TBD if we do HBP details
+                # event,hpline,side of pitcher's team,pitcher-id,batter-id
                 sub_line_type = line.split(",")[1]
                 side = int(line.split(",")[2])
                 if side == ROAD_ID:
                     lookup = "road"
+                    opponent = "home"
                 else:
                     lookup = "home"
+                    opponent = "road"
                 if sub_line_type == "dpline":
                     dp_dict[lookup].append("-".join(line.split(",")[3:]))
                 elif sub_line_type == "tpline":
                     tp_dict[lookup].append("-".join(line.split(",")[3:]))
+                elif sub_line_type == "hpline":
+                    # put the hitter first, and index by the BATTER's team
+                    hbp_dict[opponent].append("%s-%s" % (line.split(",")[4],line.split(",")[3]))
                 
             elif line_type == "line":
                 # linescore

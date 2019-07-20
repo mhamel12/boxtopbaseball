@@ -24,7 +24,8 @@ team_name_to_abbrev = {
     'Toledo' : 'TOL'
     }
 
-# these are only guaranteed to be unique within a season    
+# LIMITATION: These are only guaranteed to be unique within a season, while real
+# Retrosheet ids would need to be unique across all seasons.
 used_player_ids = []
 player_bio_list = defaultdict()
 
