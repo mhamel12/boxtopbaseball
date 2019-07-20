@@ -32,8 +32,8 @@ def get_stat_as_string(stat_as_integer):
 # Default is left-justified, use > for right-justified or ^ for centered.
 # An extra space is added between all columns.
 
-# Date,Tm,R,,Opp,R,In,WP,LP,TimeOfGame,D/N,StartTime,Att,Comments
-game_info_headers = ['10','3','>2','3','3','>2','>2','30','30','>5','1','7','>6','50']
+# Date,Tm,R,,Opp,R,In,WP,LP,Time,D/N,Start,Att,Comments
+game_info_headers = ['10','3','>2','3','3','>2','>2','30','30','>5','>3','7','>6','50']
 
 def build_text_output_string(format_widths_list,stats_strings_list):
     s = ""
@@ -75,6 +75,12 @@ def get_ip(outs_as_integer):
     thirds_of_an_inning = str(outs_as_integer % 3)
     whole_innings = str(outs_as_integer // 3) # integer division works with python 3.x
     return (whole_innings + "." + thirds_of_an_inning)    
+
+# Convert time of game into HH:MM format    
+def get_time_in_hr_min(time_in_min):
+    hours = int(time_in_min / 60)
+    min = time_in_min % 60
+    return str(hours) + ":" + str("%02d" % (min))
     
 ##########################################################
 #
@@ -191,10 +197,10 @@ for game_record in session.query(GameInfo).filter(*filters).order_by(GameInfo.da
     count += 1
     if not header_printed:
         if output_format == "TEXT":    
-            text_string = build_text_output_string(game_info_headers,"Date,Tm,R,,Opp,R,In,WP,LP,TimeOfGame,D/N,StartTime,Att,Comments")
+            text_string = build_text_output_string(game_info_headers,"Date,Tm,R,,Opp,R,In,WP,LP,Time,D/N,Start,Att,Comments")
             output_file.write("%s\n" % (text_string))
         else:
-            output_file.write("Date,Tm,R,,Opp,R,In,WP,LP,TimeOfGame,D/N,StartTime,Att,Comments\n")
+            output_file.write("Date,Tm,R,,Opp,R,In,WP,LP,Time,D/N,Start,Att,Comments\n")
         header_printed = True
         
     # TBD - if we supply a team, would like to track W-L record OF THAT TEAM, but then we need another header string
@@ -228,7 +234,7 @@ for game_record in session.query(GameInfo).filter(*filters).order_by(GameInfo.da
     else:
         stat_string += ",TBD"
         
-    stat_string += "," + str(game_record.time_of_game) # TBD convert to HH:MM using a function we already have
+    stat_string += "," + get_time_in_hr_min(game_record.time_of_game)
     stat_string += "," + game_record.daynight_game
     if game_record.start_time == "00:00PM":
         stat_string += "," # omit if 00:00
