@@ -185,16 +185,16 @@ def check_stats():
     for tm in ["road","home"]:
         for p in list_of_pitchers[tm]:
             if p not in player_info[s_team_names[tm]]:
-                print("ERROR: %s not found in %s roster file." % (p,s_team_names[tm]))
+                print("ERROR: Pitcher %s not found in %s roster file." % (p,s_team_names[tm]))
         for p in players_in_batting_order[tm]:
             if p not in player_info[s_team_names[tm]]:
-                print("ERROR: %s not found in %s roster file." % (p,s_team_names[tm]))
+                print("ERROR: Batter %s not found in %s roster file." % (p,s_team_names[tm]))
         for p in list_of_pinch_hitters[tm]:
             if p not in player_info[s_team_names[tm]]:
-                print("ERROR: %s not found in %s roster file." % (p,s_team_names[tm]))
+                print("ERROR: Pinch-hitter %s not found in %s roster file." % (p,s_team_names[tm]))
         for p in list_of_pinch_runners[tm]:
             if p not in player_info[s_team_names[tm]]:
-                print("ERROR: %s not found in %s roster file." % (p,s_team_names[tm]))
+                print("ERROR: Pinch-runner %s not found in %s roster file." % (p,s_team_names[tm]))
     
     # Compare player totals with the team stats totals
     for tm in ["road","home"]:
@@ -228,6 +228,11 @@ def check_stats():
     for tm in ["road","home"]:
         if linescore_total[tm] != team_stats_list[tm]["Runs"]:
             print("MISMATCH: %s Linescore runs %d, team total %d" % (s_team_names[tm],linescore_total[tm],team_stats_list[tm]["Runs"]))
+            
+        # Note that if a run scores on an error, there will be no RBI on the play.
+        # So we check for RBI > than Runs, but allow RBI < Runs
+        if stats_list[tm]["Runs"] != -1 and stats_list[tm]["RBI"] > stats_list[tm]["Runs"]:
+            print("MISMATCH: %s More RBI %d than Runs %d" % (s_team_names[tm],stats_list[tm]["RBI"],stats_list[tm]["Runs"]))
 
         if tm == "road":
             pitching_tm = "home"
@@ -235,8 +240,12 @@ def check_stats():
             pitching_tm = "road"        
             
         if pitching_stats_list[pitching_tm]["Outs"] % 3 == 0:
+            # Game ended with three outs, or no outs.
+            # Normally, the number of innings will equal outs/3...
             if linescore_innings[tm] != int(pitching_stats_list[pitching_tm]["Outs"] / 3):
-                print("MISMATCH: %s Linescore innings %d, opposing pitcher outs %d" % (s_team_names[tm],linescore_innings[tm],pitching_stats_list[pitching_tm]["Outs"]))
+                # ... unless the game ended with no outs. To cover this case, we check the defensive putouts too.
+                if team_stats_list[pitching_tm]["Putouts"] != pitching_stats_list[pitching_tm]["Outs"]:
+                    print("MISMATCH: %s Linescore innings %d, opposing pitcher outs %d, opposing putouts %s" % (s_team_names[tm],linescore_innings[tm],pitching_stats_list[pitching_tm]["Outs"],team_stats_list[pitching_tm]["Putouts"]))
         else:
             # If game ended with 1 or 2 outs, our integer division will result in one fewer inning.
             if linescore_innings[tm] != int((pitching_stats_list[pitching_tm]["Outs"] / 3) + 1):
@@ -298,7 +307,7 @@ def check_stats():
         for pid in list_of_pinch_runners[tm]:
             if list_of_pinch_runners[tm][pid] > 1:
                 print("PR LISTED MORE THAN ONCE: %s %s (%d)" % (s_team_names[tm],pid,list_of_pitchers[tm][pid]))
-                
+    
 ##########################################################
 #
 # Main program
@@ -370,6 +379,21 @@ with open(args.file,'r') as efile:
                     update_stats_list_conditionally(lookup,"Walks",bb)
                     strikeouts = int(line.split(",")[18])
                     update_stats_list_conditionally(lookup,"Strikeouts",strikeouts)
+                    
+                    # Check a few statistics for this specific player
+                    doubles = int(line.split(",")[9])
+                    if doubles == -1:
+                        doubles = 0
+                    triples = int(line.split(",")[10])
+                    if triples == -1:
+                        triples = 0
+                    homeruns = int(line.split(",")[11])
+                    if homeruns == -1:
+                        homeruns = 0
+                    if doubles + triples + homeruns > h:
+                        print("ERROR: %s: %s more 2B (%d) 3B (%d) and HR (%d) than Hits (%d)" % ([s_team_names[lookup]],player_info[s_team_names[lookup]][id],doubles,triples,homeruns,h))
+                    if h > ab:
+                        print("ERROR: %s: %s more Hits (%d) than AB (%d)" % ([s_team_names[lookup]],player_info[s_team_names[lookup]][id],h,ab))
                 
                 elif sub_line_type == "dline":
                     # stat,dline,id,side,seq,pos,if*3,po,a,e,dp,tp,pb
@@ -407,6 +431,10 @@ with open(args.file,'r') as efile:
                     update_pitching_stats_list_conditionally(lookup,"Walks",walks)
                     strikeouts = int(line.split(",")[16])
                     update_pitching_stats_list_conditionally(lookup,"Strikeouts",strikeouts)
+                    
+                    # Check a few statistics for this specific player
+                    if strikeouts > outs:
+                        print("ERROR: %s: %s more Strikeouts (%d) than Outs (%d)" % ([s_team_names[lookup]],player_info[s_team_names[lookup]][id],strikeouts,outs))
                     
                     id = line.split(",")[2]
                     if id not in list_of_pitchers[lookup]:
@@ -523,7 +551,7 @@ with open(args.file,'r') as efile:
                     s_game_number_this_date = line.split(",")[2]
                     # Doing this here makes the assumption that team, date, and game number info are at the start
                     # of the data for each game. We print this here so that it precedes our DP checks above.
-                    print("\n\nChecking %s at %s, %s (%s)" % (s_team_names["road"],s_team_names["home"],s_date_of_game,s_game_number_this_date))                    
+                    print("\nChecking %s at %s, %s (%s)" % (s_team_names["road"],s_team_names["home"],s_date_of_game,s_game_number_this_date))                    
                 elif info_type == "usedh":
                     s_usedh = line.split(",")[2]
                     

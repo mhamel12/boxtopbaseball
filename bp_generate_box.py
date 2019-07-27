@@ -194,9 +194,17 @@ def get_opponent(team):
     return "road"
 
 def print_box():
-#    for item in game_info:
-#        output_file.write("%s: %s\n" % (item,game_info[item]))
-        
+    if team_totals["home"]["runs"] >= team_totals["road"]["runs"]:
+        winning_team = "home"
+        losing_team = "road"
+    else:
+        losing_team = "home"
+        winning_team = "road"
+    output_line = "\n%s %s, %s %s" % (team_abbrev_to_full_name[game_info[winning_team]],team_totals[winning_team]["runs"],team_abbrev_to_full_name[game_info[losing_team]],team_totals[losing_team]["runs"])
+    if game_number_this_day != "0":
+        output_line = output_line + " (%s)" % game_number_this_day
+    output_file.write("%s\n" % (output_line))
+    
     output_line = "\nGame Played on "
     game_day = datetime.datetime.strptime(game_info["date"], '%Y/%m/%d').strftime('%A, %B %d, %Y')
     if game_info["daynight"] == "day":
@@ -221,9 +229,12 @@ def print_box():
             inning_count += 1
         
         if inning_count < max_inning_count:
+            if inning_count % 3 == 0:
+                output_file.write("  ")
             output_file.write("  X")
         
-        output_file.write("  -  %2d %2d %2d" % (team_totals[tm]["runs"],team_totals[tm]["hits"],team_totals[tm]["errors"]))
+        output_file.write("  -  %2s %2s %2s" % (team_totals[tm]["runs"],team_totals[tm]["hits"],team_totals[tm]["errors"]))
+#        output_file.write("  -  %2d %2d %2d" % (team_totals[tm]["runs"],team_totals[tm]["hits"],team_totals[tm]["errors"]))
         
         output_file.write("\n");
 
@@ -311,7 +322,7 @@ def print_box():
         # Errors
         if team_totals[tm]["errors"] > 0:
             error_string = ""
-            # We the following in the defensive_dlines dictionary:
+            # We store the following in the defensive_dlines dictionary:
             # id,side,seq,pos,if*3,po,a,e,dp,tp,pb
             for id in defensive_dlines[tm]:
                 error_count = int(defensive_dlines[tm][id][7])
@@ -606,10 +617,11 @@ with open(args.file,'r') as efile:
 
                     id = line.split(",")[2]
                     # LIMITATION:
-                    # If player has multiple dlines, we will be overwriting the previous dline,
-                    # but that should work out ok because we do not have defensive stats for 
-                    # specific positions.
-                    defensive_dlines[lookup][id] = line.split(",")[2:]
+                    # If player has multiple dlines, only the first one will contain valid defensive
+                    # statistics because we do not have defensive stats for specific positions.
+                    # So drop any other lines on the floor.
+                    if id not in defensive_dlines[lookup]:
+                        defensive_dlines[lookup][id] = line.split(",")[2:]
                     
                     # We use a separate dictionary to track positions.
                     # Note that we will need to check our pr and ph dicts to determine
@@ -730,6 +742,8 @@ with open(args.file,'r') as efile:
                         winning_pitcher_id = line.split(",")[2]
                     elif info_type == "lp":
                         losing_pitcher_id = line.split(",")[2]
+                    elif info_type == "number":
+                        game_number_this_day = line.split(",")[2]
                 
             elif line_type == "version":  # sentinel that always starts a new box score
                 if number_of_box_scores_scanned > 0:
