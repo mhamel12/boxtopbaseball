@@ -203,6 +203,18 @@ def check_stats():
                 if stats_list[tm][stat] != -1: # skip cases where a stat is not available for the players
                     print("MISMATCH: %s %s (sum of players=%d, team total=%d)" % (s_team_names[tm],stat,stats_list[tm][stat],team_stats_list[tm][stat]))
     
+    # Check that winning and losing pitcher are from the correct teams
+    if team_stats_list["road"]["Runs"] > team_stats_list["home"]["Runs"]:
+        if s_wp_id not in list_of_pitchers["road"]:
+            print("ERROR: Winning pitcher %s not found in %s roster file." % (s_wp_id,s_team_names["road"]))
+        if s_lp_id not in list_of_pitchers["home"]:
+            print("ERROR: Losing pitcher %s not found in %s roster file." % (s_lp_id,s_team_names["home"]))
+    elif team_stats_list["home"]["Runs"] > team_stats_list["road"]["Runs"]:
+        if s_wp_id not in list_of_pitchers["home"]:
+            print("ERROR: Winning pitcher %s not found in %s roster file." % (s_wp_id,s_team_names["home"]))
+        if s_lp_id not in list_of_pitchers["road"]:
+            print("ERROR: Losing pitcher %s not found in %s roster file." % (s_lp_id,s_team_names["road"]))
+    
     # Compare batters against opposing pitchers
     for tm in ["road","home"]:
         if tm == "road":
@@ -554,6 +566,10 @@ with open(args.file,'r') as efile:
                     print("\nChecking %s at %s, %s (%s)" % (s_team_names["road"],s_team_names["home"],s_date_of_game,s_game_number_this_date))                    
                 elif info_type == "usedh":
                     s_usedh = line.split(",")[2]
+                elif info_type == "wp":
+                    s_wp_id = line.split(",")[2]
+                elif info_type == "lp":
+                    s_lp_id = line.split(",")[2]
                     
             elif line_type == "version":  # sentinel that always starts a new box score
                 if number_of_box_scores_scanned > 0:

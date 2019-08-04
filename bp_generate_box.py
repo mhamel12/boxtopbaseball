@@ -491,7 +491,14 @@ def print_box():
             
     # LIMITATION: In our format, we store umpire full names in the EBx file, 
     #             instead of ids that we would look up in an umpire list file.
-    output_file.write("\nUmpires: HP - %s, 1B - %s, 2B - %s, 3B - %s\n" % (game_info["umphome"],game_info["ump1b"],game_info["ump2b"],game_info["ump3b"]))
+    #             Also, in 1938 specific umpire positions were not listed, so we omit them.
+#    output_file.write("\nUmpires: HP - %s, 1B - %s, 2B - %s, 3B - %s\n" % (game_info["umphome"],game_info["ump1b"],game_info["ump2b"],game_info["ump3b"]))
+    output_file.write("\nUmpires: %s, %s" % (game_info["umphome"],game_info["ump1b"]))
+    if len(game_info["ump2b"]) > 0:
+        output_file.write(", %s" % (game_info["ump2b"]))
+    if len(game_info["ump3b"]) > 0:
+        output_file.write(", %s" % (game_info["ump3b"]))
+    output_file.write("\n")
     
     output_file.write("\nTime of Game: %s   Attendance: %s\n\n" % (get_time_in_hr_min(int(game_info["timeofgame"])),get_attendance(game_info["attendance"])))
     
