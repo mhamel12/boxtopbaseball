@@ -82,7 +82,7 @@ def get_ip(outs_as_integer):
 parser = argparse.ArgumentParser(description='Obtain player game log from a SQL Alchemy database.') 
 parser.add_argument('dbfile', help="DB file (input)")
 parser.add_argument('outfile', help="Stats file (output)")
-parser.add_argument('player', help="Retrosheet-style id or player name. In the case of duplicate names, the script will print the corresponding id's and then return.")
+parser.add_argument('player', help="Retrosheet-style id or player name. In the case of duplicate names, the script will select the first matching player id.")
 parser.add_argument('-format', '-f', help="Output format as CSV (default) or TEXT") 
 parser.add_argument('-team', '-t', help="Team abbreviation or ALL for all teams (default)")
 parser.add_argument('-opponent', '-o', help="Team abbreviation or ALL for all teams (default)")
@@ -92,8 +92,6 @@ parser.add_argument('-enddate', '-e', help="Report stats up through YYYY/MM/DD i
 args = parser.parse_args()
 
 output_file = open(args.outfile,'w')
-
-playerid = args.player # TBD - not yet supporting 'name' option
 
 output_format = "CSV"
 if args.format:
@@ -132,17 +130,28 @@ list_of_teams = []
 # Read in all of the .ROS files up front so we can find player name
 player_info = defaultdict(dict)
 search_string = "*" + season + ".ROS"
+
+# If player name is specified, there will be at least one space in the name
+if re.search(" ",args.player):
+    player_name = args.player
+    playerid = "unknown"
+else:
+    player_name = "unknown"
+    playerid = args.player
     
-player_name = ""
 list_of_roster_files = glob.glob(search_string)
 for filename in list_of_roster_files:
     with open(filename,'r') as csvfile: # file is automatically closed when this block completes
         items = csv.reader(csvfile)
         for row in items:    
             # beanb101,Bean,Belve,R,R,MIN,X
-            if playerid == row[0]:
-                player_name = row[2] + " " + row[1]
-                
+            if player_name == "unknown":
+                if playerid == row[0]:
+                    player_name = row[2] + " " + row[1]
+            elif playerid == "unknown":
+                if player_name == row[2] + " " + row[1]:
+                    playerid = row[0]
+
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///%s' % (args.dbfile), echo=False)
                        
