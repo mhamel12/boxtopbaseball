@@ -36,6 +36,11 @@ DEBUG_ON = False
 ROAD_ID = 0
 HOME_ID = 1
 
+def get_opp(tm):
+    if tm == "road":
+        return "home"
+    return "road"
+    
 def get_time_in_hr_min(time_in_min):
     hours = int(time_in_min / 60)
     min = time_in_min % 60
@@ -486,6 +491,15 @@ def print_box():
                 pitcher_name = player_info[game_info[tm]][id]
                 the_Xth_inning = get_next_inning_based_on_outs(outs_so_far_in_game)
                 output_file.write("\n%s faced %d batters in the %s inning" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning))
+        
+        outs_at_end_of_game = outs_so_far_in_game % 3
+        if outs_at_end_of_game == 1:
+            output_file.write("\nOne out when winning run scored")
+        elif outs_at_end_of_game == 2:
+            output_file.write("\nTwo outs when winning run scored")
+        else:
+            if (outs_so_far_in_game / 3) != len(linescores[get_opp(tm)]):
+                output_file.write("\nNo outs when winning run scored")
         
         output_file.write("\n")
             
