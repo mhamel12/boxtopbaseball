@@ -20,5 +20,7 @@ Get started by using bp_create_db.py to create a .db file (this script uses the 
 The following scripts query the .db file:
 1. bp_dump_db.py - Dumps all tables from the database, useful for debugging purposes but not easy to read.
 2. bp_game_log_db.py - Creates game-by-game log for a single player in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
-3. bp_splits_db.py - Designed to generate 'season statistics' for every player in the .db, or every player on a given team, or "splits" such as home/road, games versus a particular opponent, etc. Supports filtering by team, opponent, home/road, and date range.
-4. bp_team_game_log_db.py - Creates game-by-game log for a team or all teams, listing basic game information including the score, winning and losing pitcher, attendance, time of game, etc. Supports filtering by team, opponent, home/road, and date range.
+3. bp_splits_db.py - Designed to generate 'season statistics' for every player in the .db, or every player on a given team, or "splits" such as home/road, games versus a particular opponent, etc. Output in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
+4. bp_team_game_log_db.py - Creates game-by-game log for a team or all teams, listing basic game information including the score, winning and losing pitcher, attendance, time of game, etc. Output in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
+5. bp_position_summary_db.py - Create summary of games played by position for a team or all teams. Output in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
+6. bp_team_lineups_db.py - Create game log-style summary of starting lineups for a single team. Output in .txt or .csv format. Supports filtering by opponent, home/road, and date range.
