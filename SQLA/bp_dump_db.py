@@ -15,7 +15,7 @@
 #
 import argparse, csv, sys
 from collections import defaultdict
-from bp_retrosheet_classes import BattingStats, PitchingStats, GameInfo, Base
+from bp_retrosheet_classes import BattingStats, PitchingStats, DefensiveStats, GameInfo, Base
 
 DEBUG_ON = False
 
@@ -72,6 +72,22 @@ for instance in session.query(PitchingStats).order_by(PitchingStats.id):
 
 print("Pitching row count = %s\n\n\n" % (count))
 
+count = 0
+
+for instance in session.query(DefensiveStats).order_by(DefensiveStats.id):
+
+    count += 1
+    
+    array_to_print = []
+    
+    # Print all columns, in a consistent order, with name:value in output for now.
+    # Might want to use a header row eventually, and omit the name portion of this output.
+    for col in DefensiveStats.__table__.columns:
+        array_to_print.append('{}:{}'.format(col.name, getattr(instance,col.name)))
+
+    csv_to_stdout_obj.writerow(array_to_print)
+
+print("Pitching row count = %s\n\n\n" % (count))
 
 count = 0
 

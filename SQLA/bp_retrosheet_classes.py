@@ -9,12 +9,8 @@ from sqlalchemy.ext.declarative import declarative_base
 
 import datetime
 
-# From the tutorial:
-#
-# Classes mapped using the Declarative system are defined in terms of a base class which maintains a 
-# catalog of classes and tables relative to that base - this is known as the declarative base class. 
-# Our application will usually have just one instance of this base in a commonly imported module. 
-# We create the base class using the declarative_base() function, as follows:
+# These are intended as examples. SQLAlchemy supports more complex database classes,
+# including inheritance.
 
 Base = declarative_base() 
 
@@ -27,6 +23,8 @@ class BattingStats(Base):
     game_number_that_day = Column(Integer) # 0 if single game, 1 or 2 for doubleheader
     
     pid = Column(String(8))
+    batting_order_number = Column(Integer) # 1-9
+    sequence_number = Column(Integer) # 0 for starter, 1 for first substitute, etc.
     my_team = Column(String)
     opponent = Column(String)
     
@@ -61,6 +59,7 @@ class PitchingStats(Base):
     game_number_that_day = Column(Integer) # 0 if single game, 1 or 2 for doubleheader
     
     pid = Column(String(8))
+    sequence_number = Column(Integer) # 0 for starter, 1 for first substitute, etc.
     my_team = Column(String)
     opponent = Column(String)
     
@@ -113,3 +112,36 @@ class GameInfo(Base):
     innings = Column(Integer)
     
     comments = Column(String)
+    
+class DefensiveStats(Base):
+    __tablename__ = 'defensivestats'
+    id = Column(Integer, primary_key=True)
+    
+    date = Column(String(15)) # YYYY/MM/DD
+    date_as_dt = Column(DateTime) # Time is 00:00:00 but date part is real
+    game_number_that_day = Column(Integer) # 0 if single game, 1 or 2 for doubleheader
+    
+    pid = Column(String(8))
+    my_team = Column(String)
+    opponent = Column(String)
+    
+     # could be a neutral site game, so store T/F flags for both home and road
+    home = Column(Boolean)
+    road = Column(Boolean)
+    
+    position_list = Column(String)
+    
+    pitcher = Column(Boolean, default=False)    
+    catcher = Column(Boolean, default=False)
+    first_base = Column(Boolean, default=False)
+    second_base = Column(Boolean, default=False)
+    third_base = Column(Boolean, default=False)
+    shortstop = Column(Boolean, default=False)   
+    left_field = Column(Boolean, default=False)  
+    center_field = Column(Boolean, default=False)
+    right_field = Column(Boolean, default=False)
+    designated_hitter = Column(Boolean, default=False)
+    pinch_runner = Column(Boolean, default=False)
+    pinch_hitter = Column(Boolean, default=False)
+    
+    
