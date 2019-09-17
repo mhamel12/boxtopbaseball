@@ -436,7 +436,10 @@ def print_box():
             the_key = "pitcher_%02d" % int(pitching_plines[tm][p][2])
             pitchers_by_slot[the_key] = pitching_plines[tm][p]
 
+        wild_pitches_string = ""
+        balks_string = ""        
         for p in sorted(pitchers_by_slot.keys()):
+        
             id = pitchers_by_slot[p][0]
             outs = int(pitchers_by_slot[p][3])
             update_pitching_totals_conditionally(tm,"outs",outs)
@@ -454,6 +457,11 @@ def print_box():
             update_pitching_totals_conditionally(tm,"hr",hr)
             bfp = int(pitchers_by_slot[p][5])
             update_pitching_totals_conditionally(tm,"bfp",bfp)
+            
+            wildpitches = int(pitchers_by_slot[p][16])
+            wild_pitches_string = add_to_line_conditionally(wildpitches,wild_pitches_string,tm,id)            
+            balks = int(pitchers_by_slot[p][17])
+            balks_string = add_to_line_conditionally(balks,balks_string,tm,id)            
             
             hits = check_stat(pitchers_by_slot[p][6])
             runs = check_stat(pitchers_by_slot[p][10])
@@ -478,6 +486,11 @@ def print_box():
             pitching_totals[stat] = check_stat(str(pitching_totals[tm][stat]))
                 
         output_file.write("\n%-30s%s%s  %2s  %2s  %2s  %2s  %2s  %2s %3s" % ("TOTALS",get_full_innings(pitching_totals[tm]["outs"]),get_partial_innings(pitching_totals[tm]["outs"]),pitching_totals[tm]["h"],pitching_totals[tm]["r"],pitching_totals[tm]["er"],pitching_totals[tm]["bb"],pitching_totals[tm]["so"],pitching_totals[tm]["hr"],pitching_totals[tm]["bfp"]))
+        
+        if len(wild_pitches_string) > 0:
+            output_file.write("\nWP: %s" % (wild_pitches_string))
+        if len(balks_string) > 0:
+            output_file.write("\nBALK: %s" % (balks_string))
         
         output_file.write("\n")
         
@@ -514,8 +527,12 @@ def print_box():
         output_file.write(", %s" % (game_info["ump3b"]))
     output_file.write("\n")
     
-    output_file.write("\nTime of Game: %s   Attendance: %s\n\n" % (get_time_in_hr_min(int(game_info["timeofgame"])),get_attendance(game_info["attendance"])))
+    output_file.write("\nTime of Game: %s   Attendance: %s\n" % (get_time_in_hr_min(int(game_info["timeofgame"])),get_attendance(game_info["attendance"])))
     
+    if len(game_comment_string) > 0:
+        output_file.write("\nNOTES: %s\n\n" % (game_comment_string))
+    else:
+        output_file.write("\n")
     
 ##########################################################
 #
@@ -594,6 +611,8 @@ pitching_plines = defaultdict()
 team_totals = defaultdict()
 pitching_totals = defaultdict()
 clear_between_games()    
+
+game_comment_string = ""
 
 number_of_box_scores_scanned = 0
 
@@ -765,11 +784,22 @@ with open(args.file,'r') as efile:
                         losing_pitcher_id = line.split(",")[2]
                     elif info_type == "number":
                         game_number_this_day = line.split(",")[2]
+
+            elif line_type == "com":
+                # split only on first comma so we keep any in the comment
+                game_comment_string = line.split(",",1)[1].strip()
                 
+                # now strip leading and trailing quotes if included in the comment
+                if game_comment_string.startswith("\""):
+                    game_comment_string = game_comment_string[1:]
+                if game_comment_string.endswith("\""):
+                    game_comment_string = game_comment_string[:-1]
+                        
             elif line_type == "version":  # sentinel that always starts a new box score
                 if number_of_box_scores_scanned > 0:
                     print_box()
                     clear_between_games()
+                    game_comment_string = ""
                 number_of_box_scores_scanned += 1
 
 # print the last box score                
