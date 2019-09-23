@@ -148,10 +148,10 @@ if s_enddate != "NONE":
     print("Stats through %s" % (args.enddate))
     
 if output_format == "TEXT":    
-    text_string = build_text_output_string(defensive_position_headers,"Name,Team,TOT,P,1B,2B,3B,SS,C,LF,CF,RF,DH,PR,PH")
+    text_string = build_text_output_string(defensive_position_headers,"Name,Team,TOT,P,C,1B,2B,3B,SS,LF,CF,RF,DH,PR,PH")
     output_file.write("%s\n" % (text_string))
 else:
-    output_file.write("Name,Team,TOT,P,1B,2B,3B,SS,C,LF,CF,RF,DH,PR,PH\n")
+    output_file.write("Name,Team,TOT,P,C,1B,2B,3B,SS,LF,CF,RF,DH,PR,PH\n")
     
 for player in session.query(DefensiveStats.pid).filter(*filters).distinct().order_by(DefensiveStats.pid).all():
     player_filters = []
