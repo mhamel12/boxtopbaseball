@@ -700,7 +700,6 @@ while not quit_script:
     sb_dict = get_stats_summary_info("SBs",home_team,road_team)
     sh_dict = get_stats_summary_info("Sacrifice Hits",home_team,road_team)
     sf_dict = get_stats_summary_info("Sacrifice Flies",home_team,road_team)
-# TBD no longer needed    hbp_dict = get_stats_summary_info("HBP",home_team,road_team)
     passed_balls_dict = get_stats_summary_info("Passed Balls",home_team,road_team)
     
     # Get pitching stats
@@ -816,10 +815,10 @@ while not quit_script:
 
             retrosheet_bline += add_stat_conditionally(tm,pid,sb_dict)
             
-            # LIMITATION: No caught stealing info? (TBD)
+            # LIMITATION: No caught stealing info in 1938 boxes
             retrosheet_bline += ",-1"
 
-            # LIMITATION: No ground into DP or reached on interference info? (TBD)
+            # LIMITATION: No ground into DP or reached on interference info in 1938 boxes
             retrosheet_bline += ",-1,-1"
             
             output_file.write("%s\n" % (retrosheet_bline))
@@ -1002,7 +1001,7 @@ while not quit_script:
     #
     # stat,tline,side,left-on-base,earned runs,number of DP turned,number of TP turned
     
-    # LIMITATION: TBD - Earned runs not provided in 1938 boxes?
+    # LIMITATION: Earned runs not provided in 1938 boxes
     r_er = -1
     h_er = -1
 

@@ -244,8 +244,7 @@ def print_box():
         output_file.write("\n");
 
     for tm in ["road","home"]:
-        output_file.write("\n")
-        
+
         ##############################################################
         #
         # Batting table portion of box score
@@ -494,6 +493,7 @@ def print_box():
         
         output_file.write("\n")
         
+        extra_info_string = ""
         # XYZ faced X batters in the Xth inning
         outs_so_far_in_game = 0
         for p in sorted(pitchers_by_slot.keys()):
@@ -503,16 +503,19 @@ def print_box():
             if batters_faced_in_Xth_inning > 0:
                 pitcher_name = player_info[game_info[tm]][id]
                 the_Xth_inning = get_next_inning_based_on_outs(outs_so_far_in_game)
-                output_file.write("\n%s faced %d batters in the %s inning" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning))
+                extra_info_string = extra_info_string + "%s faced %d batters in the %s inning\n" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning)
         
         outs_at_end_of_game = outs_so_far_in_game % 3
         if outs_at_end_of_game == 1:
-            output_file.write("\nOne out when winning run scored")
+            extra_info_string = extra_info_string + "One out when winning run scored\n"
         elif outs_at_end_of_game == 2:
-            output_file.write("\nTwo outs when winning run scored")
+            extra_info_string = extra_info_string + "Two outs when winning run scored\n"
         else:
             if (outs_so_far_in_game / 3) != len(linescores[get_opp(tm)]):
-                output_file.write("\nNo outs when winning run scored")
+                extra_info_string = extra_info_string + "No outs when winning run scored\n"
+         
+        if len(extra_info_string) > 0:
+            output_file.write("\n%s" % (extra_info_string))
         
         output_file.write("\n")
             
@@ -533,6 +536,8 @@ def print_box():
         output_file.write("\nNOTES: %s\n\n" % (game_comment_string))
     else:
         output_file.write("\n")
+        
+    output_file.write("=====================================================================\n")
     
 ##########################################################
 #
@@ -751,22 +756,6 @@ with open(args.file,'r') as efile:
                 for single_inning in innings:
                     linescores[lookup].append(single_inning)
                 
-            # TBD - Do we want to use these? Would prefer to use these only for bp_cross_check.py purposes.
-            elif line_type == "teamstat":
-                # teamstat,side,ab,r,h,po,a,e
-                side = int(line.split(",")[1])
-                if side == ROAD_ID:
-                    lookup = "road"
-                else:
-                    lookup = "home"
-                    
-                ab = int(line.split(",")[2])
-                r = int(line.split(",")[3])
-                h = int(line.split(",")[4])
-                po = int(line.split(",")[5])
-                a = int(line.split(",")[6])
-                e = int(line.split(",")[7])
-                    
             elif line_type == "info":
                 if line.count(",") == 2:
                     info_type = line.split(",")[1]
