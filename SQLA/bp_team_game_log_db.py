@@ -204,10 +204,10 @@ for game_record in session.query(GameInfo).filter(*filters).order_by(GameInfo.da
         header_printed = True
         
     # TBD - if we supply a team, would like to track W-L record OF THAT TEAM, but then we need another header string
-    # TBD - if we supply a team, put that team in the LEFT column, and use at or vs in between.
         
     stat_string = game_record.date + "," 
     
+    # If we supply a team, put that team in the LEFT column, and use at or vs in between.
     if s_team != "ALL" and s_team == game_record.home_team : 
         # list team of interest followed by other team
         stat_string += game_record.home_team + "," + str(game_record.home_team_runs) + ",vs" + "," + game_record.road_team + "," + str(game_record.road_team_runs)
@@ -241,7 +241,7 @@ for game_record in session.query(GameInfo).filter(*filters).order_by(GameInfo.da
     else:
         stat_string += "," + game_record.start_time
     stat_string += "," + get_stat_as_string(game_record.attendance)
-    stat_string += "," + game_record.comments # re.sub(",",";",game_record.comments) # replace commas with semicolons as a hack to allow this work
+    stat_string += "," + game_record.comments
 
     if output_format == "TEXT":
         text_string = build_text_output_string(game_info_headers,stat_string)
