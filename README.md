@@ -13,7 +13,7 @@ General workflow for entering and viewing box score data:
 5. Use bp_generate_box.py to generate box scores from the .EBA file which look similar to those on the Retrosheet.org website (random example: https://www.retrosheet.org/boxesetc/1967/B04110NYN1967.htm).
 
 
-The scripts in the SQLA folder use SQLAlchemy to convert a .EBA file into a database file that can then be queried for various purposes. These scripts can help with proofing box score data by identifying missing statistics (game log reports) or by providing data that can be compared against "official" season statistics available from Baseball-Reference.com and other sources (splits). 
+The scripts in the SQLA folder use SQLAlchemy (https://www.sqlalchemy.org/) to convert a .EBA file into a database file that can then be queried for various purposes. These scripts can help with proofing box score data by identifying missing statistics (game log reports) or by providing data that can be compared against "official" season statistics available from Baseball-Reference.com and other sources (splits). 
 
 Get started by using bp_create_db.py to create a .db file (this script uses the DB table definitions in the bp_retrosheet_classes.py file).
 
