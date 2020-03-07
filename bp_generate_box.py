@@ -6,8 +6,6 @@
 # CC License: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 # https://creativecommons.org/licenses/by-nc/4.0/
 #
-# Proof-of-concept, tailored specifically for 1938 American Assocation box 
-# scores as published in the Minneapolis Star and Tribune.
 # Situations where we either deviate or do not meet full requirements of
 # the Retrosheet format are labeled with "LIMITATION".
 #
@@ -19,18 +17,20 @@
 # 1. Must have a parkcode.txt file in the same folder
 # 2. Must have a set of *.ROS roster files in the same folder that include
 #    rosters for every team that is included in the EBx file.
-# 3. Must have a TEAM<Season>.txt file, that maps team abbreviations to their full names, in the same folder.
+# 3. Must have a TEAM<Season_as_YYYY>.txt file, that maps team abbreviations to their full names, in the same folder.
 #
 # Notes:
 # 1. The .EBx files are NOT suitable for use with Retrosheet's BOX.exe program.
 #    BOX.exe needs EVA/EVN files that contain play-by-play data, which we do not have.
 #
+#  1.2  MH  03/07/2020  Add pinch-runner info
+#  1.1  MH  01/16/2020  Use bp_load_roster_files()
 #  1.0  MH  06/05/2019  Initial version
 #
 import argparse, csv, datetime, glob, math, os, re, sys
 from collections import defaultdict
+from bp_utils import bp_load_roster_files
 
-season = "1938"
 DEBUG_ON = False
 
 ROAD_ID = 0
@@ -129,7 +129,7 @@ def clear_between_games():
 
 def convert_event_play_to_name_string(tm,p):
     p_string = ""
-    p_id_list = p.split("-")
+    p_id_list = p.split(":")
     for id in p_id_list:
         name = player_info[game_info[tm]][id]
         if p_string == "":
@@ -218,6 +218,7 @@ def print_box():
         game_daynight = " (N) "
     else:
         game_daynight = " "
+#    print(game_info["site"])
     location = park_info[game_info["site"]]["name"] + " (" + park_info[game_info["site"]]["city"] + ", " + park_info[game_info["site"]]["state"] + ")"
     output_line += game_day + game_daynight + "at %s" % (location)
     
@@ -283,20 +284,26 @@ def print_box():
             name += player_info[game_info[tm]][id]
             
             name += " " + get_positions(tm,id)
-            
+
             output_file.write("%-30s%2s  %2s  %2s  %2s      %2s  %2s      %2s  %2s\n" % (name,ab,runs,hits,rbi,bb,strikeouts,po,assists))
-            
+                
         output_file.write("%-30s%2s  %2s  %2s  %2s      %2s  %2s      %2s  %2s\n" % ("TOTALS",team_totals[tm]["ab"],team_totals[tm]["runs"],team_totals[tm]["hits"],team_totals[tm]["rbi"],team_totals[tm]["bb"],team_totals[tm]["strikeouts"],team_totals[tm]["po"],team_totals[tm]["assists"]))
         
         ##############################################################
         #
-        # Pinch-hitters
+        # Pinch-hitters and pinch-runners
         #
-        ph_count = 0
+        pinch_count = 0
+
         for ph in pinch_hitters[tm]:
             output_file.write("\n%s pinch-hit in the %s inning" % (player_info[game_info[tm]][ph],convert_to_ordinal_string(int(pinch_hitters[tm][ph]))))
-            ph_count += 1
-        if ph_count > 0:
+            pinch_count += 1
+            
+        for pr in pinch_runners[tm]:
+            output_file.write("\n%s pinch-runner in the %s inning" % (player_info[game_info[tm]][pr],convert_to_ordinal_string(int(pinch_runners[tm][pr]))))
+            pinch_count += 1
+            
+        if pinch_count > 0:
             output_file.write("\n")
             
         ##############################################################
@@ -398,8 +405,8 @@ def print_box():
             for hit_batter in hbp_dict[tm]:
                 if count_of_hbp > 0:
                     output_file.write(", ")
-                h_hitter = hit_batter.split("-")[0]
-                h_pitcher = hit_batter.split("-")[1]
+                h_hitter = hit_batter.split(":")[0]
+                h_pitcher = hit_batter.split(":")[1]
                 output_file.write("%s (by %s)" % (player_info[game_info[tm]][h_hitter],player_info[game_info[get_opponent(tm)]][h_pitcher]))
                 count_of_hbp += 1
             
@@ -550,23 +557,8 @@ parser.add_argument('file', help="Event file (input)")
 parser.add_argument('bfile', help="Box score file (output)")
 args = parser.parse_args()
 
-list_of_teams = []    
-    
 # Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
-player_info = defaultdict(dict)
-search_string = "*" + season + ".ROS"
-    
-list_of_roster_files = glob.glob(search_string)
-for filename in list_of_roster_files:
-    with open(filename,'r') as csvfile: # file is automatically closed when this block completes
-        items = csv.reader(csvfile)
-        for row in items:    
-            if len(row) > 0:        
-                # beanb101,Bean,Belve,R,R,MIN,X
-                # Index by team abbrev, then player id, storing complete name
-                player_info[row[5]][row[0]] = row[2] + " " + row[1]
-                if row[5] not in list_of_teams:
-                    list_of_teams.append(row[5])
+(player_info,list_of_teams) = bp_load_roster_files()
 
 if len(list_of_teams) == 0:
     print("ERROR: Could not find any roster files. Exiting.")
@@ -593,7 +585,12 @@ if len(park_info) == 0:
 
 # Read in team full name file
 team_abbrev_to_full_name = defaultdict()
-filename = "TEAM" + season + ".txt"    
+
+search_string = "TEAM[0-9][0-9][0-9][0-9].txt"
+list_of_files = glob.glob(search_string)
+filename = list_of_files[0] # should only be one such file in the folder, so pick the first one
+print("Using %s to derive team names\n" % (filename))
+
 with open(filename,'r') as csvfile: # file is automatically closed when this block completes
     items = csv.reader(csvfile)
     for row in items:    
@@ -737,12 +734,12 @@ with open(args.file,'r') as efile:
                     lookup = "home"
                     opponent = "road"
                 if sub_line_type == "dpline":
-                    dp_dict[lookup].append("-".join(line.split(",")[3:]))
+                    dp_dict[lookup].append(":".join(line.split(",")[3:]))
                 elif sub_line_type == "tpline":
-                    tp_dict[lookup].append("-".join(line.split(",")[3:]))
+                    tp_dict[lookup].append(":".join(line.split(",")[3:]))
                 elif sub_line_type == "hpline":
                     # put the hitter first, and index by the BATTER's team
-                    hbp_dict[opponent].append("%s-%s" % (line.split(",")[4],line.split(",")[3]))
+                    hbp_dict[opponent].append("%s:%s" % (line.split(",")[4],line.split(",")[3]))
                 
             elif line_type == "line":
                 # linescore

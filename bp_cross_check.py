@@ -1,8 +1,6 @@
 #########################################################################
 #
 # Validates a Retrosheet Event file that roughly follows the "EBx" format.
-# Proof-of-concept, tailored specifically for 1938 American Assocation box 
-# scores as published in the Minneapolis Star and Tribune.
 #
 # CC License: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 # https://creativecommons.org/licenses/by-nc/4.0/
@@ -16,15 +14,14 @@
 # 1. Must have a set of *.ROS roster files in the same folder that include
 #    rosters for every team that is included in the EBx file.
 #
+#  1.1  MH  01/10/2020  Remove "season" and use bp_load_roster_files()
 #  1.0  MH  06/20/2019  Initial version
 #
 import argparse, csv, glob
 from collections import defaultdict
+from bp_utils import bp_load_roster_files
 
 DEBUG_ON = False
-
-# LIMITATION: Currently hard-coded for 1938.
-season = "1938"
 
 # Retrosheet road/home id numbers, used for "side" values in .EBx files
 ROAD_ID = 0
@@ -325,27 +322,14 @@ def check_stats():
 # Main program
 #
 
-
 parser = argparse.ArgumentParser(description='Validate a Retrosheet event file.') 
 parser.add_argument('file', help="File to validate")
 args = parser.parse_args()
-
-# Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
-player_info = defaultdict(dict)
-search_string = "*" + season + ".ROS"
-list_of_teams = []
     
-list_of_roster_files = glob.glob(search_string)
-for filename in list_of_roster_files:
-    with open(filename,'r') as csvfile: # file is automatically closed when this block completes
-        items = csv.reader(csvfile)
-        for row in items:    
-            # Example:
-            # beanb101,Bean,Belve,R,R,MIN,X
-            # Index by team abbrev, then player id, storing complete name in quotes like the EBx file format uses
-            player_info[row[5]][row[0]] = "\"" + row[2] + " " + row[1] + "\""
-            if row[5] not in list_of_teams:
-                list_of_teams.append(row[5])
+# Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
+# TBD - In the original version of this file, I stored the name with quotes like this:
+#       player_info[row[5]][row[0]] = "\"" + row[2] + " " + row[1] + "\""
+(player_info,list_of_teams) = bp_load_roster_files()
 
 clear_stats()
 number_of_box_scores_scanned = 0
@@ -374,6 +358,7 @@ with open(args.file,'r') as efile:
                     batting_order_numbers[lookup].append(int((pos * 100) + seq))
                     
                     id = line.split(",")[2]
+#                    print("%s" % (id))
                     if id not in players_in_batting_order[lookup]:
                         players_in_batting_order[lookup][id] = 1
                     else:
@@ -443,17 +428,17 @@ with open(args.file,'r') as efile:
                     update_pitching_stats_list_conditionally(lookup,"Walks",walks)
                     strikeouts = int(line.split(",")[16])
                     update_pitching_stats_list_conditionally(lookup,"Strikeouts",strikeouts)
-                    
-                    # Check a few statistics for this specific player
-                    if strikeouts > outs:
-                        print("ERROR: %s: %s more Strikeouts (%d) than Outs (%d)" % ([s_team_names[lookup]],player_info[s_team_names[lookup]][id],strikeouts,outs))
-                    
+
                     id = line.split(",")[2]
                     if id not in list_of_pitchers[lookup]:
                         list_of_pitchers[lookup][id] = 1
                     else:
                         list_of_pitchers[lookup][id] += 1
                  
+                    # Check a few statistics for this specific player
+                    if strikeouts > outs:
+                        print("ERROR: %s: %s more Strikeouts (%d) than Outs (%d)" % ([s_team_names[lookup]],player_info[s_team_names[lookup]][id],strikeouts,outs))
+                    
                 elif sub_line_type == "prline":
                     # stat,prline,id,inning,side,r,sb,cs
                     side = int(line.split(",")[4])

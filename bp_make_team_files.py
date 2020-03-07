@@ -6,8 +6,9 @@
 # https://creativecommons.org/licenses/by-nc/4.0/
 #
 # Requires:
-# 1. A set of text files containing rosters from the StatsCrew.com site (named Teamname_1938.txt)
+# 1. A set of text files containing rosters from the StatsCrew.com site (named Teamname_Season.txt)
 #
+#  1.1  MH  01/08/2020  Parameterize the year and add some more team abbreviations; fix handling for "St. Clair"-like last names.
 #  1.0  MH  05/25/2019  Initial version
 #
 import argparse, csv, re, glob
@@ -21,7 +22,15 @@ team_name_to_abbrev = {
     'Milwaukee' : 'MIL',
     'Minneapolis' : 'MIN',
     'StPaul' : 'SPL',
-    'Toledo' : 'TOL'
+    'Toledo' : 'TOL',
+    'Albany' : 'ALB',
+    'Bridgeport' : 'BPT',
+    'Hartford' : 'HFD',
+    'NewHaven' : 'NHV',
+    'Pittsfield' : 'PFD',
+    'Springfield' : 'SPR',
+    'Waterbury' : 'WBY',
+    'Worcester' : 'WCS'
     }
 
 # LIMITATION: These are only guaranteed to be unique within a season, while real
@@ -41,8 +50,12 @@ player_bio_list = defaultdict()
 def get_player_id(first,last,bio):
     l = re.sub("'","",last) # remove any quotes
     l = re.sub("-","",l) # remove any dashes
+    l = re.sub("\.","",l) # remove any periods
+    l = re.sub(" ","",l) # remove any spaces
     f = re.sub("'","",first) # remove any quotes
     f = re.sub("-","",f) # remove any dashes
+    f = re.sub("\.","",f) # remove any periods
+    f = re.sub(" ","",f) # remove any spaces
     
     l = l.lower()
     f = f.lower()
@@ -78,8 +91,11 @@ def get_player_id(first,last,bio):
     print("ERROR: No player id found for %s %s" % (first,last))
     return("UNEXPECTED_PID")
     
-# LIMITATION: Hardcoded for 1938.    
-season = "1938"
+parser = argparse.ArgumentParser(description='Convert "stats crew" roster files to Retrosheet roster files.')
+parser.add_argument('season', help="Year (YYYY)")
+args = parser.parse_args()
+    
+season = args.season
 search_string = "*_" + season + ".txt"
     
 list_of_files = glob.glob(search_string)
@@ -91,16 +107,21 @@ for filename in list_of_files:
         output_filename = abbrev + season + ".ROS"
         output_file = open(output_filename,'w')        
         
+        print("\nProcessing %s" % (filename))
         items = csv.reader(csvfile, delimiter='\t') # tab-delimited input file
         for row in items:
             if len(row) > 0:
                 if not re.match("Player",row[0]):
-                    # LIMITATION: None of the 1938 AA players has a multi-part last name, 
-                    # so just split on the last space to get first and last name
+                    # LIMITATION: None of the 1938 AA or 1920's EL players has a multi-part first name, 
+                    # so just split on the first space to get first and last name
                     if row[0].count(" ") > 1:
+                        # Print this as a warning, but this will print for legimate two-part last names like "St. Angelo".
+                        # This print is designed to provide warning in the case where there IS a two-part first name.
                         print("Extra space: %s" % (row[0]))
-                    first_name = row[0].rsplit(" ",1)[0]
-                    last_name = row[0].rsplit(" ",1)[1]
+                    first_name = row[0].split(" ",1)[0]
+                    last_name = row[0].split(" ",1)[1]
+                    # Can be useful to uncomment this for debugging purposes                    
+                    # print("%s-%s" % (first_name,last_name))
                     bats = row[1]
                     throws = row[2]
             
