@@ -327,8 +327,6 @@ parser.add_argument('file', help="File to validate")
 args = parser.parse_args()
     
 # Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
-# TBD - In the original version of this file, I stored the name with quotes like this:
-#       player_info[row[5]][row[0]] = "\"" + row[2] + " " + row[1] + "\""
 (player_info,list_of_teams) = bp_load_roster_files()
 
 clear_stats()
