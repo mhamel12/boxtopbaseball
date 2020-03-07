@@ -1,0 +1,17 @@
+rbi
+gwrbi
+bb
+ibb
+so
+gidp
+int
+cs
+sf
+save
+2b_by_pitcher
+3b_by_pitcher
+hr_by_pitcher
+er_by_pitcher
+ibb_by_pitcher
+sh_by_pitcher
+sf_by_pitcher
