@@ -5,8 +5,6 @@
 # CC License: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 # https://creativecommons.org/licenses/by-nc/4.0/
 #
-# Proof-of-concept, tailored specifically for 1938 American Assocation box 
-# scores as published in the Minneapolis Star and Tribune.
 # Situations where we either deviate or do not meet full requirements of
 # the Retrosheet format are labeled with "LIMITATION".
 #
@@ -18,17 +16,13 @@
 # 1. A set of .ROS files in this folder, one per team, to be used to read player ids.
 #    The bp_make_team_files.py script can be used to generate Retrosheet-compatible .ROS files.
 #
+#  1.1  MH  01/08/2020  Parameterize the season, support ignoring stats, and use new roster loading function
 #  1.0  MH  06/01/2019  Initial version
 #
 import argparse, csv, datetime, glob, os, re, sys
 from collections import defaultdict
 from shutil import copyfile
-
-# TBD - should make season a command-line arg for flexibility.
-# This is used to find roster files, build the output filename and 
-# backup filename, and to simplify date entry by concatenating this
-# to the month/day info inputed by the user.
-season = "1938"
+from bp_utils import bp_load_roster_files, bp_load_ignore_stats
 
 DEBUG_ON = False
 
@@ -306,12 +300,17 @@ def get_batting_play_info(prompt,home_team,road_team):
        
 # For statistics that do not appear in the box score table, we ask the user 
 # to enter the names of the players who had one or more of that particular stat.
-def get_stats_summary_info(prompt,home_team,road_team):
+def get_stats_summary_info(prompt,stat_abbrev,home_team,road_team):
     d = defaultdict()
     d[home_team] = defaultdict()
     d[road_team] = defaultdict()
     list_of_pids = []
     
+    # Avoid prompting for stats that we have chosen to ignore and/or are 
+    # not available for these box scores.
+    if stat_abbrev in stats_to_ignore:
+        return d
+        
     print("\nEnter names for %s: " % (prompt))
     done = False
     while not done:
@@ -348,12 +347,22 @@ def get_pitching_summary_info(team_list):
             else:
                 print("Walks: ")
                 walks = get_number()
+                if "ibb_by_pitcher" in stats_to_ignore:
+                    ibb = -1
+                else:
+                    print("Intentional Walks: ")
+                    ibb = get_number()
                 print("Strikeouts: ")
                 strikeouts = get_number()
                 print("Hits: ")
                 hits = get_number()
                 print("Runs: ")
                 runs = get_number()
+                if "er_by_pitcher" in stats_to_ignore:
+                    er = -1
+                else:
+                    print("Earned Runs: ")
+                    er = get_number() 
                 print("WholeInnings: ")
                 innings = get_number()
                 print("ThirdInnings: ")
@@ -362,6 +371,37 @@ def get_pitching_summary_info(team_list):
                 extra_batters = get_number()
                 
                 ip_times_3 = (innings * 3) + thirdinnings
+                
+                
+                if "2b_by_pitcher" in stats_to_ignore:
+                    doubles = -1
+                else:
+                    print("2B: ")
+                    doubles = get_number() 
+                    
+                if "3b_by_pitcher" in stats_to_ignore:
+                    triples = -1
+                else:
+                    print("3B: ")
+                    triples = get_number()                
+                    
+                if "hr_by_pitcher" in stats_to_ignore:
+                    hr = -1
+                else:
+                    print("HR: ")
+                    hr = get_number()                
+                
+                if "sh_by_pitcher" in stats_to_ignore:
+                    sacrifice_hits = -1
+                else:
+                    print("SH: ")
+                    sacrifice_hits = get_number()                
+                    
+                if "sf_by_pitcher" in stats_to_ignore:
+                    sacrifice_flies = -1
+                else:
+                    print("SF: ")
+                    sacrifice_flies = get_number()                
                 
                 print("Wild pitches: ")
                 wp = get_number()
@@ -375,8 +415,10 @@ def get_pitching_summary_info(team_list):
                 # Full line looks as follows, we only do part of it here.
                 # stat,pline,id,side,seq,ip*3,no-out,bfp,h,2b,3b,hr,r,er,bb,ibb,k,hbp,wp,balk,sh,sf
                 #
-                # In this function, we return: pid,seq,ip*3,no-out,bfp,hits,runs,walks,strikeouts,wp,balk
-                stats_line = pid + "," + str(sequence) + "," + str(ip_times_3) + "," + str(extra_batters) + "," + str(approx_batters_faced) + "," + str(hits) + "," + str(runs) + "," + str(walks) + "," + str(strikeouts) + "," + str(wp) + "," + str(balk)
+                # In this function, we return: pid,seq,ip*3,no-out,bfp,hits,runs,walks,strikeouts,wp,balk,ibb,er,2b,3b,hr,sh,sf
+                stats_line = pid + "," + str(sequence) + "," + str(ip_times_3) + "," + str(extra_batters) + "," + str(approx_batters_faced) + "," + str(hits)
+                stats_line = stats_line + "," + str(runs) + "," + str(walks) + "," + str(strikeouts) + "," + str(wp) + "," + str(balk) + "," + str(ibb)
+                stats_line = stats_line + "," + str(er) + "," + str(doubles) + "," + str(triples) + "," + str(hr) + "," + str(sacrifice_hits) + "," + str(sacrifice_flies)
                 
                 d[tm].append(stats_line)
                 sequence = sequence + 1
@@ -542,13 +584,16 @@ def get_team_batting_fielding_info(team_list):
 # These are statistics which are not covered in the batting table,
 # so we will have prompted for a list of players for each stat.
 # Now, we need to unpack those dictionaries. 
-def add_stat_conditionally(tm,pid,d):
-    # If there is an entry for this player in this dictionary, return the value for that player.
-    if pid in d[tm]:
-        new_line = "," + str(d[tm][pid])
-    # Otherwise, just return a zero.
+def add_stat_conditionally(tm,pid,abbrev,d):
+    if abbrev in stats_to_ignore:
+        new_line = "," + str(-1)
     else:
-        new_line = "," + str(0)
+        # If there is an entry for this player in this dictionary, return the value for that player.
+        if pid in d[tm]:
+            new_line = "," + str(d[tm][pid])
+        # Otherwise, just return a zero.
+        else:
+            new_line = "," + str(0)
     return new_line
       
 def get_inning(pid,prompt):
@@ -570,27 +615,21 @@ def time_to_quit():
 # help message and then exit.
 parser = argparse.ArgumentParser(description='Create or add box scores to a Retrosheet event file.')
 parser.add_argument('event_file', help="Event file (script will append new box scores to this file)") 
-
+parser.add_argument('season', help="Year (YYYY)")
 args = parser.parse_args()
+
+# This is used to simplify date entry by concatenating this
+# to the month/day info inputed by the user.
+season = args.season
 
 output_filename = args.event_file
 
 list_of_teams = []    
     
 # Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
-player_info = defaultdict(dict)
-search_string = "*" + season + ".ROS"
-    
-list_of_roster_files = glob.glob(search_string)
-for filename in list_of_roster_files:
-    with open(filename,'r') as csvfile: # file is automatically closed when this block completes
-        items = csv.reader(csvfile)
-        for row in items:    
-            # beanb101,Bean,Belve,R,R,MIN,X
-            # Index by team abbrev, then player id, storing complete name in quotes like the EBx file format uses
-            player_info[row[5]][row[0]] = "\"" + row[2] + " " + row[1] + "\""
-            if row[5] not in list_of_teams:
-                list_of_teams.append(row[5])
+# TBD - In the original version of this file, I stored the name with quotes like this:
+#       player_info[row[5]][row[0]] = "\"" + row[2] + " " + row[1] + "\""
+(player_info,list_of_teams) = bp_load_roster_files()
                 
 if DEBUG_ON:
     # Dump all the roster info for all teams
@@ -598,6 +637,10 @@ if DEBUG_ON:
         for p in player_info[tm]:
             print("%s,%s,%s" % (tm,p,player_info[tm][p]))
 
+# Read in list of stats to ignore
+stats_to_ignore = bp_load_ignore_stats()            
+            
+# Back up the event file before appending to it
 current_datetime = datetime.datetime.now().strftime("%Y_%m_%d_%H%M%S")
 backup_filename = output_filename.split(".")[0] + "_" + current_datetime + ".txt"
 
@@ -632,7 +675,7 @@ while not quit_script:
     output_file.write("version,BOXTOP1\n")
     output_file.write("info,visteam,%s\n" % (road_team))
     output_file.write("info,hometeam,%s\n" % (home_team))
-    # LIMITATION: no exceptions in 1938, so just make this "01" in all cases
+    # LIMITATION: no exceptions in our early box score work, so just make this "01" in all cases
     output_file.write("info,site,%s\n" % (home_team + "01")) 
     output_file.write("info,date,%s\n" % (date))
     output_file.write("info,number,%s\n" % (str(game_number)))
@@ -655,11 +698,17 @@ while not quit_script:
         scorer = "Minneapolis Star box"
     elif scorer.lower() == "mst":
         scorer = "Minneapolis Star-Tribune box"
-    
+    elif scorer.lower() == "hc":
+        scorer = "Hartford Courant box"
+    elif scorer.lower() == "bt":
+        scorer = "Bridgeport Telegram box"
+    elif scorer.lower() == "be":
+        scorer = "Berkshire Eagle box"
+        
     output_file.write("info,scorer,%s\n" % (scorer))
     output_file.write("info,howscored,unknown\n")
 
-    # LIMITATION: Fill in defaults for some fields that 1938 box scores are unlikely to include.
+    # LIMITATION: Fill in defaults for some fields that early box scores are unlikely to include.
     output_file.write("info,pitches,none\n")
     output_file.write("info,temp,0\n") # 0 = unknown for some numerical fields...
     output_file.write("info,winddir,unknown\n")
@@ -688,19 +737,25 @@ while not quit_script:
             
     # Prompt for stats that appear at the end of the box score, storing in
     # per-stat dictionaries that we can use later when we assemble full bline's and pline's
-    rbi_dict = get_stats_summary_info("RBI",home_team,road_team)
+    rbi_dict = get_stats_summary_info("RBI","rbi",home_team,road_team)
     if DEBUG_ON:
         for tm in rbi_dict:
             for pid in rbi_dict[tm]:
                 print("%s [%s]: %d" % (pid,tm,rbi_dict[tm][pid]))
             
-    doubles_dict = get_stats_summary_info("Doubles",home_team,road_team)
-    triples_dict = get_stats_summary_info("Triples",home_team,road_team)
-    hr_dict = get_stats_summary_info("HRs",home_team,road_team)
-    sb_dict = get_stats_summary_info("SBs",home_team,road_team)
-    sh_dict = get_stats_summary_info("Sacrifice Hits",home_team,road_team)
-    sf_dict = get_stats_summary_info("Sacrifice Flies",home_team,road_team)
-    passed_balls_dict = get_stats_summary_info("Passed Balls",home_team,road_team)
+    doubles_dict = get_stats_summary_info("Doubles","2b",home_team,road_team)
+    triples_dict = get_stats_summary_info("Triples","3b",home_team,road_team)
+    hr_dict = get_stats_summary_info("HRs","hr",home_team,road_team)
+    sb_dict = get_stats_summary_info("SBs","sb",home_team,road_team)
+    cs_dict = get_stats_summary_info("Caught Stealing","cs",home_team,road_team)
+    sh_dict = get_stats_summary_info("Sacrifice Hits","sh",home_team,road_team)
+    sf_dict = get_stats_summary_info("Sacrifice Flies","sf",home_team,road_team)
+    passed_balls_dict = get_stats_summary_info("Passed Balls","pb",home_team,road_team)
+    bb_dict = get_stats_summary_info("Walks","bb",home_team,road_team)
+    ibb_dict = get_stats_summary_info("Intentional Walks","ibb",home_team,road_team)
+    so_dict = get_stats_summary_info("Strikeouts","so",home_team,road_team)
+    gidp_dict = get_stats_summary_info("GIDP","gidp",home_team,road_team)
+    int_dict = get_stats_summary_info("Reached on interference","int",home_team,road_team)
     
     # Get pitching stats
     p_dict = get_pitching_summary_info([road_team,home_team])
@@ -745,18 +800,33 @@ while not quit_script:
     if len(list_of_all_pitchers) >= 2:
         winning_pitcher = display_menu_get_selection(list_of_all_pitchers,"Winning pitcher:").split(",")[0]
         losing_pitcher = display_menu_get_selection(list_of_all_pitchers,"Losing pitcher:").split(",")[0]
+        if "save" in stats_to_ignore:
+            saving_pitcher = ""
+        else:
+            response = display_menu_get_selection(["Yes","No"],"Save?:")
+            if response == "Yes":
+                saving_pitcher = display_menu_get_selection(list_of_all_pitchers,"Save:").split(",")[0]
+            else:
+                saving_pitcher = ""
     else:
         print("WARNING: Fewer than 2 pitchers listed, leaving winning and losing pitcher blank.")
         winning_pitcher = ""
         losing_pitcher = ""
-    # LIMITATION: No saves in 1938
-    saving_pitcher = ""
+        saving_pitcher = ""
     output_file.write("info,wp,%s\n" % (winning_pitcher))
     output_file.write("info,lp,%s\n" % (losing_pitcher))
     output_file.write("info,save,%s\n" % (saving_pitcher))
     
-    # LIMITATION: No game-winning RBI in 1938
-    output_file.write("info,gwrbi,\n")
+    if "gwrbi" in stats_to_ignore:
+        output_file.write("info,gwrbi,\n")
+    else:
+        print("Enter name(s) for GWRBI ('+' to stop): ")
+        (gwrbi_player,gwrbi_pid,gwrbi_team) = get_player_name_and_id_and_team([home_team,road_team])
+        if gwrbi_pid == "stop":
+            output_file.write("info,gwrbi,\n")
+        else:
+            output_file.write("info,gwrbi,%s\n" % (gwrbi_pid))
+    
 
     # Get fielding info for double plays and triple plays
     print("\n")
@@ -795,12 +865,12 @@ while not quit_script:
             #                                           seq                         ab                          runs                        hits        
             retrosheet_bline = retrosheet_bline + "," + pinfo.split(",")[2] + "," + pinfo.split(",")[3] + "," + pinfo.split(",")[4] + "," + pinfo.split(",")[5]
             
-            retrosheet_bline += add_stat_conditionally(tm,pid,doubles_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,triples_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,hr_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,rbi_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,sh_dict)
-            retrosheet_bline += add_stat_conditionally(tm,pid,sf_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"2b",doubles_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"3b",triples_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"hr",hr_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"rbi",rbi_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"sh",sh_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"sf",sf_dict)
             
             hbp = 0
             # Use the hbp_event_dict[] to fill in hbp
@@ -810,16 +880,15 @@ while not quit_script:
                     
             retrosheet_bline += ",%s" % (str(hbp))
             
-            # LIMITATION: No walk or strikeout info for individual batters, so we omit that info.
-            retrosheet_bline += ",-1,-1,-1"
+            retrosheet_bline += add_stat_conditionally(tm,pid,"bb",bb_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"ibb",ibb_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"so",so_dict)
 
-            retrosheet_bline += add_stat_conditionally(tm,pid,sb_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"sb",sb_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"cs",sb_dict)
             
-            # LIMITATION: No caught stealing info in 1938 boxes
-            retrosheet_bline += ",-1"
-
-            # LIMITATION: No ground into DP or reached on interference info in 1938 boxes
-            retrosheet_bline += ",-1,-1"
+            retrosheet_bline += add_stat_conditionally(tm,pid,"gidp",sb_dict)
+            retrosheet_bline += add_stat_conditionally(tm,pid,"int",sb_dict)
             
             output_file.write("%s\n" % (retrosheet_bline))
             
@@ -902,9 +971,9 @@ while not quit_script:
                         retrosheet_line += pinfo.split(",")[7] + "," + pinfo.split(",")[8] + "," + pinfo.split(",")[9]
                     else:
                         retrosheet_line += "0,0,0"
-                    retrosheet_line += add_stat_conditionally(tm,pid,dp_count_dict)
-                    retrosheet_line += add_stat_conditionally(tm,pid,tp_count_dict)
-                    retrosheet_line += add_stat_conditionally(tm,pid,passed_balls_dict)
+                    retrosheet_line += add_stat_conditionally(tm,pid,"",dp_count_dict)
+                    retrosheet_line += add_stat_conditionally(tm,pid,"",tp_count_dict)
+                    retrosheet_line += add_stat_conditionally(tm,pid,"pb",passed_balls_dict)
                     position_seq += 1
             
                 output_file.write("%s\n" % (retrosheet_line))
@@ -930,6 +999,7 @@ while not quit_script:
     side = ROAD_ID
     for tm in [road_team,home_team]:
         for pinfo in p_dict[tm]:
+            # pinfo format: pid,seq,ip*3,no-out,bfp,hits,runs,walks,strikeouts,wp,balk,ibb,er,2b,3b,hr,sh,sf
             pid = pinfo.split(",")[0] 
             
             hbp = 0
@@ -948,14 +1018,14 @@ while not quit_script:
             retrosheet_pline = "stat,pline," + pid + "," + str(side) + "," + pinfo.split(",")[1] + "," + pinfo.split(",")[2] + ","
             #                   no-out                      bfp                         hits
             retrosheet_pline += pinfo.split(",")[3] + "," + pinfo.split(",")[4] + "," + pinfo.split(",")[5] + ","
-            # LIMITATION: We do not know 2B/3B/HR by pitcher
-            retrosheet_pline += "-1,-1,-1,"
-            #                   runs      LIMITATION: no ER   walks    LIMITATION: no IBB   strikeouts    
-            retrosheet_pline += pinfo.split(",")[6] + ",-1," + pinfo.split(",")[7] + ",-1," + pinfo.split(",")[8] + ","
+            #                   2b                         3b                           hr
+            retrosheet_pline += pinfo.split(",")[13] + "," + pinfo.split(",")[14] + "," + pinfo.split(",")[15] + ","
+            #                   runs                      er                           walks                       ibb                          strikeouts    
+            retrosheet_pline += pinfo.split(",")[6] + "," + pinfo.split(",")[12] + "," + pinfo.split(",")[7] + "," + pinfo.split(",")[11] + "," + pinfo.split(",")[8] + ","
             #                   hbp         wp                           balk
             retrosheet_pline += str(hbp) + "," + pinfo.split(",")[9] + "," + pinfo.split(",")[10] + ","
-            # LIMITATION: We do not know SH/SF by pitcher
-            retrosheet_pline += "-1,-1"
+            #                   sh                         sf
+            retrosheet_pline += pinfo.split(",")[16] + "," + pinfo.split(",")[17] + "," 
             
             output_file.write("%s\n" % (retrosheet_pline))
             
@@ -1001,10 +1071,20 @@ while not quit_script:
     #
     # stat,tline,side,left-on-base,earned runs,number of DP turned,number of TP turned
     
-    # LIMITATION: Earned runs not provided in 1938 boxes
-    r_er = -1
-    h_er = -1
-
+    if "er_by_pitcher" in stats_to_ignore:
+        r_er = -1
+        h_er = -1
+    else:
+        r_er = 0
+        for pinfo in p_dict[road_team]:
+            if pinfo.split(",")[12] != "-1":
+                r_er = r_er + int(pinfo.split(",")[12])
+                
+        h_er = 0
+        for pinfo in p_dict[home_team]:
+            if pinfo.split(",")[12] != "-1":
+                h_er = h_er + int(pinfo.split(",")[12])
+    
     output_file.write("stat,tline,%d,%d,%d,%d,%d\n" % (ROAD_ID,r_lob,r_er,len(dp_event_dict[road_team]),len(tp_event_dict[road_team])))
     output_file.write("stat,tline,%d,%d,%d,%d,%d\n" % (HOME_ID,h_lob,h_er,len(dp_event_dict[home_team]),len(tp_event_dict[home_team])))
     

@@ -1,8 +1,8 @@
 #########################################################################
 #
 # Loads player statistics from a Retrosheet Event file into a SQL Alchemy database.
-# Proof-of-concept, tailored specifically for 1938 American Assocation box 
-# scores as published in the Minneapolis Star and Tribune.
+# Proof-of-concept, tailored specifically for 1938 American Assocation and 
+# 1921-1924 Eastern League box scores.
 #
 # CC License: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 # https://creativecommons.org/licenses/by-nc/4.0/

@@ -10,11 +10,13 @@
 # https://www.retrosheet.org/boxfile.txt
 # 
 #
+#  1.1  MH  01/10/2020  Remove "season" and use bp_load_roster_files()
 #  1.0  MH  08/18/2019  Initial version
 #
 import argparse, csv, datetime, glob, re, sys
 from collections import defaultdict
 from bp_retrosheet_classes import DefensiveStats, Base
+from bp_utils import bp_load_roster_files
 
 DEBUG_ON = False
 
@@ -98,24 +100,8 @@ if args.enddate:
 else:
     s_enddate = "NONE"
 
-# read in all .ROS files so we can lookup pid and get full name
-season = "1938"
-list_of_teams = []    
-    
 # Read in all of the .ROS files up front so we can build dictionary of player ids and names, by team.
-player_info = defaultdict(dict)
-search_string = "*" + season + ".ROS"
-    
-list_of_roster_files = glob.glob(search_string)
-for filename in list_of_roster_files:
-    with open(filename,'r') as csvfile: # file is automatically closed when this block completes
-        items = csv.reader(csvfile)
-        for row in items:    
-            # beanb101,Bean,Belve,R,R,MIN,X
-            # Index by team abbrev, then player id, storing complete name WITHOUT quotes for easier printing
-            player_info[row[5]][row[0]] = row[2] + " " + row[1]
-            if row[5] not in list_of_teams:
-                list_of_teams.append(row[5])
+(player_info,list_of_teams) = bp_load_roster_files()
 
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///%s' % (args.dbfile), echo=False)

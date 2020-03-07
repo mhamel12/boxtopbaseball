@@ -10,11 +10,13 @@
 # https://www.retrosheet.org/boxfile.txt
 # 
 #
+#  1.1  MH  01/10/2020  Remove "season" and use bp_load_roster_files()
 #  1.0  MH  07/17/2019  Initial version
 #
 import argparse, csv, datetime, glob, re, sys
 from collections import defaultdict
 from bp_retrosheet_classes import BattingStats, PitchingStats, Base
+from bp_utils import bp_load_roster_files
 
 DEBUG_ON = False
 
@@ -123,34 +125,25 @@ if args.enddate:
 else:
     s_enddate = "NONE"
 
-# read in all .ROS files so we can lookup pid and get full name
-season = "1938"
-list_of_teams = []    
-    
-# Read in all of the .ROS files up front so we can find player name
-player_info = defaultdict(dict)
-search_string = "*" + season + ".ROS"
+# Read in all of the .ROS files up front
+(player_info,list_of_teams) = bp_load_roster_files()
 
-# If player name is specified, there will be at least one space in the name
-if re.search(" ",args.player):
-    player_name = args.player
-    playerid = "unknown"
-else:
-    player_name = "unknown"
+# If a player id is specified, there will be some numeric characters in it
+if re.search(r'\d', args.player):
     playerid = args.player
-    
-list_of_roster_files = glob.glob(search_string)
-for filename in list_of_roster_files:
-    with open(filename,'r') as csvfile: # file is automatically closed when this block completes
-        items = csv.reader(csvfile)
-        for row in items:    
-            # beanb101,Bean,Belve,R,R,MIN,X
-            if player_name == "unknown":
-                if playerid == row[0]:
-                    player_name = row[2] + " " + row[1]
-            elif playerid == "unknown":
-                if player_name == row[2] + " " + row[1]:
-                    playerid = row[0]
+    # search for player name
+    for team in player_info:
+        for p in player_info[team]:
+            if p == playerid:
+                player_name = player_info[team][p]
+
+else:
+    player_name = args.player
+    # search for player id
+    for team in player_info:
+        for p in player_info[team]:
+            if player_name == player_info[team][p]:
+                playerid = p
 
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///%s' % (args.dbfile), echo=False)
