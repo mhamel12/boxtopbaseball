@@ -23,6 +23,7 @@
 # 1. The .EBx files are NOT suitable for use with Retrosheet's BOX.exe program.
 #    BOX.exe needs EVA/EVN files that contain play-by-play data, which we do not have.
 #
+#  1.3  MH  04/26/2020  Correct handling of "X outs when winning run scored"
 #  1.2  MH  03/07/2020  Add pinch-runner info
 #  1.1  MH  01/16/2020  Use bp_load_roster_files()
 #  1.0  MH  06/05/2019  Initial version
@@ -493,10 +494,13 @@ def print_box():
                 
         output_file.write("\n%-30s%s%s  %2s  %2s  %2s  %2s  %2s  %2s %3s" % ("TOTALS",get_full_innings(pitching_totals[tm]["outs"]),get_partial_innings(pitching_totals[tm]["outs"]),pitching_totals[tm]["h"],pitching_totals[tm]["r"],pitching_totals[tm]["er"],pitching_totals[tm]["bb"],pitching_totals[tm]["so"],pitching_totals[tm]["hr"],pitching_totals[tm]["bfp"]))
         
+        additional_pitching_info_string = ""
         if len(wild_pitches_string) > 0:
-            output_file.write("\nWP: %s" % (wild_pitches_string))
+            additional_pitching_info_string = additional_pitching_info_string + "\nWP: %s" % (wild_pitches_string)
         if len(balks_string) > 0:
-            output_file.write("\nBALK: %s" % (balks_string))
+            additional_pitching_info_string = additional_pitching_info_string + "\nBALK: %s" % (balks_string)
+        if len(additional_pitching_info_string) > 0:
+            output_file.write("\n%s" % (additional_pitching_info_string))
         
         output_file.write("\n")
         
@@ -510,16 +514,28 @@ def print_box():
             if batters_faced_in_Xth_inning > 0:
                 pitcher_name = player_info[game_info[tm]][id]
                 the_Xth_inning = get_next_inning_based_on_outs(outs_so_far_in_game)
-                extra_info_string = extra_info_string + "%s faced %d batters in the %s inning\n" % (pitcher_name,batters_faced_in_Xth_inning,the_Xth_inning)
+                if batters_faced_in_Xth_inning == 1:
+                    batter_text_string = "batter"
+                else:
+                    batter_text_string = "batters"
+                extra_info_string = extra_info_string + "%s faced %d %s in the %s inning\n" % (pitcher_name,batters_faced_in_Xth_inning,batter_text_string,the_Xth_inning)
         
         outs_at_end_of_game = outs_so_far_in_game % 3
-        if outs_at_end_of_game == 1:
-            extra_info_string = extra_info_string + "One out when winning run scored\n"
-        elif outs_at_end_of_game == 2:
-            extra_info_string = extra_info_string + "Two outs when winning run scored\n"
-        else:
-            if (outs_so_far_in_game / 3) != len(linescores[get_opp(tm)]):
-                extra_info_string = extra_info_string + "No outs when winning run scored\n"
+        if outs_at_end_of_game == 1 or outs_at_end_of_game == 2 or (outs_so_far_in_game / 3) != len(linescores[get_opp(tm)]):
+#        if ((outs_so_far_in_game / 3) != len(linescores[get_opp(tm)])):
+            # Game may have ended with 0,1,2 outs when winning run scored, or
+            # the game could have been called due to rain or other reasons.
+            # Determine if winning run scored in the final inning.
+            if team_totals["home"]["runs"] > team_totals["road"]["runs"]:
+                # Check runs scored by home team in their final inning. Were those the 'winning' runs?
+                if (team_totals["home"]["runs"] - int(linescores["home"][len(linescores["home"])-1])) <= team_totals["road"]["runs"]:
+                    if outs_at_end_of_game == 1:
+                        extra_info_string = extra_info_string + "One out when winning run scored\n"
+                    elif outs_at_end_of_game == 2:
+                        extra_info_string = extra_info_string + "Two outs when winning run scored\n"
+                    else:
+                        if (outs_so_far_in_game / 3) != len(linescores[get_opp(tm)]):
+                            extra_info_string = extra_info_string + "No outs when winning run scored\n"
          
         if len(extra_info_string) > 0:
             output_file.write("\n%s" % (extra_info_string))
