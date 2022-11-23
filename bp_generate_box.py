@@ -23,6 +23,7 @@
 # 1. The .EBx files are NOT suitable for use with Retrosheet's BOX.exe program.
 #    BOX.exe needs EVA/EVN files that contain play-by-play data, which we do not have.
 #
+#  1.4  MH  11/23/2022  Added league_classification variable.
 #  1.3  MH  04/26/2020  Correct handling of "X outs when winning run scored"
 #  1.2  MH  03/07/2020  Add pinch-runner info
 #  1.1  MH  01/16/2020  Use bp_load_roster_files()
@@ -36,6 +37,8 @@ DEBUG_ON = False
 
 ROAD_ID = 0
 HOME_ID = 1
+
+league_classification = "Default"
 
 def get_opp(tm):
     if tm == "road":
@@ -227,7 +230,7 @@ def print_box():
         
     max_inning_count = max(len(linescores["road"]),len(linescores["home"]))
     for tm in ["road","home"]:
-        output_file.write("%3s AA" % (game_info[tm]))
+        output_file.write("%3s %s" % (game_info[tm],league_classification))
         inning_count = 0
         for inn in linescores[tm]:
             if inning_count % 3 == 0:
@@ -613,6 +616,7 @@ with open(filename,'r') as csvfile: # file is automatically closed when this blo
         # COL,AA,Columbus,Red Birds
         if len(row) > 0:
             team_abbrev_to_full_name[row[0]] = row[2] + " " + row[3]
+            league_classification = row[1]
         
 # Initialize the rest of the structures we need.
 game_info = defaultdict()
