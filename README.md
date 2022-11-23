@@ -7,10 +7,11 @@ These files are licensed by a Creative Commons Attribution-NonCommercial 4.0 Int
 
 General workflow for entering and viewing box score data:
 1. Create .ROS files for every team in the league. The bp_make_team_files.py script is an example of how to do this in an automated way; it uses rosters downloaded from StatsCrew.com as input, but you could write a similar script to use roster information from Baseball-Reference.com or other sites.
-2. Use bp_enter_data.py to enter one or more box scores and create/update an .EBA file.
-3. Use bp_cross_check.py to check the resulting .EBA file for problems.
-4. Use a text editor to edit the .EBA file as needed (repeat steps 3 and 4 as needed).
-5. Use bp_generate_box.py to generate box scores from the .EBA file which look similar to those on the Retrosheet.org website (random example: https://www.retrosheet.org/boxesetc/1967/B04110NYN1967.htm).
+2. Manually create TEAM<YEAR>.txt and parkcode.txt files to map team names to abbreviations and home ballpark information.
+3. Use bp_enter_data.py to enter one or more box scores and create/update an .EBA file.
+4. Use bp_cross_check.py to check the resulting .EBA file for problems.
+5. Use a text editor to edit the .EBA file as needed (repeat steps 3 and 4 as needed).
+6. Use bp_generate_box.py to generate box scores from the .EBA file which look similar to those on the Retrosheet.org website (random example: https://www.retrosheet.org/boxesetc/1967/B04110NYN1967.htm).
 
 
 The scripts in the SQLA folder use SQLAlchemy (https://www.sqlalchemy.org/) to convert a .EBA file into a database file that can then be queried for various purposes. These scripts can help with proofing box score data by identifying missing statistics (game log reports) or by providing data that can be compared against "official" season statistics available from Baseball-Reference.com and other sources (splits). 
