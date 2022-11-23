@@ -1,0 +1,8 @@
+ALB,EL,Albany,Senators
+BPT,EL,Bridgeport,Americans
+HFD,EL,Hartford,Senators
+NHV,EL,New Haven,Profs
+PFD,EL,Pittsfield,Hillies
+SPR,EL,Springfield,Ponies
+WBY,EL,Waterbury,Coal Heavers
+WCS,EL,Worcester,Panthers

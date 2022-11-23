@@ -1,0 +1,10 @@
+PARKID,NAME,AKA,CITY,STATE,START,END,LEAGUE,NOTES
+ALB01,Chadwick Park,,Albany,NY,01/01/1916,12/31/1932,EL,
+BPT01,Newfield Park,,Bridgeport,CT,01/01/1916,12/31/1932,EL,
+HFD01,Clarkin Field,,Hartford,CT,01/01/1921,12/31/1927,EL,,
+NHV01,Yale Field,,New Haven,CT,01/01/1916,12/31/1932,EL,
+PFD01,Wahconah Park,,Pittsfield,MA,01/01/1919,12/31/1999,EL,
+SPR01,League Park,,Springfield,MA,01/01/1922,12/31/1940,EL,
+WBY01,Brassco Park,,Waterbury,CT,01/01/1916,12/31/1932,EL,
+WCS01,Boulevard Park,,Worcester,MA,04/19/1906,12/31/1926,EL,
+

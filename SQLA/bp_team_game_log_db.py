@@ -10,6 +10,7 @@
 # https://www.retrosheet.org/boxfile.txt
 # 
 #
+#  1.2  MH  11/23/2022  Removed left-over debug print
 #  1.1  MH  01/10/2020  Remove "season" and use bp_load_roster_files()
 #  1.0  MH  07/18/2019  Initial version
 #
@@ -162,7 +163,7 @@ if s_team != "ALL":
         elif s_location == "ROAD":
             filters.append(GameInfo.road_team == s_team)
         else:
-            print("Got here")
+#            print("Got here")
             filters.append(or_(GameInfo.road_team == s_team,GameInfo.home_team == s_team))
     
 if s_startdate != "NONE":
