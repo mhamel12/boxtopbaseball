@@ -30,8 +30,6 @@ with open(filename,'r') as csvfile: # file is automatically closed when this blo
         if len(row) > 0:
             team_name_to_abbrev[re.sub(" ","",row[2])] = row[0] # remove any spaces from the city name
 
-print(team_name_to_abbrev)
-
 # LIMITATION: These are only guaranteed to be unique within a season, while real
 # Retrosheet ids would need to be unique across all seasons.
 used_player_ids = []
