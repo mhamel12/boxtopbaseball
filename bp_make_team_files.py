@@ -8,30 +8,27 @@
 # Requires:
 # 1. A set of text files containing rosters from the StatsCrew.com site (named Teamname_Season.txt)
 #
+#  1.2  MH  11/23/2022  Use TEAM<YEAR>.txt input file to get team names and abbreviations
 #  1.1  MH  01/08/2020  Parameterize the year and add some more team abbreviations; fix handling for "St. Clair"-like last names.
 #  1.0  MH  05/25/2019  Initial version
 #
 import argparse, csv, re, glob
 from collections import defaultdict
 
-team_name_to_abbrev = {
-    'Columbus' : 'COL',
-    'Indianapolis' : 'IND',
-    'KansasCity' : 'KCB',
-    'Louisville' : 'LOU',
-    'Milwaukee' : 'MIL',
-    'Minneapolis' : 'MIN',
-    'StPaul' : 'SPL',
-    'Toledo' : 'TOL',
-    'Albany' : 'ALB',
-    'Bridgeport' : 'BPT',
-    'Hartford' : 'HFD',
-    'NewHaven' : 'NHV',
-    'Pittsfield' : 'PFD',
-    'Springfield' : 'SPR',
-    'Waterbury' : 'WBY',
-    'Worcester' : 'WCS'
-    }
+# Read in team full name file
+team_name_to_abbrev = defaultdict()
+
+search_string = "TEAM[0-9][0-9][0-9][0-9].txt"
+list_of_files = glob.glob(search_string)
+filename = list_of_files[0] # should only be one such file in the folder, so pick the first one
+print("Using %s to derive team names\n" % (filename))
+
+with open(filename,'r') as csvfile: # file is automatically closed when this block completes
+    items = csv.reader(csvfile)
+    for row in items:    
+        # COL,AA,Columbus,Red Birds
+        if len(row) > 0:
+            team_name_to_abbrev[re.sub(" ","",row[2])] = row[0] # remove any spaces from the city name
 
 # LIMITATION: These are only guaranteed to be unique within a season, while real
 # Retrosheet ids would need to be unique across all seasons.

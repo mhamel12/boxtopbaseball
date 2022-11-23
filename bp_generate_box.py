@@ -420,8 +420,8 @@ def print_box():
             output_file.write("\nGIDP: %s" % (gidp_string))
         if len(reached_on_int_string) > 0:
             output_file.write("\nReached on interference: %s" % (reached_on_int_string))
-            
-        output_file.write("\nTeam LOB: %s" % (team_totals[tm]["LOB"]))
+        if int(team_totals[tm]["LOB"]) >= 0:    
+            output_file.write("\nTeam LOB: %s" % (team_totals[tm]["LOB"]))
         
         ##############################################################
         #
