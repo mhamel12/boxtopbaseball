@@ -1,7 +1,7 @@
 # boxtopbaseball
 Baseball box score entry and generation scripts based on Retrosheet data formats
 
-IMPORTANT NOTE: These scripts should be considered "Alpha" or early "Beta" versions. Tested with Python 3.6.0 on Windows.
+IMPORTANT NOTE: These scripts should be considered "Alpha" or early "Beta" versions. Tested with Python 3.6.0 and 3.10.8 on Windows.
 
 These files are licensed by a Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license: https://creativecommons.org/licenses/by-nc/4.0/
 
