@@ -1,0 +1,49 @@
+Name                           Team                G   AB    R    H   2B   3B   HR  RBI   SB   CS   BB   SO    BA   OBP   SLG   OPS   TB  GDP  HBP   SH   SF  IBB  INT 
+Belve Bean                     MIN                39   82    6   15    0    1    1    7    0                 .183        .244         20         0    5    0                
+Hank Camelli                   MIN                10   26    6    6    1    2    0    3    0                 .231        .423         11         1    0    0                
+Johnnie Chambers               MIN                 4    6    1    3    0    0    0    1    0                 .500        .500          3         0    0    0                
+Calvin Chapman                 MIN                 9   28    4    8    1    0    1    8    1                 .286        .429         12         0    0    0                
+Watty Clark                    MIN                 3    5    1    1    1    0    0    1    0                 .200        .400          2         0    0    0                
+Alta Cohen                     MIN                34   41    2   11    1    1    0    5    1                 .268        .341         14         0    0    0                
+Andy Cohen                     MIN               145  597   66  149   24    4    4   55    4                 .250        .323        193         2   11    0                
+Otto Denning                   MIN                81  228   34   78   17    4    9   41    1                 .342        .570        130         1    0    0                
+Willie Duke                    MIN                15   28    5    7    1    1    1    2    0                 .250        .464         13         0    0    0                
+Guy Fletcher                   MIN                 1    1    0    0    0    0    0    0    0                 .000        .000          0         0    0    0                
+Fabian Gaffke                  MIN                42  166   29   49   13    1    3   24    2                 .295        .440         73         0    2    0                
+Jim Galvin                     MIN                41  129   16   35   11    0    2   11    2                 .271        .403         52         0    0    0                
+Reggie Grabowski               MIN                 5    2    0    0    0    0    0    0    0                 .000        .000          0         0    0    0                
+Earl Grace                     MIN                74  237   22   56   12    1    7   35    0                 .236        .384         91         3    3    0                
+Jim Henry                      MIN                32   51    9   14    3    1    0    7    0                 .275        .373         19         0    0    0                
+Bill LeFebvre                  MIN                27   57    8   16    2    0    1    5    0                 .281        .368         21         0    1    0                
+Pat Malone                     MIN                 1    0    0    0    0    0    0    0    0                 .000        .000          0         0    0    0                
+Dick Midkiff                   MIN                16   22    0    1    0    0    0    0    0                 .045        .045          1         1    1    0                
+John Mihalic                   MIN                78  239   45   70    9    0    3   18    1                 .293        .368         88         1    4    0                
+Roy Parmelee                   MIN                42  101   14   22    3    0    1   12    0                 .218        .277         28         0    1    0                
+Roy Pfleger                    MIN               135  484   66  121   13    2   20   89    5                 .250        .409        198         3    4    0                
+Jennings Poindexter            MIN                23   42    2    7    1    0    0    3    0                 .167        .190          8         2    1    0                
+Ken Richardson                 MIN                22   60    3   12    2    0    1    8    1                 .200        .283         17         0    1    0                
+Stan Spence                    MIN               136  507  106  163   26    4   19   77   11                 .321        .501        254         4    6    0                
+Jim Tabor                      MIN               103  437   76  144   29    5   13   73    6                 .330        .508        222         0    1    0                
+Walt Tauscher                  MIN                48   65    4   17    3    0    0    6    0                 .262        .308         20         0    1    0                
+Danny Taylor                   MIN                42  130   20   42    8    1    2   16    2                 .323        .446         58         3    3    0                
+Harry Taylor                   MIN               145  525   79  136   28    5   13   62    2                 .259        .406        213         1    8    0                
+Zeke Trent                     MIN                 5   18    4    5    1    1    0    1    0                 .278        .444          8         0    1    0                
+Coaker Triplett                MIN               105  366   70  105   14    7   10   54    5                 .287        .445        163         0    5    0                
+Charlie Wagner                 MIN                15   34    3    6    1    0    0    1    0                 .176        .206          7         0    2    0                
+Ted Williams                   MIN               148  528  129  193   30    9   43  142    5                 .366        .701        370         4    1    0                
+
+Name                           Team              W  L  W-L%    ERA   G  GS    IP   H   R  ER  HR  BB IBB  SO HBP  BK  WP BFP   WHIP    H9  HR9  BB9  SO9 SO/W 
+Belve Bean                     MIN              15 12  .556         39  30 223.0 260 135          59      66   6   0   1      1.430  10.5       2.4  2.7  1.1      
+Johnnie Chambers               MIN               1  0 1.000          4   1  10.2  20  17           9       1   0   0   0      2.719  16.9       7.6  0.8  0.1      
+Watty Clark                    MIN               0  1  .000          3   0  11.2   6   3           4       0   0   0   0      0.857   4.6       3.1  0.0  0.0      
+Alta Cohen                     MIN               2  5  .286         23   6  67.1 111  56          24      21   1   1   2      2.005  14.8       3.2  2.8  0.9      
+Guy Fletcher                   MIN               0  0  .000          1   0   5.0   9   4           0       3   0   0   1      1.800  16.2       0.0  5.4  0.0      
+Reggie Grabowski               MIN               0  0  .000          5   0   9.0  12   7           6       4   0   0   1      2.000  12.0       6.0  4.0  0.7      
+Jim Henry                      MIN               7  9  .438         32  19 142.1 145  93          65      60   4   0   6      1.475   9.2       4.1  3.8  0.9      
+Bill LeFebvre                  MIN               8  8  .500         23  14 127.1 156  67          35      44   2   1   2      1.500  11.0       2.5  3.1  1.3      
+Pat Malone                     MIN               0  0  .000          1   0   0.1   4   4           2       0   0   0   0     18.000 108.0      54.0  0.0  0.0      
+Dick Midkiff                   MIN               2  5  .286         16   9  69.1  94  52          32      24   0   0   1      1.817  12.2       4.2  3.1  0.8      
+Roy Parmelee                   MIN              17 13  .567         35  32 239.2 218 144         167     128   9   1  22      1.606   8.2       6.3  4.8  0.8      
+Jennings Poindexter            MIN               9  7  .562         22  16 114.0 118  76          69      71   1   0   3      1.640   9.3       5.4  5.6  1.0      
+Walt Tauscher                  MIN               9 11  .450         47  13 188.1 225 121          74      75   5   3   4      1.588  10.8       3.5  3.6  1.0      
+Charlie Wagner                 MIN               8  3  .727         15  12  82.1  90  42          30      44   0   0   0      1.457   9.8       3.3  4.8  1.5      
