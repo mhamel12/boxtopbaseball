@@ -1,0 +1,14 @@
+Lou Gehrig
+Date       Tm     Opp  AB   R   H  2B  3B  HR RBI  SB  CS  BB IBB  SO GDP HBP  SH  SF INT 
+1921/06/03 HFD vs PFD   3   0   0   0   0   0       0                       0   1         
+1921/06/04 HFD vs WBY   3   1   2   0   1   0       0                       0   0         
+1921/06/05 HFD at ALB   5   1   2   0   0   0       0                       0   0         
+1921/06/06 HFD at ALB   5   0   0   0   0   0       0                       0   0         
+1921/06/07 HFD vs PFD   5   0   1   0   0   0       0                       0   0         
+1921/06/08 HFD vs PFD   5   2   2   1   0   0       0                       0   0         
+1921/06/09 HFD at SPR   4   0   1   0   0   0       0                       0   0         
+1921/06/10 HFD vs BPT   4   0   1   0   0   0       0                       0   0         
+1921/06/11 HFD vs SPR   3   1   1   0   0   0       0                       0   0         
+1921/06/12 HFD at NHV   3   0   0   0   0   0       0                       0   0         
+1921/06/14 HFD vs SPR   2   1   1   0   1   0       0                       0   0         
+1921/06/15 HFD at SPR   4   0   1   0   0   0       0                       0   0         
