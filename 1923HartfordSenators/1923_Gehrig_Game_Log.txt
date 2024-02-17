@@ -1,0 +1,64 @@
+Lou Gehrig
+Date       Tm     Opp  AB   R   H  2B  3B  HR RBI  SB  CS  BB IBB  SO GDP HBP  SH  SF INT 
+1923/08/02 HFD vs BPT   4   1   0   0   0   0       0                       0   0         
+1923/08/04 HFD vs BPT   4   0   1   1   0   0       0                       0   0         
+1923/08/04 HFD vs BPT   4   1   1   0   0   1       0                       0   0         
+1923/08/05 HFD at WBY   4   1   2   0   0   1       0                       0   0         
+1923/08/06 HFD vs WCS   3   1   0   0   0   0       0                       0   0         
+1923/08/07 HFD vs PFD   4   1   1   0   0   1       0                       0   0         
+1923/08/08 HFD vs ALB   3   1   2   0   1   1       1                       0   0         
+1923/08/08 HFD vs ALB   3   2   1   0   0   1       0                       0   0         
+1923/08/09 HFD vs ALB   4   1   0   0   0   0       0                       0   0         
+1923/08/11 HFD at PFD   5   0   0   0   0   0       0                       0   0         
+1923/08/11 HFD at PFD   4   3   4   1   0   2       0                       0   0         
+1923/08/12 HFD at ALB   4   0   1   0   0   0       0                       0   0         
+1923/08/13 HFD at ALB   3   1   0   0   0   0       0                       0   0         
+1923/08/14 HFD at PFD   3   2   1   0   0   0       0                       0   0         
+1923/08/15 HFD at PFD   4   0   1   1   0   0       0                       0   0         
+1923/08/16 HFD vs SPR   3   0   0   0   0   0       0                       0   0         
+1923/08/17 HFD vs NHV   3   0   0   0   0   0       0                       0   0         
+1923/08/18 HFD vs NHV   3   1   0   0   0   0       1                       0   0         
+1923/08/19 HFD at BPT   7   0   2   1   0   0       0                       1   0         
+1923/08/19 HFD at BPT   4   1   3   1   0   0       0                       0   0         
+1923/08/20 HFD at WBY   4   0   0   0   0   0       0                       0   0         
+1923/08/21 HFD vs SPR   3   1   0   0   0   0       0                       0   0         
+1923/08/22 HFD vs SPR   4   0   3   1   0   0       0                       0   0         
+1923/08/23 HFD vs BPT   3   0   2   0   1   0       0                       0   0         
+1923/08/24 HFD vs WBY   4   1   1   0   0   1       0                       0   0         
+1923/08/24 HFD vs WBY   2   2   1   0   0   1       0                       0   0         
+1923/08/25 HFD vs WBY   3   0   1   0   0   0       0                       0   0         
+1923/08/25 HFD vs WBY   4   2   3   3   0   0       0                       0   0         
+1923/08/26 HFD at NHV   4   0   1   0   1   0       0                       0   0         
+1923/08/27 HFD at NHV   4   1   1   0   1   0       0                       0   0         
+1923/08/28 HFD vs SPR   2   1   1   0   0   0       1                       0   0         
+1923/08/29 HFD at SPR   3   2   3   0   0   2       0                       0   0         
+1923/08/30 HFD at WCS   5   1   2   0   0   0       0                       0   0         
+1923/08/30 HFD at WCS   5   3   4   0   0   2       0                       0   0         
+1923/08/31 HFD vs BPT   3   1   1   0   0   1       0                       0   0         
+1923/09/01 HFD vs BPT   5   3   3   0   0   2       0                       0   0         
+1923/09/01 HFD vs BPT   3   0   1   0   0   0       0                       0   0         
+1923/09/02 HFD at WBY   4   0   1   0   0   0       0                       0   1         
+1923/09/03 HFD vs NHV   3   0   0   0   0   0       0                       1   0         
+1923/09/03 HFD at NHV   5   0   1   0   0   0       0                       0   0         
+1923/09/05 HFD at WCS   5   2   2   0   1   1       0                       0   0         
+1923/09/05 HFD at WCS   5   0   2   0   1   0       0                       0   0         
+1923/09/06 HFD at WCS   4   0   1   1   0   0       0                       0   0         
+1923/09/07 HFD vs SPR   3   1   1   0   0   0       0                       0   0         
+1923/09/08 HFD vs SPR   4   2   2   0   0   1       0                       0   0         
+1923/09/09 HFD at ALB   5   1   1   0   0   0       0                       0   0         
+1923/09/09 HFD at ALB   5   0   0   0   0   0       0                       0   0         
+1923/09/10 HFD at ALB   4   1   0   0   0   0       0                       0   0         
+1923/09/11 HFD at SPR   3   1   2   1   0   0       0                       0   0         
+1923/09/12 HFD at SPR   4   0   0   0   0   0       0                       0   0         
+1923/09/13 HFD vs ALB   4   2   2   0   0   1       0                       0   0         
+1923/09/14 HFD vs ALB   4   2   1   0   0   1       0                       0   0         
+1923/09/15 HFD vs ALB   3   2   1   0   0   0       0                       0   0         
+1923/09/16 HFD at BPT   4   3   4   0   0   1       0                       0   0         
+1923/09/18 HFD vs WCS   5   0   1   1   0   0       0                       0   0         
+1923/09/19 HFD vs WCS   4   1   3   0   0   1       0                       0   0         
+1923/09/20 HFD vs NHV   4   2   2   0   1   0       0                       0   0         
+1923/09/22 HFD vs WBY   5   1   2   0   0   1       0                       0   0         
+
+Lou Gehrig
+Date       Tm     Opp  W  L GS  IP   H   R  ER  HR  BB IBB  SO HBP  BK  WP BFP 
+1923/09/20 HFD vs NHV  1  0  1 9.0   9   4           6       2   1   1     

@@ -1,0 +1,59 @@
+Date       Tm   R     Opp  R In WP                             LP                              Time D/N Start      Att Comments                                           
+1923/08/02 HFD  5 vs  BPT  9    John Gillespie                 Moose Swaney                    2:10   D                "Bornhoeft's two wild pitches allowed two runs to score in the sixth." 
+1923/08/04 HFD  2 vs  BPT  1    Earl Johnson                   George Abrams                   1:45   D                "No games were played on August 3 due to the death of President Warren Harding." 
+1923/08/04 HFD  6 vs  BPT  5    Hugh Canavan                   George Littrell                 2:00   D                                                                   
+1923/08/05 HFD  3 at  WBY  4    Bill Anderson                  Thomas Sloan                    2:05   D                "Walsh incorrectly given a ball in seventh when he had actually swung. The call was overturned and Walsh was called out on a strikeout. Hartford manager O'Connor ejected for arguing the decision." 
+1923/08/06 HFD  9 vs  WCS  3    Jess Winters                   Irwin Cardner                   1:52   D                                                                   
+1923/08/07 HFD  5 vs  PFD  1    Moose Swaney                   Colonel Snover                  1:30   D                                                                   
+1923/08/08 HFD  5 vs  ALB  3    Earl Johnson                   Ray Roberts                     1:38   D                                                                   
+1923/08/08 HFD  8 vs  ALB  1    Hugh Canavan                   Fred Spates                     1:40   D                                                                   
+1923/08/09 HFD  8 vs  ALB  0    Thomas Sloan                   Tex Wilson                      1:38   D                                                                   
+1923/08/11 HFD  7 at  PFD  6 10 Hugh Canavan                   Colonel Snover                  2:28   D           6000 "No games on August 10 due to President Harding's funeral. Hartford scored winning run on an error, two intentional walks, and a sacrifice fly to center by Lew Malone. The second intentional walk was given to Cosgrove who pinch-hit for Gehrig." 
+1923/08/11 HFD  8 at  PFD  3    Cox                            Earl Webb                       1:38   D           6000                                                    
+1923/08/12 HFD  1 at  ALB  7    Tex Wilson                     Jess Winters                    1:53   D                "First game of a scheduled doubleheader; second game called in third inning due to rain. Albany had lost 13 straight games." 
+1923/08/13 HFD  7 at  ALB  9    Herman Schwartje               Thomas Sloan                    2:12   D                                                                   
+1923/08/14 HFD  5 at  PFD  1    Hugh Canavan                   Ross Roberts                    1:45   D                                                                   
+1923/08/15 HFD  3 at  PFD  8    Colonel Snover                 Moose Swaney                    1:57   D                                                                   
+1923/08/16 HFD  1 vs  SPR  4    Fleet Mayberry                 Jess Winters                    1:55   D                                                                   
+1923/08/17 HFD  1 vs  NHV  4    Sam Hyman                      Earl Johnson                    2:10   D                                                                   
+1923/08/18 HFD  3 vs  NHV  2    Hugh Canavan                   Lum Davenport                   2:00   D           7000 "Canavan walked Osborn and Dowd to lead off the ninth before being relieved by Sloan." 
+1923/08/19 HFD  3 at  BPT  2 18 Jess Winters                   George Littrell                 2:59   D           4500 "Swaney faced at least one batter in the tenth."   
+1923/08/19 HFD  6 at  BPT  4  7 Moose Swaney                   John Gillespie                  1:20   D           4500 "Game started after 5PM due to the length of the first game. Rorty called the game after seven innings and was attacked by some of the Bridgeport fans." 
+1923/08/20 HFD  5 at  WBY  1    Thomas Sloan                   Bill Anderson                   1:36   D                                                                   
+1923/08/21 HFD  1 vs  SPR  2    Fleet Mayberry                 Thomas Sloan                    1:58   D                                                                   
+1923/08/22 HFD  8 vs  SPR  5    Hugh Canavan                   William Tierney                 2:05   D                                                                   
+1923/08/23 HFD 11 vs  BPT 10    Cox                            George Littrell                 2:15   D                                                                   
+1923/08/24 HFD 11 vs  WBY  2    Ed Stauffer                    Bill Anderson                   1:55   D                                                                   
+1923/08/24 HFD  5 vs  WBY  1    Earl Johnson                   Robert Tecarr                   1:50   D                "Hesse left the game in the seventh after receiving a telegram informing him that his ill father had died." 
+1923/08/25 HFD  9 vs  WBY  5    Moose Swaney                   Arthur Etten                    1:58   D                                                                   
+1923/08/25 HFD 11 vs  WBY  1    Moose Swaney                   Tomlinson                       2:00   D                "Runs allowed by Tomlinson and Bronkie are questionable." 
+1923/08/26 HFD  1 at  NHV 11    Stan Baumgartner               Hugh Canavan                    1:51   D           7500                                                    
+1923/08/27 HFD  2 at  NHV  3    Sam Hyman                      Jess Winters                    1:58   D                                                                   
+1923/08/28 HFD  4 vs  SPR  7    Gary Fortune                   Ed Stauffer                     1:57   D                                                                   
+1923/08/29 HFD  5 at  SPR  8    Cecil Duff                     Thomas Sloan                    2:02   D                                                                   
+1923/08/30 HFD  7 at  WCS 12    Joe Stryker                    Moose Swaney                    2:05   D                "Runs allowed by Hartford pitchers are unknown. Joe Stryker, younger brother of Dutch Stryker, pitched for Worcester." 
+1923/08/30 HFD 10 at  WCS  2    Hugh Canavan                   Reis                            1:39   D                                                                   
+1923/08/31 HFD  4 vs  BPT  1    Earl Johnson                   Jim Clary                       1:47   D                                                                   
+1923/09/01 HFD  9 vs  BPT  3    Ed Stauffer                    George Abrams                   1:55   D                                                                   
+1923/09/01 HFD  6 vs  BPT  2    Jess Winters                   Clarence Brown                  1:58   D                "Rodriguez was hit in the head by a Jess Winters curveball in the second inning and left the game." 
+1923/09/02 HFD  7 at  WBY  6    Thomas Sloan                   Robert Tecarr                   1:46   D                                                                   
+1923/09/03 HFD  4 vs  NHV  2    Moose Swaney                   Stan Baumgartner                1:59   D           8000                                                    
+1923/09/03 HFD  3 at  NHV  1 13 Thomas Sloan                   Sam Hyman                       3:02   D           9000 "Bowman homered to left off Canavan to tie the game in the ninth. Gehrig, who had lost his traveling bag 'out of an automobile' on Sunday evening, had the bag returned to him. The bag had been dropped off at the Colonial Pharmacy in Farmington; the owner of the store called the Hartford Courant after hearing it was Gehrig's." 
+1923/09/05 HFD  9 at  WCS  2    Jess Winters                   Irwin Cardner                   2:15   D                                                                   
+1923/09/05 HFD  5 at  WCS 11    Dutch Stryker                  Moose Swaney                    2:10   D                                                                   
+1923/09/06 HFD  2 at  WCS  5    Garland Braxton                Hugh Canavan                    1:45   D                                                                   
+1923/09/07 HFD  4 vs  SPR  2    Thomas Sloan                   Gary Fortune                    1:53   D                                                                   
+1923/09/08 HFD  6 vs  SPR  0    Earl Johnson                   Fleet Mayberry                  1:45   D                                                                   
+1923/09/09 HFD  6 at  ALB  1    Jess Winters                   Ray Roberts                     1:43   D                "Runs allowed by each Albany pitcher are questionable." 
+1923/09/09 HFD  7 at  ALB 10    Fred Spates                    Jess Winters                    2:05   D                "With two out and the bases loaded in the top of the ninth, Demoe hit a ball towards right field which hit Hesse. Hesse was called out, ending the game." 
+1923/09/10 HFD  3 at  ALB  5    Art Johnson                    Hugh Canavan                    1:42   D                                                                   
+1923/09/11 HFD  3 at  SPR  7    Gary Fortune                   Thomas Sloan                    1:52   D                                                                   
+1923/09/12 HFD  3 at  SPR  6    Fleet Mayberry                 Earl Johnson                    1:35   D                                                                   
+1923/09/13 HFD 10 vs  ALB  1    Jess Winters                   Ray Roberts                     2:00   D                                                                   
+1923/09/14 HFD 11 vs  ALB 12    Art Johnson                    Moose Swaney                    2:41   D                "Runs and batters faced by Swaney and Stauffer are questionable. Albany's pitcher listed as 'E. Johnson' to dinstinguish him from Earl Johnson of Hartford, so his first name is questionable." 
+1923/09/15 HFD  7 vs  ALB  6    Thomas Sloan                   George Edmondson                1:30   D                                                                   
+1923/09/16 HFD 13 at  BPT  4    Hugh Canavan                   Jim Clary                       1:54   D                                                                   
+1923/09/18 HFD 12 vs  WCS 11    Moose Swaney                   Garland Braxton                 2:16   D                "Hartford clinched 1923 Eastern League title, their first since 1913. Umpire Simon McDonald had been the manager of the 1913 team." 
+1923/09/19 HFD  2 vs  WCS  7    Garland Braxton                Ed Stauffer                     1:31   D                                                                   
+1923/09/20 HFD  6 vs  NHV  4    Lou Gehrig                     Stan Baumgartner                1:45   D                "Gehrig's debug as a pitcher."                     
+1923/09/22 HFD  8 vs  WBY  3    Jess Winters                   Moose Fuller                    1:59   D                "Hartford won the second game of the doubleheader 6-4, but neither team took the game seriously, using players in a variety of unusual positions. Contemporary newspaper accounts state that the game was such a "farce" that no official statistics were kept and the game was called in the sixth inning. All of the Eastern League games on Sunday September 23 were rained out, so these were the final games of the season." 

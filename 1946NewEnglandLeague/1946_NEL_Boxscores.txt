@@ -1,0 +1,888 @@
+
+Nashua Dodgers 1, Pawtucket Slaters 0
+
+Game Played on Wednesday, September 04, 1946 (N) at Holman Stadium (Nashua, NH)
+
+PAW NEL    0  0  0    0  0  0    0  0  0  -   0  2  0
+NAS NEL    0  0  0    0  0  0    0  0  1  -   1  5  0
+
+Pawtucket Slaters             AB   R   H RBI      BB  SO      PO   A
+Ken Therrian rf                4   0   1   0                   1   0
+Jimmy Coughlin ss              2   0   0   0                   2   4
+Alex Nahigian cf               3   0   0   0                   2   0
+Eugene Nafie lf                4   0   0   0                   0   1
+James Hanlon 3b                4   0   0   0                   0   1
+Paul Gaulin 2b                 3   0   0   0                   4   1
+Richard Sills 1b               1   0   0   0                   9   0
+Joe Pullano c                  2   0   0   0                   6   0
+Joseph Belforti p              3   0   1   0                   0   2
+TOTALS                        26   0   2   0                  24   9
+
+FIELDING -
+
+BATTING -
+SH: Alex Nahigian
+Team LOB: 5
+
+Pawtucket Slaters             IP     H   R  ER  BB  SO  HR BFP
+Joseph Belforti L              8     5   1       3   6        
+TOTALS                         8     5   1       3   6        
+
+Joseph Belforti faced 2 batters in the 9th inning
+No outs when winning run scored
+
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               4   0   0   0                   4   0
+Harvey Porter lf               4   0   1   0                   0   0
+Robert Kellogg rf              3   1   2   0                   2   0
+Roy Campanella c               3   0   1   1                   7   0
+Oscar Galipeau 1b              2   0   0   0                   9   0
+Charles Wood 2b                3   0   0   0                   3   3
+Stanley Lipka 3b               2   0   1   0                   0   4
+Billy DeMars ss                3   0   0   0                   2   4
+George Brown p                 3   0   0   0                   0   2
+TOTALS                        27   1   5   1                  27  13
+
+FIELDING -
+DP: 2. Stanley Lipka-Charles Wood-Oscar Galipeau, George Brown-Billy DeMars-Charles Wood.
+
+BATTING -
+2B: Roy Campanella
+SH: Oscar Galipeau
+Team LOB: 6
+
+BASERUNNING -
+SB: Stanley Lipka
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+George Brown W                 9     2   0       5   7        
+TOTALS                         9     2   0       5   7        
+
+
+Umpires: David Clarety, Jack Brady, Joseph Lefebvre
+
+Time of Game: 1:50   Attendance: 1837
+
+NOTES: Game 1 of semifinal playoff series (Nashua leads 1-0). Campanella game-winning RBI double in bottom of the ninth.
+
+=====================================================================
+
+Nashua Dodgers 3, Pawtucket Slaters 1
+
+Game Played on Thursday, September 05, 1946 (N) at Holman Stadium (Nashua, NH)
+
+PAW NEL    0  0  0    0  1  0    0  0  0  -   1  5  2
+NAS NEL    1  0  2    0  0  0    0  0  X  -   3  9  2
+
+Pawtucket Slaters             AB   R   H RBI      BB  SO      PO   A
+Ken Therrian cf                4   0   1   0                   1   0
+Jimmy Coughlin ss              4   0   1   0                   0   2
+Sam Gentile rf                 3   0   0   0                   4   0
+Eugene Nafie lf                3   0   0   0                   0   1
+James Hanlon 3b                4   0   0   0                   1   0
+Paul Gaulin 2b                 3   1   2   0                   2   3
+Richard Sills 1b               3   0   0   0                   8   1
+Joe Pullano c                  3   0   0   0                   7   2
+William Marshall p             1   0   0   0                   1   0
+ Alex Nahigian ph              1   0   1   1                   0   0
+ Ernie Johnson p               0   0   0   0                   0   2
+ Roy Talcott ph                1   0   0   0                   0   0
+ Mike Forline p                0   0   0   0                   0   1
+TOTALS                        30   1   5   1                  24  12
+
+Alex Nahigian pinch-hit in the 5th inning
+Roy Talcott pinch-hit in the 8th inning
+
+FIELDING -
+E: Richard Sills, William Marshall
+
+BATTING -
+Team LOB: 4
+
+Pawtucket Slaters             IP     H   R  ER  BB  SO  HR BFP
+William Marshall L             4     8   3       3   6        
+Ernie Johnson                  3     1   0       0   1        
+Mike Forline                   1     0   0       0   0        
+TOTALS                         8     9   3       3   7        
+
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               4   0   1   0                   2   0
+Robert Kellogg lf              4   1   1   0                   1   0
+Stanley Lipka 3b               4   1   1   0                   1   0
+Roy Campanella c               4   1   3   1                   3   1
+Oscar Galipeau 1b              4   0   1   0                  12   0
+Charles Wood 2b                3   0   1   1                   5   4
+Billy DeMars ss                3   0   1   1                   1   5
+John Wernert rf                4   0   0   0                   2   0
+Larry Shepard p                2   0   0   0                   0   3
+TOTALS                        32   3   9   3                  27  13
+
+FIELDING -
+DP: 2. Billy DeMars-Charles Wood-Oscar Galipeau, Billy DeMars-Oscar Galipeau.
+E: Oscar Galipeau, John Wernert
+
+BATTING -
+2B: Roy Campanella
+Team LOB: 6
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Larry Shepard W                9     5   1       2   3        
+TOTALS                         9     5   1       2   3        
+
+
+Umpires: Bernie Friberg, Anthony Routhouska, Roland Mackey
+
+Time of Game: 1:45   Attendance: 1900
+
+NOTES: Game 2 of semifinal playoff series (Nashua leads 2-0)
+
+=====================================================================
+
+Nashua Dodgers 3, Pawtucket Slaters 0
+
+Game Played on Friday, September 06, 1946 (N) at McCoy Stadium (Pawtucket, RI)
+
+NAS NEL    0  1  0    0  0  0    2  0  0  -   3  6  3
+PAW NEL    0  0  0    0  0  0    0  0  0  -   0  5  2
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               3   0   0   0                   0   0
+Robert Kellogg lf              4   0   1   0                   0   0
+Stanley Lipka 3b               4   0   0   0                   1   2
+Roy Campanella c               2   1   1   0                   5   2
+Oscar Galipeau 1b              4   0   1   0                  11   1
+Charles Wood 2b                3   1   1   0                   5   2
+Billy DeMars ss                4   1   1   2                   2   6
+Bill Kalbaugh rf               3   0   0   0                   2   0
+Don Newcombe p                 3   0   1   1                   1   0
+TOTALS                        30   3   6   3                  27  13
+
+FIELDING -
+DP: 1. Billy DeMars-Charles Wood-Oscar Galipeau.
+E: Stanley Lipka, Roy Campanella, Charles Wood
+
+BATTING -
+2B: Don Newcombe
+3B: Charles Wood
+SH: Edward Yaeger, Charles Wood, Bill Kalbaugh
+Team LOB: 5
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Don Newcombe W                 9     5   0       4   5        
+TOTALS                         9     5   0       4   5        
+
+
+Pawtucket Slaters             AB   R   H RBI      BB  SO      PO   A
+Ken Therrian rf                4   0   1   0                   1   0
+Jimmy Coughlin ss              4   0   1   0                   2   2
+Alex Nahigian cf               3   0   0   0                   1   0
+Eugene Nafie lf                3   0   1   0                   4   0
+James Hanlon 3b                2   0   0   0                   0   2
+Paul Gaulin 2b                 2   0   0   0                   5   2
+Richard Sills 1b               3   0   0   0                   9   2
+Joe Pullano c                  4   0   1   0                   4   1
+Joe Krakowski p                1   0   0   0                   0   2
+ Sam Gentile ph                1   0   0   0                   0   0
+ Hal Schacker p                0   0   0   0                   1   1
+ Roy Talcott ph                1   0   1   0                   0   0
+ Lou Forys p                   1   0   0   0                   0   1
+TOTALS                        29   0   5   0                  27  13
+
+Sam Gentile pinch-hit in the 4th inning
+Roy Talcott pinch-hit in the 7th inning
+
+FIELDING -
+DP: 1. Jimmy Coughlin-Paul Gaulin-Richard Sills.
+E: Jimmy Coughlin, Paul Gaulin
+
+BATTING -
+2B: Ken Therrian
+SH: James Hanlon 2, Richard Sills
+Team LOB: 10
+
+Pawtucket Slaters             IP     H   R  ER  BB  SO  HR BFP
+Joe Krakowski L                4     2   1       1   3        
+Hal Schacker                   3     4   2       1   0        
+Lou Forys                      2     0   0       0   0        
+TOTALS                         9     6   3       2   3        
+
+WP: Hal Schacker
+
+
+Umpires: Joseph Lefebvre, David Clarety, Jack Brady
+
+Time of Game: 2:05   Attendance: 5000
+
+NOTES: Game 3 of semifinal playoff series (Nashua wins 3-0).
+
+=====================================================================
+
+Lynn Red Sox 9, Manchester Giants 7
+
+Game Played on Wednesday, September 04, 1946 (N) at Fraser Field (Lynn, MA)
+
+MAN NEL    0  0  0    2  1  0    1  1  2  -   7 17  1
+LYN NEL    0  1  0    4  3  1    0  0  X  -   9 13  1
+
+Manchester Giants             AB   R   H RBI      BB  SO      PO   A
+John Ayvazian ss               4   0   2   0                   2   2
+Bass Clifton 1b                6   0   4   0                   7   0
+Mo Mozzali cf                  6   0   1   0                   2   0
+Clinton Dahlberg rf            5   1   3   0                   3   1
+Victor Tetreault lf            5   1   0   0                   0   0
+Sal Yvars c                    5   0   0   0                   4   1
+John Murphy 3b                 5   0   4   0                   1   3
+Joseph Kosinski 2b             5   2   1   0                   5   5
+Bob Cain p                     2   1   1   0                   0   1
+ Paul Froning p                0   0   0   0                   0   0
+ John Raczka ph                1   0   1   0                   0   0
+ Ernie Carpenter p             0   0   0   0                   0   0
+ Bud Hardin ph                 0   1   0   0                   0   0
+ Mitchell Wozniak p            0   0   0   0                   0   0
+ Charlie Fox ph                0   1   0   0                   0   0
+TOTALS                        44   7  17   0                  24  13
+
+John Raczka pinch-hit in the 6th inning
+Bud Hardin pinch-hit in the 8th inning
+Charlie Fox pinch-hit in the 9th inning
+
+FIELDING -
+DP: 2. John Ayvazian-Joseph Kosinski-Bass Clifton, Clinton Dahlberg-Sal Yvars-John Murphy-Joseph Kosinski.
+E: Paul Froning
+
+BATTING -
+2B: Clinton Dahlberg
+Team LOB: 14
+
+Manchester Giants             IP     H   R  ER  BB  SO  HR BFP
+Bob Cain L                     3.2   7   5       2   0        
+Paul Froning                   1.1   3   3       1   1        
+Ernie Carpenter                2     3   1       1   0        
+Mitchell Wozniak               1     0   0       0   1        
+TOTALS                         8    13   9       4   2        
+
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   0   1   0                   4   0
+Bob Sperry 1b                  5   2   2   0                  10   1
+Edward Lynk rf                 3   2   0   0                   0   0
+Matt Batts c                   5   2   3   0                   3   0
+Bill Sommers 2b                2   2   1   0                   5   3
+Ray Piano lf                   2   1   1   0                   0   0
+Sam DiBlasi 3b                 3   0   3   0                   1   4
+Joe Kaney ss                   4   0   1   0                   3   3
+Roger Wright p                 4   0   1   0                   1   3
+ Jim Davis p                   0   0   0   0                   0   0
+TOTALS                        33   9  13   0                  27  14
+
+FIELDING -
+DP: 1. Bill Sommers-Joe Kaney.
+E: Sam DiBlasi
+
+BATTING -
+2B: Matt Batts, Sam DiBlasi
+SH: Edward Lynk
+HBP: Ray Piano (by Bob Cain)
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Roger Wright W                 8.2  17   7       4   3        
+Jim Davis                      0.1   0   0       0   0        
+TOTALS                         9    17   7       4   3        
+
+
+Umpires: Roland Mackey, Bernie Friberg, Anthony Routhouska
+
+Time of Game: 2:16   Attendance: 3000
+
+NOTES: Game 1 of semifinal playoff series (Lynn leads 1-0).
+
+=====================================================================
+
+Lynn Red Sox 3, Manchester Giants 2
+
+Game Played on Thursday, September 05, 1946 (N) at Fraser Field (Lynn, MA)
+
+MAN NEL    0  0  0    1  0  0    0  1  0  -   2  8  1
+LYN NEL    2  1  0    0  0  0    0  0  X  -   3  5  1
+
+Manchester Giants             AB   R   H RBI      BB  SO      PO   A
+John Ayvazian ss               4   0   1   0                   1   3
+Bass Clifton 1b                4   0   1   0                  12   1
+Mo Mozzali cf                  4   1   2   0                   0   0
+Clinton Dahlberg rf            4   0   1   0                   1   0
+John Raczka lf                 4   0   0   0                   2   0
+John Murphy 3b                 3   0   1   0                   0   1
+Joseph Kosinski 2b             3   0   1   0                   4   4
+Charlie Fox c                  3   0   0   0                   4   0
+Roy Bridges p                  2   0   0   0                   0   2
+ Victor Tetreault ph           1   0   1   0                   0   0
+ Bud Hardin pr                 0   1   0   0                   0   0
+ Ernie Carpenter p             0   0   0   0                   0   0
+ Sal Yvars ph                  1   0   0   0                   0   0
+TOTALS                        33   2   8   0                  24  11
+
+Victor Tetreault pinch-hit in the 8th inning
+Sal Yvars pinch-hit in the 9th inning
+Bud Hardin pinch-runner in the 8th inning
+
+FIELDING -
+E: Joseph Kosinski
+
+BATTING -
+2B: John Murphy
+3B: Mo Mozzali
+SH: Joseph Kosinski, Charlie Fox
+
+Manchester Giants             IP     H   R  ER  BB  SO  HR BFP
+Roy Bridges L                  7     4   3       5   4        
+Ernie Carpenter                1     1   0       0   0        
+TOTALS                         8     5   3       5   4        
+
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  4   1   1   0                   2   0
+Bob Sperry 1b                  3   1   2   0                  13   1
+Bob Van Eman rf                3   0   1   0                   1   0
+Joe Langworthy c               3   0   0   0                   5   1
+Ray Piano lf                   4   0   1   0                   1   0
+Bill Sommers 2b                2   0   0   0                   2   6
+Sam DiBlasi 3b                 4   0   0   0                   0   1
+Joe Kaney ss                   3   1   0   0                   2   4
+Robert Bullwinkel p            3   0   0   0                   1   1
+TOTALS                        29   3   5   0                  27  14
+
+FIELDING -
+DP: 2. Robert Bullwinkel-Joe Langworthy-Bob Sperry, Bill Sommers-Joe Kaney-Bob Sperry.
+E: Joe Kaney
+
+BATTING -
+2B: Bob Sperry
+SH: Bill Sommers
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Robert Bullwinkel W            9     8   2       1   4        
+TOTALS                         9     8   2       1   4        
+
+
+Umpires: Jack Brady, David Clarety, Joseph Lefebvre
+
+Time of Game: 1:49   Attendance: Unknown
+
+NOTES: Game 2 of semifinal playoff series (Lynn leads 2-0).
+
+=====================================================================
+
+Lynn Red Sox 6, Manchester Giants 3
+
+Game Played on Friday, September 06, 1946 (N) at Athletic Field (Manchester, NH)
+
+LYN NEL    2  1  1    0  0  1    0  1  0  -   6  9  2
+MAN NEL    0  1  0    0  1  0    0  0  1  -   3 11  5
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   0   2   1                   5   0
+Bob Sperry 1b                  5   1   1   0                   6   1
+Bob Van Eman rf                4   2   1   0                   2   0
+Joe Langworthy c               3   0   0   0                  11   0
+Ray Piano lf                   4   1   1   2                   1   0
+Bill Sommers 2b                4   1   1   0                   1   1
+Sam DiBlasi 3b                 3   1   1   0                   0   1
+Joe Kaney ss                   3   0   1   1                   0   3
+Walker Cress p                 4   0   1   0                   1   1
+TOTALS                        35   6   9   4                  27   7
+
+FIELDING -
+E: Bob Sperry, Sam DiBlasi
+
+BATTING -
+2B: Bill Boyce
+SH: Joe Langworthy, Sam DiBlasi, Joe Kaney
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Walker Cress W                 9    11   3       4  10        
+TOTALS                         9    11   3       4  10        
+
+
+Manchester Giants             AB   R   H RBI      BB  SO      PO   A
+John Ayvazian ss               4   0   0   0                   1   1
+Bass Clifton 1b                5   1   2   0                  10   0
+Mo Mozzali cf                  4   0   1   0                   1   1
+Sal Yvars rf-c                 4   1   1   0                   6   1
+Victor Tetreault lf            5   1   3   1                   1   0
+John Murphy 3b                 5   0   2   1                   2   4
+Joseph Kosinski 2b             5   0   2   1                   3   4
+Charlie Fox c                  0   0   0   0                   2   0
+ Clinton Dahlberg rf           3   0   0   0                   0   0
+Neil Saulia p                  1   0   0   0                   0   3
+ Bob Cain p                    2   0   0   0                   1   2
+ John Raczka ph                1   0   0   0                   0   0
+ Ernie Carpenter p             0   0   0   0                   0   0
+TOTALS                        39   3  11   3                  27  16
+
+John Raczka pinch-hit in the 8th inning
+
+FIELDING -
+DP: 2. John Murphy-Joseph Kosinski-Bass Clifton, Sal Yvars-Bass Clifton.
+E: John Ayvazian, Bass Clifton, Sal Yvars, Joseph Kosinski, Neil Saulia
+
+BATTING -
+2B: John Murphy
+3B: Sal Yvars
+
+Manchester Giants             IP     H   R  ER  BB  SO  HR BFP
+Neil Saulia L                  2.1   4   4       0   1        
+Bob Cain                       5.2   4   2       1   4        
+Ernie Carpenter                1     1   0       1   0        
+TOTALS                         9     9   6       2   5        
+
+
+Umpires: Anthony Routhouska, Roland Mackey, Bernie Friberg
+
+Time of Game: 2:09   Attendance: Unknown
+
+NOTES: Game 3 of semifinal playoff series (Lynn wins 3-0).
+
+=====================================================================
+
+Nashua Dodgers 2, Lynn Red Sox 0 (1)
+
+Game Played on Sunday, September 08, 1946 (D) at Fraser Field (Lynn, MA)
+
+NAS NEL    0  0  0    0  0  0    1  1  0  -   2  8  0
+LYN NEL    0  0  0    0  0  0    0  0  0  -   0  3  2
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               4   0   2   0                   1   0
+Robert Kellogg lf              4   0   1   0                   3   0
+Stanley Lipka 3b               4   0   0   1                   4   2
+Roy Campanella c               4   0   2   0                   6   0
+Oscar Galipeau 1b              4   1   1   0                  10   1
+Charles Wood 2b                3   0   0   0                   0   3
+Billy DeMars ss                2   0   1   0                   1   3
+Bill Kalbaugh rf               3   0   0   0                   1   0
+Michael Nozinski p             4   1   1   0                   1   2
+TOTALS                        32   2   8   1                  27  11
+
+FIELDING -
+
+BATTING -
+3B: Roy Campanella
+SH: Edward Yaeger, Charles Wood, Bill Kalbaugh
+
+BASERUNNING -
+SB: Edward Yaeger, Oscar Galipeau, Charles Wood, Bill Kalbaugh
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Michael Nozinski W             9     3   0       0   6        
+TOTALS                         9     3   0       0   6        
+
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  4   0   1   0                   4   0
+Bob Sperry 1b                  4   0   0   0                  10   1
+Bob Van Eman rf                3   0   0   0                   1   0
+Joe Langworthy c               3   0   0   0                   3   1
+Ray Piano lf                   4   0   0   0                   2   0
+Bill Sommers 2b                3   0   1   0                   4   3
+Sam DiBlasi 3b                 3   0   1   0                   0   1
+Joe Kaney ss                   2   0   0   0                   2   2
+ Matt Batts ph                 1   0   0   0                   0   0
+ Lawrence Kennedy ss           0   0   0   0                   1   0
+Roger Wright p                 2   0   0   0                   0   4
+ Edward Lynk ph                1   0   0   0                   0   0
+ Carl Meurn p                  0   0   0   0                   0   0
+TOTALS                        30   0   3   0                  27  12
+
+Matt Batts pinch-hit in the 8th inning
+Edward Lynk pinch-hit in the 8th inning
+
+FIELDING -
+DP: 1. Sam DiBlasi-Bill Sommers-Bob Sperry.
+E: Joe Kaney, Lawrence Kennedy
+
+BATTING -
+SH: Joe Langworthy
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Roger Wright L                 8     8   2       1   1        
+Carl Meurn                     1     0   0       0   1        
+TOTALS                         9     8   2       1   2        
+
+
+Umpires: David Clarety, Bernie Friberg, Roland Mackey, Anthony Routhouska
+
+Time of Game: 1:29   Attendance: 4171
+
+NOTES: Game 1 of championship series (Nashua leads 1-0).
+
+=====================================================================
+
+Lynn Red Sox 3, Nashua Dodgers 2 (2)
+
+Game Played on Sunday, September 08, 1946 (N) at Holman Stadium (Nashua, NH)
+
+LYN NEL    0  0  0    1  1  0    1  0  0  -   3  5  2
+NAS NEL    0  0  0    0  0  2    0  0  0  -   2  6  0
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   1   1   1                   0   0
+Bob Sperry 1b                  3   0   0   0                  10   1
+Bob Van Eman rf                4   1   1   1                   2   0
+Ray Piano lf                   3   1   0   0                   1   0
+Matt Batts c                   3   0   0   0                   7   2
+Bill Sommers 2b                3   0   1   0                   5   2
+Sam DiBlasi 3b                 3   0   2   1                   0   0
+Joe Kaney ss                   4   0   0   0                   2   2
+Jim Suchecki p                 4   0   0   0                   0   2
+TOTALS                        32   3   5   3                  27   9
+
+FIELDING -
+E: Bill Sommers, Sam DiBlasi
+
+BATTING -
+3B: Bob Van Eman
+HR: Bill Boyce
+
+BASERUNNING -
+SB: Matt Batts
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Jim Suchecki W                 9     6   2       4   9        
+TOTALS                         9     6   2       4   9        
+
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               5   0   0   0                   2   1
+Robert Kellogg lf              5   1   1   0                   1   0
+Stanley Lipka 3b               3   1   2   1                   0   1
+Roy Campanella c               4   0   0   1                  12   0
+Oscar Galipeau 1b              3   0   1   0                   9   1
+Charles Wood 2b                2   0   0   0                   0   0
+Billy DeMars ss                3   0   1   0                   1   2
+Bill Kalbaugh rf               3   0   0   0                   1   1
+ Walter Alston ph              1   0   1   0                   0   0
+ Frank Ruminski pr             0   0   0   0                   0   0
+Richard Mlady p                3   0   0   0                   1   1
+ Don Newcombe ph               1   0   0   0                   0   0
+TOTALS                        33   2   6   2                  27   7
+
+Walter Alston pinch-hit in the 9th inning
+Don Newcombe pinch-hit in the 9th inning
+Frank Ruminski pinch-runner in the 9th inning
+
+FIELDING -
+
+BATTING -
+2B: Oscar Galipeau
+3B: Stanley Lipka
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Richard Mlady L                9     5   3       6  10        
+TOTALS                         9     5   3       6  10        
+
+
+Umpires: , 
+
+Time of Game: 2:04   Attendance: 3900
+
+NOTES: Game 2 of championship series (Series tied 1-1).
+
+=====================================================================
+
+Nashua Dodgers 4, Lynn Red Sox 2
+
+Game Played on Monday, September 09, 1946 (N) at Holman Stadium (Nashua, NH)
+
+LYN NEL    1  0  0    0  0  0    1  0  0  -   2  6  0
+NAS NEL    0  0  0    1  0  0    0  3  X  -   4  8  1
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  3   0   0   0                   1   0
+Bob Sperry 1b                  4   0   1   0                   7   1
+Bob Van Eman rf                3   1   1   0                   3   0
+Joe Langworthy c               4   0   0   0                   6   0
+Ray Piano lf                   4   1   2   0                   0   0
+Bill Sommers 2b                2   0   1   1                   6   4
+Sam DiBlasi 3b                 2   0   0   0                   0   1
+Joe Kaney ss                   3   0   1   0                   1   2
+Jim Davis p                    3   0   0   0                   0   2
+TOTALS                        28   2   6   1                  24  10
+
+FIELDING -
+
+BATTING -
+3B: Ray Piano
+SH: Sam DiBlasi
+Team LOB: 3
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Jim Davis L                    8     8   4       1   6        
+TOTALS                         8     8   4       1   6        
+
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               4   0   1   0                   2   0
+Robert Kellogg lf              4   2   3   0                   1   0
+Stanley Lipka 3b               2   1   1   0                   2   3
+Roy Campanella c               3   1   2   4                   5   2
+Oscar Galipeau 1b              4   0   0   0                  10   2
+Charles Wood 2b                4   0   0   0                   2   4
+Billy DeMars ss                3   0   1   0                   3   3
+Bill Kalbaugh rf               2   0   0   0                   0   0
+George Brown p                 3   0   0   0                   2   2
+TOTALS                        29   4   8   4                  27  16
+
+FIELDING -
+DP: 2. Charles Wood-Billy DeMars-Oscar Galipeau, George Brown-Stanley Lipka.
+E: Robert Kellogg
+
+BATTING -
+HR: Roy Campanella
+SH: Stanley Lipka 2, Bill Kalbaugh
+Team LOB: 5
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+George Brown W                 9     6   2       3   4        
+TOTALS                         9     6   2       3   4        
+
+
+Umpires: Roland Mackey, Anthony Routhouska, David Clarety, Bernie Friberg
+
+Time of Game: 1:40   Attendance: 3900
+
+NOTES: Game 3 of championship series (Nashua leads 2-1).
+
+=====================================================================
+
+Lynn Red Sox 10, Nashua Dodgers 6
+
+Game Played on Tuesday, September 10, 1946 (N) at Fraser Field (Lynn, MA)
+
+NAS NEL    0  1  3    0  0  0    0  2  0  -   6 11  3
+LYN NEL    3  0  3    0  1  2    1  0  X  -  10 12  0
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               5   1   1   0                   3   0
+Robert Kellogg lf              5   1   2   2                   0   0
+Stanley Lipka 3b               5   1   2   0                   2   0
+Roy Campanella c               5   2   3   0                   8   1
+Oscar Galipeau 1b              4   1   1   1                   5   1
+Charles Wood 2b                3   0   0   1                   2   1
+Billy DeMars ss                3   0   2   1                   2   6
+Bill Kalbaugh rf               4   0   0   1                   2   0
+Larry Shepard p                1   0   0   0                   0   1
+ James McFaden p               1   0   0   0                   0   1
+ Don Newcombe ph               1   0   0   0                   0   0
+ Richard Mlady p               0   0   0   0                   0   0
+TOTALS                        37   6  11   6                  24  11
+
+Don Newcombe pinch-hit in the 8th inning
+
+FIELDING -
+DP: 1. Billy DeMars-Roy Campanella-Stanley Lipka.
+E: Charles Wood, Billy DeMars, James McFaden
+
+BATTING -
+2B: Oscar Galipeau
+3B: Roy Campanella
+HR: Robert Kellogg
+HBP: Billy DeMars (by Walker Cress)
+Team LOB: 6
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Larry Shepard L                2.1   5   6       2   3        
+James McFaden                  4.2   6   4       1   4        
+Richard Mlady                  1     1   0       0   1        
+TOTALS                         8    12  10       3   8        
+
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   1   2   0                   3   0
+Bob Sperry 1b                  4   1   0   0                   9   1
+Bob Van Eman rf                5   1   1   1                   3   0
+Ray Piano lf                   3   2   0   0                   0   0
+Matt Batts c                   5   2   2   1                   5   2
+Bill Sommers 2b                4   1   2   5                   2   4
+Sam DiBlasi 3b                 4   1   2   1                   1   0
+Joe Kaney ss                   4   0   1   0                   3   2
+Walker Cress p                 1   0   0   0                   0   0
+ Carl Meurn p                  2   1   2   1                   1   2
+TOTALS                        37  10  12   9                  27  11
+
+FIELDING -
+
+BATTING -
+3B: Matt Batts, Sam DiBlasi
+Team LOB: 7
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Walker Cress                   2     4   4       1   1        
+Carl Meurn W                   7     7   2       1   4        
+TOTALS                         9    11   6       2   5        
+
+Walker Cress faced 4 batters in the 3rd inning
+
+
+Umpires: Anthony Routhouska, David Clarety, Bernie Friberg, Roland Mackey
+
+Time of Game: 2:09   Attendance: 4735
+
+NOTES: Game 4 of championship series (Series tied 2-2).
+
+=====================================================================
+
+Nashua Dodgers 6, Lynn Red Sox 3
+
+Game Played on Wednesday, September 11, 1946 (N) at Fraser Field (Lynn, MA)
+
+NAS NEL    0  0  0    0  0  4    1  1  0  -   6  9  1
+LYN NEL    1  0  0    0  0  0    0  0  2  -   3 10  5
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               4   0   1   0                   2   0
+Robert Kellogg lf              4   1   2   0                   1   0
+Stanley Lipka 3b               4   1   2   1                   1   3
+Roy Campanella c               4   0   0   0                   7   0
+Oscar Galipeau 1b              2   2   1   0                  11   0
+Charles Wood 2b                3   1   1   2                   3   4
+Billy DeMars ss                4   0   1   1                   1   1
+Bill Kalbaugh rf               4   0   0   0                   1   0
+Don Newcombe p                 4   1   1   0                   0   2
+TOTALS                        33   6   9   4                  27  10
+
+FIELDING -
+DP: 1. Stanley Lipka-Charles Wood-Oscar Galipeau.
+E: Billy DeMars
+
+BATTING -
+3B: Billy DeMars
+SH: Edward Yaeger, Charles Wood
+HBP: Oscar Galipeau (by Roger Wright)
+Team LOB: 5
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Don Newcombe W                 9    10   3       3   7        
+TOTALS                         9    10   3       3   7        
+
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   2   4   0                   1   0
+Bob Sperry 1b                  3   0   1   1                  14   2
+Bob Van Eman rf                5   0   2   1                   2   0
+Ray Piano lf                   4   0   0   0                   2   0
+Matt Batts c                   4   0   1   1                   3   3
+Bill Sommers 2b                4   0   0   0                   2   5
+Sam DiBlasi 3b                 3   0   1   0                   0   0
+ Joe Langworthy ph             0   1   0   0                   0   0
+Joe Kaney ss                   3   0   1   0                   3   7
+ Edward Lynk ph                0   0   0   0                   0   0
+Robert Bullwinkel p            2   0   0   0                   0   3
+ Roger Wright p                1   0   0   0                   0   1
+ Lawrence Kennedy ph           1   0   0   0                   0   0
+TOTALS                        35   3  10   3                  27  21
+
+Joe Langworthy pinch-hit in the 9th inning
+Edward Lynk pinch-hit in the 9th inning
+Lawrence Kennedy pinch-hit in the 9th inning
+
+FIELDING -
+DP: 2. Bill Sommers-Joe Kaney-Bob Sperry, Roger Wright-Joe Kaney-Bob Sperry.
+E: Bob Sperry, Bill Sommers, Sam DiBlasi 2, Robert Bullwinkel
+
+BATTING -
+2B: Bill Boyce
+SH: Bob Sperry
+Team LOB: 10
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Robert Bullwinkel L            5.2   7   4       1   1        
+Roger Wright                   3.1   2   2       1   3        
+TOTALS                         9     9   6       2   4        
+
+WP: Roger Wright
+
+
+Umpires: David Clarety, Bernie Friberg, Roland Mackey, Anthony Routhauska
+
+Time of Game: 2:09   Attendance: 4242
+
+NOTES: Game 5 of championship series (Nashua leads 3-2).
+
+=====================================================================
+
+Nashua Dodgers 8, Lynn Red Sox 2
+
+Game Played on Thursday, September 12, 1946 (D) at Holman Stadium (Nashua, NH)
+
+LYN NEL    1  0  0    1  0  0    0  0  0  -   2  8  0
+NAS NEL    4  0  0    0  0  1    0  3  X  -   8  7  0
+
+Lynn Red Sox                  AB   R   H RBI      BB  SO      PO   A
+Bill Boyce cf                  5   1   3   0                   3   1
+Bill Sommers 2b                5   0   1   0                   0   2
+Bob Van Eman rf                3   0   1   0                   3   1
+Joe Langworthy c               4   0   0   1                   7   0
+Bob Sperry 1b                  3   1   1   0                   5   0
+Ray Piano lf                   2   0   1   0                   3   0
+Sam DiBlasi 3b                 3   0   0   1                   0   1
+Joe Kaney ss                   3   0   0   0                   3   4
+ Edward Lynk ph                1   0   1   0                   0   0
+Jim Suchecki p                 0   0   0   0                   0   0
+ Walker Cress p                3   0   0   0                   0   0
+ Lawrence Kennedy ph           0   0   0   0                   0   0
+TOTALS                        32   2   8   2                  24   9
+
+Edward Lynk pinch-hit in the 9th inning
+Lawrence Kennedy pinch-hit in the 9th inning
+
+FIELDING -
+
+BATTING -
+2B: Ray Piano
+SH: Sam DiBlasi
+Team LOB: 10
+
+Lynn Red Sox                  IP     H   R  ER  BB  SO  HR BFP
+Jim Suchecki L                 0     2   4       2   0        
+Walker Cress                   8     5   4       3   6        
+TOTALS                         8     7   8       5   6        
+
+Jim Suchecki faced 4 batters in the 1st inning
+
+
+Nashua Dodgers                AB   R   H RBI      BB  SO      PO   A
+Edward Yaeger cf               3   1   1   0                   3   0
+Robert Kellogg lf              4   2   1   0                   0   0
+Stanley Lipka 3b               3   2   1   0                   0   0
+Roy Campanella c               2   3   1   2                   4   1
+Oscar Galipeau 1b              4   0   0   1                   7   1
+Charles Wood 2b                3   0   2   2                   0   5
+Billy DeMars ss                4   0   1   3                  12   3
+Bill Kalbaugh rf               4   0   0   0                   1   0
+Michael Nozinski p             3   0   0   0                   0   2
+TOTALS                        30   8   7   8                  27  12
+
+FIELDING -
+DP: 2. Charles Wood-Billy DeMars-Oscar Galipeau, Charles Wood-Billy DeMars-Oscar Galipeau.
+
+BATTING -
+2B: Stanley Lipka
+Team LOB: 3
+
+BASERUNNING -
+SB: Roy Campanella
+
+Nashua Dodgers                IP     H   R  ER  BB  SO  HR BFP
+Michael Nozinski W             9     8   2       4   4        
+TOTALS                         9     8   2       4   4        
+
+
+Umpires: Bernie Friberg, Roland Mackey, Anthony Routhouska, David Clarety
+
+Time of Game: 1:59   Attendance: 3650
+
+NOTES: Game 6 of championship series (Nashua wins 4-2). Game played in the afternoon due to conflict with previously scheduled game between Nashua Coffey Post Senior team (4) vs. Manchester Sweeney Post Senior team (0) at 8PM.
+
+=====================================================================

@@ -1,0 +1,849 @@
+
+Hartford Senators 2, Pittsfield Hillies 1
+
+Game Played on Friday, June 03, 1921 (D) at Clarkin Field (Hartford, CT)
+
+PFD AA    0  0  0    1  0  0    0  0  0  -   1  5  2
+HFD AA    0  0  0    0  0  0    2  0  X  -   2  8  2
+
+Pittsfield Hillies            AB   R   H RBI      BB  SO      PO   A
+Del Capes lf                   4   0   0                       1   0
+Gus Gardella 3b                4   0   1                       1   0
+Jack Hammond 2b                4   0   1                       3   4
+Henry Bates ss                 3   1   1                       1   5
+Bill McCorry rf                3   0   0                       1   0
+Bud Stapleton 1b               4   0   0                      12   1
+Henry Bosse cf                 4   0   1                       0   0
+William Fish c                 3   0   0                       5   0
+Al Pierotti p                  3   0   1                       0   3
+TOTALS                        32   1   5                      24  13
+
+FIELDING -
+DP: 1. Jack Hammond.
+E: Henry Bates, Al Pierotti
+
+BATTING -
+2B: Jack Hammond
+HBP: Bill McCorry (by Ralph Head)
+Team LOB: 6
+
+BASERUNNING -
+SB: Henry Bates, Bud Stapleton
+
+Pittsfield Hillies            IP     H   R  ER  BB  SO  HR BFP
+Al Pierotti L                  8     8   2       1   4        
+TOTALS                         8     8   2       1   4        
+
+WP: Al Pierotti 2
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 4   0   1                       0   0
+Clair McAlpine 3b              3   0   2                       3   1
+Leo Kane lf                    4   0   1                       0   0
+Fred Bailey rf                 4   0   0                       2   0
+Heinie Scheer 2b               4   1   2                       2   5
+Lou Gehrig 1b                  3   0   0                      10   0
+Philip Neher ss                4   0   0                       2   3
+Mike Damm c                    3   1   1                       8   1
+Ralph Head p                   3   0   1                       0   3
+TOTALS                        32   2   8                      27  13
+
+FIELDING -
+DP: 1. Ralph Head-Clair McAlpine-Lou Gehrig.
+E: Philip Neher 2
+
+BATTING -
+2B: Heinie Scheer
+SH: Lou Gehrig
+Team LOB: 8
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Ralph Head W                   9     5   1       1   8        
+TOTALS                         9     5   1       1   8        
+
+
+Umpires: Joe Lohr, Kitty Bransfield
+
+Time of Game: 2:00   Attendance: Unknown
+
+NOTES: Debut of Lou Gehrig as 'Lou Lewis'
+
+=====================================================================
+
+Hartford Senators 5, Waterbury Brasscos 3
+
+Game Played on Saturday, June 04, 1921 (D) at Clarkin Field (Hartford, CT)
+
+WBY AA    0  0  3    0  0  0    0  0  0  -   3  7  1
+HFD AA    1  1  2    0  0  0    1  0  X  -   5  6  0
+
+Waterbury Brasscos            AB   R   H RBI      BB  SO      PO   A
+Ty Pickup lf                   2   0   0                       5   0
+John Dowd 2b                   3   1   1                       1   1
+Joe Cosgrove cf                4   1   1                       1   1
+Henry Long 3b                  4   0   2                       1   1
+Red Torphy ss                  4   0   0                       1   2
+Edward Hart 1b                 4   0   1                       6   1
+Frank Fahey rf                 4   0   1                       0   0
+Fred Tyler rf-c                3   1   1                       0   0
+Fred Rawley p                  1   0   0                       1   0
+ Walt Schulz p                 2   0   0                       1   2
+TOTALS                        31   3   7                      24   8
+
+FIELDING -
+E: Edward Hart
+
+BATTING -
+2B: John Dowd, Frank Fahey
+HR: Joe Cosgrove
+SH: John Dowd
+Team LOB: 4
+
+Waterbury Brasscos            IP     H   R  ER  BB  SO  HR BFP
+Fred Rawley L                  3     4   4       3   2        
+Walt Schulz                    5     2   1       3   5        
+TOTALS                         8     6   5       6   7        
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 3   2   1                       1   0
+Clair McAlpine 3b              2   0   0                       1   0
+Leo Kane lf                    1   2   0                       1   0
+Fred Bailey rf                 3   0   2                       0   0
+Heinie Scheer 2b               4   0   0                       5   3
+Lou Gehrig 1b                  3   1   2                      10   0
+Philip Neher ss                4   0   1                       1   1
+Mike Damm c                    3   0   0                       8   1
+Fred Harschar p                1   0   0                       0   1
+ Sidney Agnew ph               1   0   0                       0   0
+ Thomas Sloan p                1   0   0                       0   5
+TOTALS                        26   5   6                      27  11
+
+Sidney Agnew pinch-hit in the 4th inning
+
+FIELDING -
+DP: 2. Heinie Scheer-Philip Neher, Clair McAlpine-Heinie Scheer-Lou Gehrig.
+
+BATTING -
+2B: Fred Bailey
+3B: Fred Bailey, Lou Gehrig
+SH: Clair McAlpine 2, Leo Kane
+Team LOB: 4
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Fred Harschar W                4     5   3       2   1        
+Thomas Sloan                   5     2   0       0   7        
+TOTALS                         9     7   3       2   8        
+
+
+Umpires: Kitty Bransfield, Joe Lohr
+
+Time of Game: 1:50   Attendance: 5000
+
+=====================================================================
+
+Hartford Senators 10, Albany Senators 2
+
+Game Played on Sunday, June 05, 1921 (D) at Chadwick Park (Albany, NY)
+
+HFD AA    0  3  1    3  1  1    1  0  0  -  10 16  1
+ALB AA    0  0  0    2  0  0    0  0  0  -   2  8  2
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 3   1   1                       2   0
+Clair McAlpine 3b              5   1   1                       1   2
+Leo Kane lf                    3   1   2                       4   0
+Fred Bailey rf                 3   2   1                       2   0
+Heinie Scheer 2b               5   0   2                       4   2
+Lou Gehrig 1b                  5   1   2                       9   0
+Philip Neher ss                5   2   2                       2   4
+James Bradshaw c               5   2   2                       3   0
+John Kieb p                    4   0   3                       0   3
+TOTALS                        38  10  16                      27  11
+
+FIELDING -
+E: Harry Hesse
+
+BATTING -
+2B: Leo Kane, Fred Bailey, Philip Neher, John Kieb
+Team LOB: 8
+
+BASERUNNING -
+SB: Fred Bailey, Philip Neher
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+John Kieb W                    9     8   2       3   3        
+TOTALS                         9     8   2       3   3        
+
+
+Albany Senators               AB   R   H RBI      BB  SO      PO   A
+Joe Leary cf                   5   0   0                       1   0
+Chester Sweatt rf              5   0   0                       0   0
+Glenn Dameron 1b               3   1   2                      11   2
+Howard Baker 3b                4   1   1                       0   0
+John St. Angelo lf             3   0   0                       1   0
+John Donahue 2b                3   0   2                       5   6
+Herbert Pennoyer ss            4   0   1                       4   2
+Charles Payne c                4   0   1                       5   2
+Red Cox p                      1   0   0                       0   3
+ W. Peterson p                 1   0   0                       0   1
+ William Patton p              1   0   1                       0   0
+ Joseph Start ph               1   0   0                       0   0
+TOTALS                        35   2   8                      27  16
+
+Joseph Start pinch-hit in the 9th inning
+
+FIELDING -
+DP: 2. John Donahue-Glenn Dameron, Herbert Pennoyer-Glenn Dameron.
+E: Joe Leary, Herbert Pennoyer
+
+BATTING -
+2B: Glenn Dameron 2, Howard Baker
+Team LOB: 9
+
+Albany Senators               IP     H   R  ER  BB  SO  HR BFP
+Red Cox L                      3.1   9   6       1   0        
+W. Peterson                    2.2   5   3       1   1        
+William Patton                 3     2   1       3   1        
+TOTALS                         9    16  10       5   2        
+
+
+Umpires: Joe Lohr, Kitty Bransfield
+
+Time of Game: 1:55   Attendance: Unknown
+
+=====================================================================
+
+Albany Senators 3, Hartford Senators 2
+
+Game Played on Monday, June 06, 1921 (D) at Chadwick Park (Albany, NY)
+
+HFD AA    0  0  1    0  0  0    0  0  0    0  0  1  -   2  9  2
+ALB AA    0  1  0    0  0  0    0  0  0    0  0  2  -   3 11  1
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 4   2   2                       2   0
+Clair McAlpine 3b              6   0   0                       2   2
+Leo Kane lf                    5   0   1                       3   0
+Fred Bailey rf                 6   0   3                       0   0
+Heinie Scheer 2b               4   0   1                       3   3
+Lou Gehrig 1b                  5   0   0                      15   0
+Philip Neher ss                4   0   1                       3   3
+Mike Damm c                    5   0   0                       7   3
+Kewpie Pennington p            5   0   1                       0   4
+TOTALS                        44   2   9                      35  15
+
+FIELDING -
+E: Heinie Scheer 2
+
+BATTING -
+2B: Fred Bailey, Philip Neher
+HBP: Philip Neher (by Edgar Bennett)
+Team LOB: 11
+
+BASERUNNING -
+SB: Harry Hesse, Leo Kane, Fred Bailey
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Kewpie Pennington L           11.2  11   3       2   7        
+TOTALS                        11.2  11   3       2   7        
+
+Two outs when winning run scored
+
+
+Albany Senators               AB   R   H RBI      BB  SO      PO   A
+Joe Leary cf                   5   0   0                       2   0
+Chester Sweatt rf-c            6   1   2                       7   0
+Glenn Dameron 1b               5   0   1                      14   1
+Howard Baker 3b                5   0   2                       3   5
+John St. Angelo lf             4   0   0                       4   0
+John Donahue 2b                4   1   3                       1   3
+Herbert Pennoyer ss            4   0   2                       2   1
+Charles Payne c                3   0   0                       2   2
+ Joseph Start rf               2   0   0                       1   0
+Edgar Bennett p                4   0   0                       0   2
+ Red Cox ph                    1   1   1                       0   0
+TOTALS                        43   3  11                      36  14
+
+Red Cox pinch-hit in the 12th inning
+
+FIELDING -
+E: Howard Baker
+
+BATTING -
+3B: Glenn Dameron, John Donahue
+SH: Joe Leary, Glenn Dameron, John St. Angelo, Herbert Pennoyer
+Team LOB: 11
+
+Albany Senators               IP     H   R  ER  BB  SO  HR BFP
+Edgar Bennett W               12     9   2       4   6        
+TOTALS                        12     9   2       4   6        
+
+
+Umpires: Kitty Bransfield, Joe Lohr
+
+Time of Game: 2:24   Attendance: Unknown
+
+NOTES: First game for Paddy O'Connor as Albany manager, replacing the fired Joe Birmingham.
+
+=====================================================================
+
+Hartford Senators 3, Pittsfield Hillies 2
+
+Game Played on Tuesday, June 07, 1921 (D) at Clarkin Field (Hartford, CT)
+
+PFD AA    0  0  2    0  0  0    0  0  0    0  0  0  -   2 10  2
+HFD AA    0  1  0    0  1  0    0  0  0    0  0  1  -   3  9  2
+
+Pittsfield Hillies            AB   R   H RBI      BB  SO      PO   A
+Del Capes lf                   6   0   1                       2   0
+Gus Gardella 3b                5   1   3                       0   2
+Jack Hammond 2b                3   0   0                       4   6
+Henry Bates ss                 4   0   2                       4   4
+Bill McCorry rf                4   0   0                       2   0
+Bud Stapleton 1b               5   0   2                      10   0
+Henry Bosse cf                 4   0   0                       3   0
+William Fish c                 5   0   0                      10   2
+Al Pierotti p                  4   1   2                       0   1
+TOTALS                        40   2  10                      35  15
+
+FIELDING -
+E: Henry Bates, Bud Stapleton
+
+BATTING -
+2B: Bud Stapleton, Al Pierotti
+SH: Bill McCorry, Henry Bosse
+Team LOB: 4
+
+BASERUNNING -
+SB: Del Capes, Henry Bates
+
+Pittsfield Hillies            IP     H   R  ER  BB  SO  HR BFP
+Al Pierotti L                 11.2   9   3       8   8        
+TOTALS                        11.2   9   3       8   8        
+
+Two outs when winning run scored
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 4   0   1                       3   0
+Clair McAlpine 3b              6   0   0                       3   6
+Leo Kane lf                    5   0   1                       1   1
+Fred Bailey rf                 6   1   2                       4   0
+Heinie Scheer 2b               4   1   0                       2   2
+Lou Gehrig 1b                  5   0   1                      15   0
+Philip Neher ss                4   1   4                       1   1
+Mike Damm c                    4   0   0                       7   3
+Ralph Head p                   5   0   0                       0   3
+TOTALS                        43   3   9                      36  16
+
+FIELDING -
+E: Clair McAlpine, Leo Kane
+
+BATTING -
+SH: Mike Damm
+Team LOB: 12
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Ralph Head W                  12    10   2       2   8        
+TOTALS                        12    10   2       2   8        
+
+
+Umpires: Peter McLaughlin, Mortimer Waters
+
+Time of Game: 2:20   Attendance: Unknown
+
+=====================================================================
+
+Hartford Senators 10, Pittsfield Hillies 6
+
+Game Played on Wednesday, June 08, 1921 (D) at Clarkin Field (Hartford, CT)
+
+PFD AA    0  2  0    2  0  2    0  0  0  -   6 12  4
+HFD AA    0  4  2    1  0  1    2  0  X  -  10 12  1
+
+Pittsfield Hillies            AB   R   H RBI      BB  SO      PO   A
+Del Capes lf                   5   0   1                       1   0
+Gus Gardella 3b                5   0   0                       1   2
+Jack Hammond 2b                5   0   3                       4   3
+Henry Bates ss                 5   1   1                       0   4
+Bill McCorry rf                3   1   1                       3   0
+Bud Stapleton 1b               5   0   2                       9   0
+Henry Bosse cf                 3   3   1                       3   0
+William Fish c                 3   1   2                       5   0
+Cliff Best p                   1   0   0                       1   1
+ James Whittaker p             3   0   1                       0   3
+TOTALS                        38   6  12                      27  13
+
+FIELDING -
+DP: 1. Gus Gardella-Jack Hammond-Bud Stapleton.
+E: Gus Gardella 2, Bud Stapleton, Henry Bosse
+
+BATTING -
+2B: Jack Hammond, Bill McCorry, James Whittaker
+Team LOB: 9
+
+BASERUNNING -
+SB: Henry Bosse
+
+Pittsfield Hillies            IP     H   R  ER  BB  SO  HR BFP
+Cliff Best L                   1.1   5   4       1   0        
+James Whittaker                6.2   7   6       2   5        
+TOTALS                         8    12  10       3   5        
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 3   1   2                       1   0
+Clair McAlpine ss              4   0   1                       3   2
+Leo Kane 3b                    4   1   0                       1   2
+Fred Bailey rf                 5   1   0                       5   0
+Heinie Scheer 2b               5   1   1                       2   5
+Lou Gehrig 1b                  5   2   2                      10   1
+Sidney Agnew lf                4   1   2                       0   0
+Mike Damm c                    3   2   3                       4   0
+Thomas Sloan p                 2   1   0                       0   2
+ Fred Harschar p               1   0   1                       1   2
+TOTALS                        36  10  12                      27  14
+
+FIELDING -
+E: Fred Bailey
+
+BATTING -
+2B: Lou Gehrig, Mike Damm, Fred Harschar
+SH: Clair McAlpine, Sidney Agnew, Mike Damm
+HBP: Fred Harschar (by Bill McCorry)
+Team LOB: 9
+
+BASERUNNING -
+SB: Harry Hesse
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Thomas Sloan W                 6     9   6       2   4        
+Fred Harschar                  3     3   0       0   0        
+TOTALS                         9    12   6       2   4        
+
+Thomas Sloan faced 1 batter in the 7th inning
+
+
+Umpires: Jack Hannifin, Frank Brown
+
+Time of Game: 2:29   Attendance: Unknown
+
+=====================================================================
+
+Springfield Ponies 6, Hartford Senators 3
+
+Game Played on Thursday, June 09, 1921 (D) at Hampden Park (Springfield, MA)
+
+HFD AA    0  1  0    0  2  0    0  0  0  -   3 10  0
+SPR AA    0  0  2    2  0  2    0  0  X  -   6 10  1
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 4   0   1                       2   0
+Clair McAlpine ss              4   0   0                       2   3
+Leo Kane 3b                    3   1   1                       1   3
+Fred Bailey rf                 4   2   3                       1   0
+Heinie Scheer 2b               1   0   1                       0   2
+ Mike Damm 2b                  2   0   0                       1   2
+Lou Gehrig 1b                  4   0   1                       8   0
+Sidney Agnew lf-p              4   0   0                       2   0
+James Bradshaw c               4   0   3                       6   1
+John Kieb p                    3   0   0                       0   0
+ Fred Harschar lf              1   0   0                       1   0
+TOTALS                        34   3  10                      24  11
+
+FIELDING -
+
+BATTING -
+2B: Harry Hesse, Fred Bailey 2
+SH: Heinie Scheer
+Team LOB: 6
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+John Kieb L                    6     9   6       0   6        
+Sidney Agnew                   2     1   0       0   0        
+TOTALS                         8    10   6       0   6        
+
+
+Springfield Ponies            AB   R   H RBI      BB  SO      PO   A
+Francis Duffy lf               4   0   1                       1   0
+George Crowther 2b             4   0   1                       2   2
+Ramon Gonzalez ss              4   0   0                       4   5
+Fred Myers 3b                  4   0   0                       1   1
+Fred Wilder c                  4   2   2                       7   2
+Thomas Naughton cf             4   1   1                       0   0
+Danny Silva rf                 3   1   2                       0   0
+John Flynn 1b                  3   2   2                      11   0
+Julius Bohn p                  1   0   0                       0   3
+ Leslie Kibbee p               2   0   1                       1   1
+TOTALS                        33   6  10                      27  14
+
+FIELDING -
+DP: 1. Leslie Kibbee-John Flynn.
+E: George Crowther
+
+BATTING -
+2B: Fred Wilder
+HR: Fred Wilder, Thomas Naughton, John Flynn
+Team LOB: 4
+
+Springfield Ponies            IP     H   R  ER  BB  SO  HR BFP
+Julius Bohn                    3.1   6   1       0   1        
+Leslie Kibbee W                5.2   4   2       1   4        
+TOTALS                         9    10   3       1   5        
+
+
+Umpires: Frank Brown, Jack Hannifin
+
+Time of Game: 1:44   Attendance: Unknown
+
+NOTES: Scheer ejected for arguing with Hannifin.
+
+=====================================================================
+
+Bridgeport Americans 4, Hartford Senators 2
+
+Game Played on Friday, June 10, 1921 (D) at Clarkin Field (Hartford, CT)
+
+BPT AA    0  2  0    0  0  0    0  0  0    0  0  0    2  -   4  9  1
+HFD AA    0  0  1    0  1  0    0  0  0    0  0  0    0  -   2  5  2
+
+Bridgeport Americans          AB   R   H RBI      BB  SO      PO   A
+Dick Loftus lf                 5   0   0                       1   0
+Buck Lai 3b                    6   0   2                       1   8
+Gene Martin rf                 6   0   1                       0   0
+Bob Emmerich cf                6   1   1                       1   0
+Jose Rodriguez 1b              5   2   1                      24   1
+Joe Smith c                    5   0   1                       9   2
+Jim McLaughlin 2b              5   1   0                       2   5
+Wes Kingdon ss                 5   0   3                       1   4
+Edgar LePard p                 5   0   0                       0   4
+TOTALS                        48   4   9                      39  24
+
+FIELDING -
+E: Wes Kingdon
+
+BATTING -
+2B: Bob Emmerich, Joe Smith
+SH: Joe Smith
+Team LOB: 9
+
+BASERUNNING -
+SB: Buck Lai
+
+Bridgeport Americans          IP     H   R  ER  BB  SO  HR BFP
+Edgar LePard W                13     5   2       4   6        
+TOTALS                        13     5   2       4   6        
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 6   1   1                       3   0
+Clair McAlpine ss              4   0   0                       5   6
+Leo Kane 3b                    3   0   1                       0   3
+Fred Bailey rf                 4   0   0                       4   0
+Heinie Scheer 2b               5   0   1                       1   5
+Lou Gehrig 1b                  4   0   1                      16   1
+Sidney Agnew lf                5   0   0                       4   0
+James Bradshaw c               4   1   1                       6   1
+Fred Harschar p                5   0   0                       0   3
+TOTALS                        40   2   5                      39  19
+
+FIELDING -
+E: Leo Kane, Lou Gehrig
+
+BATTING -
+3B: James Bradshaw
+SH: Fred Bailey
+Team LOB: 5
+
+BASERUNNING -
+SB: Harry Hesse 2, Clair McAlpine
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Fred Harschar L               13     9   4       3   5        
+TOTALS                        13     9   4       3   5        
+
+
+Umpires: Si McDonald, Robert Miller
+
+Time of Game: 2:10   Attendance: Unknown
+
+=====================================================================
+
+Hartford Senators 9, Springfield Ponies 0
+
+Game Played on Saturday, June 11, 1921 (D) at Clarkin Field (Hartford, CT)
+
+SPR AA    0  0  0    0  0  0    0  0  0  -   0  5  1
+HFD AA    0  0  0    0  1  5    3  0  X  -   9 14  3
+
+Springfield Ponies            AB   R   H RBI      BB  SO      PO   A
+Francis Duffy lf               4   0   0                       0   0
+George Crowther 2b             4   0   0                       3   3
+Ramon Gonzalez ss              3   0   2                       2   3
+Fred Myers 3b                  4   0   1                       1   2
+Fred Wilder c                  4   0   1                       3   3
+Thomas Naughton cf             4   0   0                       4   0
+Danny Silva rf                 3   0   0                       2   0
+John Flynn 1b                  3   0   0                       9   1
+Pete Condon p                  3   0   1                       0   3
+TOTALS                        32   0   5                      24  15
+
+FIELDING -
+DP: 1. Fred Wilder-Fred Myers.
+E: Pete Condon
+
+BATTING -
+Team LOB: 7
+
+Springfield Ponies            IP     H   R  ER  BB  SO  HR BFP
+Pete Condon L                  8    14   9       1   1        
+TOTALS                         8    14   9       1   1        
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf                 5   0   1                       4   0
+Clair McAlpine 3b              5   0   0                       0   3
+Leo Kane lf                    4   2   2                       0   0
+Fred Bailey rf                 4   2   3                       3   0
+Heinie Scheer 2b               4   2   1                       3   4
+Lou Gehrig 1b                  3   1   1                      14   0
+Philip Neher ss                4   2   3                       1   3
+Mike Damm c                    4   0   3                       2   3
+Ralph Head p                   3   0   0                       0   3
+TOTALS                        36   9  14                      27  16
+
+FIELDING -
+DP: 1. Heinie Scheer-Lou Gehrig.
+E: Harry Hesse, Clair McAlpine, Ralph Head
+
+BATTING -
+2B: Fred Bailey
+3B: Philip Neher 2
+SH: Ralph Head
+Team LOB: 5
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Ralph Head W                   9     5   0       1   2        
+TOTALS                         9     5   0       1   2        
+
+
+Umpires: Joe Lohr, Kitty Bransfield
+
+Time of Game: 1:42   Attendance: 4000
+
+=====================================================================
+
+New Haven Indians 8, Hartford Senators 3
+
+Game Played on Sunday, June 12, 1921 (D) at Weiss Park (New Haven, CT)
+
+HFD AA    0  0  0    0  1  1    0  0  1  -   3  8  4
+NHV AA    0  0  0    2  1  3    0  2  X  -   8 12  2
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse cf-1b              5   0   2                       6   0
+Clair McAlpine 3b              4   0   0                       1   2
+Leo Kane lf                    4   1   1                       3   0
+Fred Bailey rf                 3   0   1                       0   0
+Heinie Scheer 2b               4   0   1                       0   5
+Lou Gehrig 1b                  3   0   0                      10   2
+ Sidney Agnew cf               1   0   0                       0   0
+Philip Neher ss                2   1   0                       0   2
+Mike Damm c                    3   1   1                       3   1
+Kewpie Pennington p            4   0   2                       0   2
+TOTALS                        33   3   8                      23  14
+
+FIELDING -
+DP: 1. Clair McAlpine-Lou Gehrig-Clair McAlpine.
+E: Leo Kane, Lou Gehrig, Mike Damm, Kewpie Pennington
+
+BATTING -
+2B: Mike Damm
+SH: Fred Bailey, Mike Damm
+Team LOB: 7
+
+BASERUNNING -
+SB: Harry Hesse, Leo Kane, Fred Bailey, Heinie Scheer, Philip Neher
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Kewpie Pennington L            8    12   8       2   2        
+TOTALS                         8    12   8       2   2        
+
+
+New Haven Indians             AB   R   H RBI      BB  SO      PO   A
+Fred Leid lf                   5   1   1                       1   0
+Martin Murphy cf               4   1   2                       2   0
+Marty Shay ss                  4   1   2                       1   2
+Neal Ball 2b                   4   1   2                       0   4
+Bernard McHugh rf              4   0   1                       2   0
+Pinky Hargrave 3b              3   1   1                       1   1
+Jimmie Wilson 1b               3   2   2                      10   0
+John Nagle c                   4   1   1                      10   0
+Frank Woodward p               4   0   0                       0   4
+TOTALS                        35   8  12                      27  11
+
+FIELDING -
+E: Pinky Hargrave, John Nagle
+
+BATTING -
+3B: Pinky Hargrave
+SH: Pinky Hargrave
+Team LOB: 5
+
+BASERUNNING -
+SB: Fred Leid, Neal Ball, Jimmie Wilson, John Nagle
+
+New Haven Indians             IP     H   R  ER  BB  SO  HR BFP
+Frank Woodward W               9     8   3       2  10        
+TOTALS                         9     8   3       2  10        
+
+
+Umpires: Peter McLaughlin, Mortimer Waters
+
+Time of Game: 1:55   Attendance: Unknown
+
+=====================================================================
+
+Hartford Senators 9, Springfield Ponies 1
+
+Game Played on Tuesday, June 14, 1921 (D) at Clarkin Field (Hartford, CT)
+
+SPR AA    0  0  0    0  0  0    0  1  0  -   1  5  2
+HFD AA    0  0  1    2  3  0    2  1  X  -   9 13  3
+
+Springfield Ponies            AB   R   H RBI      BB  SO      PO   A
+Marty Becker rf                4   0   1                       0   0
+Francis Duffy lf               4   0   0                       0   0
+Ramon Gonzalez ss              4   0   1                       0   1
+Glenn Clark cf                 4   0   0                       0   0
+Fred Wilder c                  4   0   1                      10   0
+Thomas Naughton 1b             2   0   0                       9   1
+Danny Silva 2b                 3   0   1                       3   1
+Fred Myers 3b                  3   0   0                       2   1
+Leslie Kibbee p                3   1   1                       0   4
+TOTALS                        31   1   5                      24   8
+
+FIELDING -
+DP: 1. Ramon Gonzalez-Danny Silva-Thomas Naughton-Fred Myers.
+E: Fred Wilder 2
+
+BATTING -
+2B: Marty Becker, Fred Wilder
+HBP: Thomas Naughton (by Thomas Sloan)
+Team LOB: 6
+
+Springfield Ponies            IP     H   R  ER  BB  SO  HR BFP
+Leslie Kibbee L                8    13   9       1   8        
+TOTALS                         8    13   9       1   8        
+
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse 1b-lf              4   1   2                       5   0
+Clair McAlpine 3b              5   1   2                       2   2
+Leo Kane lf                    2   0   0                       1   0
+ Lou Gehrig 1b                 2   1   1                       4   0
+Fred Bailey rf                 3   2   2                       2   0
+Heinie Scheer 2b               4   1   2                       4   2
+Sidney Agnew cf                4   1   1                       3   0
+Philip Neher ss                4   1   1                       0   4
+Mike Damm c                    4   1   2                       6   1
+Thomas Sloan p                 4   0   0                       0   2
+TOTALS                        36   9  13                      27  11
+
+FIELDING -
+E: Heinie Scheer, Philip Neher, Mike Damm
+
+BATTING -
+2B: Clair McAlpine 2, Sidney Agnew
+3B: Harry Hesse, Lou Gehrig
+HR: Fred Bailey, Heinie Scheer
+SH: Fred Bailey
+Team LOB: 5
+
+BASERUNNING -
+SB: Harry Hesse 2, Philip Neher
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Thomas Sloan W                 9     5   1       2   6        
+TOTALS                         9     5   1       2   6        
+
+
+Umpires: Peter McLaughlin, Mortimer Waters
+
+Time of Game: 2:05   Attendance: Unknown
+
+NOTES: Kane left game in the fourth inning with a sprained foot suffered while trying to catch Gonzales's foul ball near the bleachers.
+
+=====================================================================
+
+Springfield Ponies 9, Hartford Senators 2
+
+Game Played on Wednesday, June 15, 1921 (D) at Hampden Park (Springfield, MA)
+
+HFD AA    1  0  0    0  0  0    1  0  0  -   2 10  3
+SPR AA    0  1  0    0  2  2    0  4  X  -   9 16  2
+
+Hartford Senators             AB   R   H RBI      BB  SO      PO   A
+Harry Hesse lf                 4   1   1                       2   0
+Clair McAlpine 3b              3   0   0                       2   2
+Lou Gehrig 1b                  4   0   1                       9   0
+Fred Bailey rf                 4   0   1                       3   0
+Heinie Scheer 2b               4   0   1                       3   2
+Sidney Agnew cf                4   0   1                       2   0
+Philip Neher ss                3   0   2                       0   3
+James Bradshaw c               4   0   1                       3   2
+Fred Harschar p                3   1   2                       0   2
+TOTALS                        33   2  10                      24  11
+
+FIELDING -
+E: Philip Neher, James Bradshaw, Fred Harschar
+
+BATTING -
+2B: Philip Neher
+HR: Fred Harschar
+SH: Clair McAlpine
+Team LOB: 6
+
+Hartford Senators             IP     H   R  ER  BB  SO  HR BFP
+Fred Harschar L                8    16   9       2   3        
+TOTALS                         8    16   9       2   3        
+
+
+Springfield Ponies            AB   R   H RBI      BB  SO      PO   A
+Marty Becker rf                5   1   2                       0   0
+Francis Duffy lf               4   2   0                       3   0
+Ramon Gonzalez ss              4   3   4                       1   4
+Glenn Clark cf                 4   1   2                       1   2
+Fred Wilder c                  4   2   2                       6   1
+Danny Silva 2b                 4   0   1                       4   4
+Fred Myers 3b                  5   0   3                       1   1
+John Flynn 1b                  5   0   2                      11   1
+Harry Donovan p                3   0   0                       0   2
+TOTALS                        38   9  16                      27  15
+
+FIELDING -
+DP: 3. Glenn Clark-Fred Myers, Harry Donovan-John Flynn-Fred Wilder, Ramon Gonzalez-Danny Silva-John Flynn.
+E: Francis Duffy 2
+
+BATTING -
+2B: Ramon Gonzalez 2
+3B: Glenn Clark
+HR: Fred Wilder
+SH: Danny Silva, Harry Donovan
+Team LOB: 11
+
+BASERUNNING -
+SB: Ramon Gonzalez
+
+Springfield Ponies            IP     H   R  ER  BB  SO  HR BFP
+Harry Donovan W                9    10   2       1   5        
+TOTALS                         9    10   2       1   5        
+
+
+Umpires: Mortimer Waters, Peter McLaughlin
+
+Time of Game: 1:43   Attendance: Unknown
+
+=====================================================================

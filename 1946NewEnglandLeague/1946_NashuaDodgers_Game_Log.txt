@@ -1,0 +1,10 @@
+Date       Tm   R     Opp  R In WP                             LP                              Time D/N Start      Att Comments                                           
+1946/09/04 NAS  1 vs  PAW  0    George Brown                   Joseph Belforti                 1:50   N           1837 "Game 1 of semifinal playoff series (Nashua leads 1-0). Campanella game-winning RBI double in bottom of the ninth." 
+1946/09/05 NAS  3 vs  PAW  1    Larry Shepard                  William Marshall                1:45   N           1900 "Game 2 of semifinal playoff series (Nashua leads 2-0)" 
+1946/09/06 NAS  3 at  PAW  0    Don Newcombe                   Joe Krakowski                   2:05   N           5000 "Game 3 of semifinal playoff series (Nashua wins 3-0)." 
+1946/09/08 NAS  2 at  LYN  0    Michael Nozinski               Roger Wright                    1:29   D 03:00PM   4171 "Game 1 of championship series (Nashua leads 1-0)." 
+1946/09/08 NAS  2 vs  LYN  3    Jim Suchecki                   Richard Mlady                   2:04   N 08:15PM   3900 "Game 2 of championship series (Series tied 1-1)." 
+1946/09/09 NAS  4 vs  LYN  2    George Brown                   Jim Davis                       1:40   N 08:15PM   3900 "Game 3 of championship series (Nashua leads 2-1)." 
+1946/09/10 NAS  6 at  LYN 10    Carl Meurn                     Larry Shepard                   2:09   N 08:15PM   4735 "Game 4 of championship series (Series tied 2-2)." 
+1946/09/11 NAS  6 at  LYN  3    Don Newcombe                   Robert Bullwinkel               2:09   N 08:15PM   4242 "Game 5 of championship series (Nashua leads 3-2)." 
+1946/09/12 NAS  8 vs  LYN  2    Michael Nozinski               Jim Suchecki                    1:59   D 04:00PM   3650 "Game 6 of championship series (Nashua wins 4-2). Game played in the afternoon due to conflict with previously scheduled game between Nashua Coffey Post Senior team (4) vs. Manchester Sweeney Post Senior team (0) at 8PM." 
