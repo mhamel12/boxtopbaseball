@@ -87,7 +87,7 @@ for instance in session.query(DefensiveStats).order_by(DefensiveStats.id):
 
     csv_to_stdout_obj.writerow(array_to_print)
 
-print("Pitching row count = %s\n\n\n" % (count))
+print("DefensiveStats row count = %s\n\n\n" % (count))
 
 count = 0
 
