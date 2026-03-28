@@ -26,3 +26,4 @@ The following scripts query the .db file:
 4. bp_team_game_log_db.py - Creates game-by-game log for a team or all teams, listing basic game information including the score, winning and losing pitcher, attendance, time of game, etc. Output in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
 5. bp_position_summary_db.py - Create summary of games played by position for a team or all teams. Output in .txt or .csv format. Supports filtering by team, opponent, home/road, and date range.
 6. bp_team_lineups_db.py - Create game log-style summary of starting lineups for a single team. Output in .txt or .csv format. Supports filtering by opponent, home/road, and date range.
+7. bp_season_stats_db.py - Create season statistics tables (batting, pitching, games by position) for all players on a single team. Output in .txt or .csv format. Supports filtering by opponent, home/road, and date range. 
