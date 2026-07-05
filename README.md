@@ -13,6 +13,7 @@ General workflow for entering and viewing box score data:
 5. Use bp_cross_check.py to check the resulting .EBA file for problems.
 6. Use a text editor to edit the .EBA file as needed (repeat steps 3 and 4 as needed).
 7. Use bp_generate_box.py to generate box scores from the .EBA file which look similar to those on the Retrosheet.org website (random example: https://www.retrosheet.org/boxesetc/1967/B04110NYN1967.htm).
+8. Use bp_generate_box_html.pl to generate box scores from the .EBA file in HTML format, including daily standings (regular season) and playoff series results (playoffs). The process for this is documented in the 1946NewEnglandLeague folder readme and requires the use of bp_generate_schedule_files_from_csv.py for best results.
 
 
 The scripts in the SQLA folder use SQLAlchemy (https://www.sqlalchemy.org/) to convert a .EBA file into a database file that can then be queried for various purposes. These scripts can help with proofing box score data by identifying missing statistics (game log reports) or by providing data that can be compared against "official" season statistics available from Baseball-Reference.com and other sources (splits). 
