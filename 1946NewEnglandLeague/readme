@@ -1,1 +1,35 @@
-Includes all Nashua Dodgers games from the 1946 New England League playoffs, featuring Roy Campanella and Don Newcombe.
+The 1946NEL_Playoffs.EBA file includes all games from the 1946 New England League playoffs, including the Nashua Dodgers team featuring Roy Campanella and Don Newcombe.
+The 1946NEL.EBA file is currently empty but will contain regular season games from the 1946 New England League playoffs.
+
+All of these files are licensed by a Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license: https://creativecommons.org/licenses/by-nc/4.0/
+
+While the bp_generate_box.py script can be used to generate text-based box scores similar to the format used by Retrosheet, an HTML format provides more information and flexibility, especially if a full season of games for a league is contained in an .EBA file.
+
+1. Sources of truth:
+
+a) Excel file "1946 New England League.xlsx" (not checked into this folder) is the source of truth for the regular season schedule and results. 
+   For the 1946 New England League this file is reasonably complete, though some game times are missing and additional details are likely to be found as I fill in the gaps in my box score inventory.
+
+b) The 1946NEL.EBA (currently empty) and 1946NEL_Playoffs.EBA files are the source of the truth for the BOX SCORES and this data is read in first by bp_generate_box_html.py BEFORE reading in the schedule files that are derives from the Excel file (see below). 
+   The assumption is that 1946NEL.EBA will contain regular season games in chronological order. 
+   The 1946NEL_Playoffs.EBA file contains playoff games organized by SERIES and then chronologically.
+
+c) The 1946NEL_playoffs_config.txt file was created manually to be in sync with the .EBA file data for the playoff games. The goal is to provide context for each playoff series.
+
+
+2. Use Excel to export the Schedule tab of "1946 New England League.xlsx" as "1946 New England League from Excel.csv". An example of this is in this folder.
+
+3. Use bp_generate_schedule_files_from_csv.py to generate 1946_actual_schedule.csv and 1946_original_schedule.csv files (the Try2 copies are currently the latest). Examples are in this folder.
+
+4. For regular season output, do the following:
+
+bp_generate_box_html.py 1946NEL.EBA 1946NEL_RegularSeason.htm -a 1946_actual_schedule_Try2.csv -o 1946_original_schedule_Try2.csv
+
+
+5. For playoffs output, do the following:
+
+bp_generate_box_html.py 1946NEL_Playoffs.EBA 1946NEL_Playoffs.htm -p 1946NEL_playoffs_config.txt
+
+
+The HTML style sheet is based on David Waldron's daily box score page (https://www.waldrn.com/boxscores/) but I modified it to suit a multiple day format. 
+This allows an entire season (regular season or playoffs) can be viewed in a single file.
