@@ -1,0 +1,4366 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>1946 Eastern League Baseball Box Scores</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+    :root {
+      --bg-page: #f9f7f1;
+      --bg-paper: #fff;
+      --text-primary: #000;
+      --text-secondary: #333;
+      --text-muted: #666;
+      --border-strong: #000;
+      --border-light: #ddd;
+      --shadow: rgba(0,0,0,0.1);
+      --hover-bg: #f0f0f0;
+      --highlight-bg: #fff3cd;
+      --highlight-box-bg: #fff9e6;
+      --highlight-border: #ffc107;
+    }
+    body.dark-mode {
+      --bg-page: #121212;
+      --bg-paper: #1e1e1e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #ccc;
+      --text-muted: #999;
+      --border-strong: #555;
+      --border-light: #333;
+      --shadow: rgba(0,0,0,0.4);
+      --hover-bg: #2a2a2a;
+      --highlight-bg: #3a3520;
+      --highlight-box-bg: #2e2b1a;
+      --highlight-border: #ffc107;
+    }
+    body { font-family: 'Source Sans 3', 'Segoe UI'; margin: 0; padding: 0; background-color: var(--bg-page); color: var(--text-primary); }
+    a { color: var(--text-primary); }
+    .newspaper { max-width: 1300px; margin: 0 auto; padding: 20px; background-color: var(--bg-paper); box-shadow: 0 0 10px var(--shadow); } /* increased from 1200px to 1300px to provide room for 4-column table */
+    .header { text-align: center; border-bottom: 2px solid var(--border-strong); padding-bottom: 10px; margin-bottom: 20px; }
+    .date { font-style: italic; margin-bottom: 10px; }
+    .credit-line { font-style: italic; text-align: center; margin-bottom: 10px; border-top: 1px solid var(--border-strong); } /* added for credit line */
+    .main-title { font-size: 42px; font-weight: bold; margin: 0; }
+    .subtitle { font-size: 24px; margin: 5px 0 15px 0; }
+    .page { break-after: page; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; margin: 10px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    .leaders div { font-size: 14px; margin: 4px 0px; }
+    .leaders table { font-size: 14px; margin: 5px 0px; }
+    .boxscores-title { text-align: center; font-size: 24px; font-weight: bold; margin: 10px 0; border-bottom: 2px solid var(--border-strong); }
+    .boxscores-subtitle { text-align: center; font-size: 18px; font-weight: bold; margin: 10px 0; border-bottom: 1px solid var(--border-strong); }
+    .boxscores-container { column-count: 4; column-gap: 20px; margin-top: 20px; }
+    .game-container { break-inside: avoid; page-break-inside: avoid; margin-bottom: 20px; }
+    .game-header { font-weight: bold; font-size: 20px; solid var(--border-strong); } /* removed border-bottom: 1px because I added game-location underneath it */
+    .game-location { border-bottom: 1px solid var(--border-strong); } /* Added for game date and location */
+    .team-line { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; line-height: 1.2; margin-top: 2px; }
+    /* Improved table styling */
+    table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
+    .batting tr:last-child { font-weight:700 }
+    th, td { text-align: left; overflow: hidden; line-height: 1.1; }
+    th { border-top: 1px solid var(--border-strong); font-weight: bold; }
+    /* Specific column widths for standings tables */
+    .standings-table th { border: none; }
+    .standings-table .team-col { width: 16%; text-align: left; } /* shrunk from 20% to 16% to save space */
+    .standings-table .num-col { width: 5%; text-align: right; }
+    .standings-table .pct-col { width: 8%; text-align: right; }
+    /* General column alignment */
+    th:not(.team-col), td:not(.team-col) { text-align: right; }
+    td { white-space: nowrap; }
+    .notes { font-size: 14px; line-height: 1.2; padding: 4px 0; border-top: 1px solid var(--border-strong); }
+    .section { margin-bottom: 20px; }
+    .column-container { display: flex; gap: 15px; }
+    .column { flex: 1; }
+    .column-25 { width: 25%; }
+    .column-40 { width: 40%; }
+    .column-60 { width: 60%; }
+    .stats-header { font-size: 16px; font-weight: bold; margin: 8px 0; border-bottom: 1px solid var(--border-strong); }
+    .stats-subheader { font-size: 14px; font-weight: bold; margin: 4px 0; border-bottom: 1px solid var(--border-strong); }
+    /* Batting and pitching table styles */
+    .batting-table .player-col { width: 30%; text-align: left; }
+    .batting-table .player-col-substitute { width: 30%; text-align: left; padding-left: 10px;} /* added for substitute case */
+    .batting-table .stat-col { width: 5%; text-align: right; }
+    .batting-table .avg-col { width: 8%; text-align: right; }
+    .batting-table tr:last-child { font-weight:700 }
+    .pitching-table .player-col { width: 37%; text-align: left; }
+    .pitching-table .ip-col { width: 5%; text-align: right; }
+    .pitching-table .stat-col { width: 5%; text-align: right; }
+    .pitching-table .era-col { width: 10%; text-align: right; }
+    .pitching-table tr:last-child { font-weight:700 } /* added to match the batting-table so the Totals line is in bold */
+    
+    /* Leaders table styles */
+    .leaders-table th { border: none; }
+    .leaders-table .player-col { width: 30%; text-align: left; }
+    .leaders-table .stat-col { width: 5%; text-align: right; }
+    .leaders-table .avg-col { width: 8%; text-align: right; }
+    .leaders-section { margin-bottom: 20px; }
+    .leaders-note { font-size: 13px; margin: 5px 0; }
+    /* Games Schedule Section */
+    .games-section { margin-bottom: 20px; padding: 10px 0; border-top: 2px solid var(--border-strong); }
+    .games-section .column-container { display: flex; gap: 20px; }
+    .games-left { width: 65%; }
+    .games-left-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
+    .games-right { width: 35%; display: flex; flex-direction: column; gap: 15px; }
+    .games-section-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; }
+    .game-score-line { font-size: 13px; line-height: 1.5; margin: 2px 0; }
+    .game-score-line .winner { font-weight: bold; }
+    .scheduled-game { padding-bottom: 4px; border-bottom: 1px dotted var(--border-strong); }
+    .scheduled-game:last-child { border-bottom: none; }
+    .center-links { display: flex; align-items: center; gap: 0; }
+    .nav-divider { display: inline-block; width: 1px; height: 14px; background-color: var(--border-strong); margin: 0 10px; }
+    .dark-toggle { cursor: pointer; }
+    .game-time { font-size: 12px; color: var(--text-muted); }
+    .matchup { font-size: 14px; font-weight: bold; }
+    .pitchers { font-size: 12px; color: var(--text-secondary); }
+    .tomorrow-game { font-size: 13px; line-height: 1.6; }
+    .original-schedule-game { font-size: 13px; line-height: 1.6; }
+    .leaders-note span.team-highlight { padding: 0 2px; }
+  @media (min-width: 700px) and (max-width: 1000px) {
+    .main-title { font-size:32px; }
+    .subtitle { font-size:20px; }
+    .stats-subheader { font-size:16px; }
+    .game-header { font-size:26px; }
+    .game-location { font-size:20px; }
+    .boxscores-container { column-count: 1; column-gap: 10px; margin-top: 10px; }
+    .column-container { display: block }
+    table { font-size: 16px; }
+    .team-line { font-size: 20px; }
+    .leaders div { font-size: 16px; }
+    .leaders table { font-size: 16px; }
+    .leaders-note { font-size:16px; }
+    .notes { font-size: 16px; }
+    .column-25, .column-40, .column-60 { width: 100%; }
+    .games-section .column-container { flex-direction: column; }
+    .games-left, .games-right { width: 100%; }
+    .games-left-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .main-title { font-size:28px; }
+    .subtitle { font-size:18px; }
+    .stats-subheader { font-size:14px; }
+    .game-header { font-size:22px; }
+    .game-location { font-size:16px; }
+    .boxscores-container { column-count: 1; column-gap: 10px; margin-top: 10px; }
+    .column-container { display: block }
+    table { font-size: 14px; }
+    .team-line { font-size: 18px; }
+    .leaders div { font-size: 14px; }
+    .leaders table { font-size: 14px; }
+    .leaders-note { font-size:14px; }
+    .notes { font-size: 14px; }
+    .column-25, .column-40, .column-60 { width: 100%; }
+    .games-section .column-container { flex-direction: column; }
+    .games-left, .games-right { width: 100%; }
+    .games-left-inner { grid-template-columns: 1fr; }
+  }
+  @media print {
+      body { 
+        background-color: #fff;
+        color: #000;
+          width:1650px;
+        --bg-page: #fff; --bg-paper: #fff; --text-primary: #000; --border-strong: #000; --border-light: #ddd;
+      }
+      .newspaper { box-shadow: none; max-width: none; padding: 0; margin: 0; }
+      .nav-container { display: none; }
+      .dark-toggle { display: none; }
+      .column-container { display: flex; }
+      .boxscores-container { column-count: 5; }
+    }
+  </style>
+
+</head>
+<body>
+<script>if(localStorage.getItem('darkMode')==='on')document.body.classList.add('dark-mode');</script>
+  <div class="newspaper">
+    <div class="header">
+      <h1 class="main-title">1946 Eastern League Baseball Box Scores</h1>
+      <div class="subtitle">As Researched by Michael Hamel / DistantReplay</div>
+          <div class="date">Updated July 05, 2026</div>      
+        </div>
+
+        <div class='page'>
+          <div class='section'>
+            <div class='column-container'>
+              <div class='column-40'>
+                <div class='boxscores-title'>Playoff Series Results</div>
+                  <div class="stats-subheader">Semifinals</div>
+                   <div class="leaders-note">
+                    <div class="game-score-line" data-team-away="PAW" data-team-home="NAS">
+                      <span class="">Sep  4:</span>
+                      <span class="">Pawtucket Slaters 0</span>, <span class="winner">Nashua Dodgers 1</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="PAW" data-team-home="NAS">
+                      <span class="">Sep  5:</span>
+                      <span class="">Pawtucket Slaters 1</span>, <span class="winner">Nashua Dodgers 3</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="NAS" data-team-home="PAW">
+                      <span class="">Sep  6:</span>
+                      <span class="winner">Nashua Dodgers 3</span>, <span class="">Pawtucket Slaters 0</span>
+                    </div>
+                      <span class=""><i>Nashua wins 3-0</i><br><br></span>
+                   </div>
+                  <div class="stats-subheader">Semifinals</div>
+                   <div class="leaders-note">
+                    <div class="game-score-line" data-team-away="MAN" data-team-home="LYN">
+                      <span class="">Sep  4:</span>
+                      <span class="">Manchester Giants 7</span>, <span class="winner">Lynn Red Sox 9</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="MAN" data-team-home="LYN">
+                      <span class="">Sep  5:</span>
+                      <span class="">Manchester Giants 2</span>, <span class="winner">Lynn Red Sox 3</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="LYN" data-team-home="MAN">
+                      <span class="">Sep  6:</span>
+                      <span class="winner">Lynn Red Sox 6</span>, <span class="">Manchester Giants 3</span>
+                    </div>
+                      <span class=""><i>Lynn wins 3-0</i><br><br></span>
+                   </div>
+                  <div class="stats-subheader">Championship</div>
+                   <div class="leaders-note">
+                    <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                      <span class="">Sep  8:</span>
+                      <span class="winner">Nashua Dodgers 2</span>, <span class="">Lynn Red Sox 0</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                      <span class="">Sep  8:</span>
+                      <span class="winner">Lynn Red Sox 3</span>, <span class="">Nashua Dodgers 2</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                      <span class="">Sep  9:</span>
+                      <span class="">Lynn Red Sox 2</span>, <span class="winner">Nashua Dodgers 4</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                      <span class="">Sep 10:</span>
+                      <span class="">Nashua Dodgers 6</span>, <span class="winner">Lynn Red Sox 10</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                      <span class="">Sep 11:</span>
+                      <span class="winner">Nashua Dodgers 6</span>, <span class="">Lynn Red Sox 3</span>
+                    </div>
+                    <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                      <span class="">Sep 12:</span>
+                      <span class="">Lynn Red Sox 2</span>, <span class="winner">Nashua Dodgers 8</span>
+                    </div>
+                      <span class=""><i>Nashua wins 4-2</i><br><br></span>
+                   </div>
+             </div>
+          <div class="column-60">
+            <div class="boxscores-title">Day-by-Day</div>
+              <table><tr valign=top><td width=45%>
+              <div class="games-section-title">September  4</div>
+              <div class="game-score-line" data-team-away="PAW" data-team-home="NAS">
+                <span class="">Pawtucket Slaters 0</span>, <span class="winner">Nashua Dodgers 1</span>
+              </div>
+              <div class="game-score-line" data-team-away="MAN" data-team-home="LYN">
+                <span class="">Manchester Giants 7</span>, <span class="winner">Lynn Red Sox 9</span>
+              </div>
+              <br>
+              <div class="games-section-title">September  5</div>
+              <div class="game-score-line" data-team-away="PAW" data-team-home="NAS">
+                <span class="">Pawtucket Slaters 1</span>, <span class="winner">Nashua Dodgers 3</span>
+              </div>
+              <div class="game-score-line" data-team-away="MAN" data-team-home="LYN">
+                <span class="">Manchester Giants 2</span>, <span class="winner">Lynn Red Sox 3</span>
+              </div>
+              <br>
+              <div class="games-section-title">September  6</div>
+              <div class="game-score-line" data-team-away="NAS" data-team-home="PAW">
+                <span class="winner">Nashua Dodgers 3</span>, <span class="">Pawtucket Slaters 0</span>
+              </div>
+              <div class="game-score-line" data-team-away="LYN" data-team-home="MAN">
+                <span class="winner">Lynn Red Sox 6</span>, <span class="">Manchester Giants 3</span>
+              </div>
+              <br>
+              <div class="games-section-title">September  8</div>
+              <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                <span class="winner">Nashua Dodgers 2</span>, <span class="">Lynn Red Sox 0</span>
+              </div>
+              <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                <span class="winner">Lynn Red Sox 3</span>, <span class="">Nashua Dodgers 2</span>
+              </div>
+              <br>
+              </td>
+              <td width=10%></td><td width=45%>
+              <div class="games-section-title">September  9</div>
+              <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                <span class="">Lynn Red Sox 2</span>, <span class="winner">Nashua Dodgers 4</span>
+              </div>
+              <br>
+              <div class="games-section-title">September 10</div>
+              <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                <span class="">Nashua Dodgers 6</span>, <span class="winner">Lynn Red Sox 10</span>
+              </div>
+              <br>
+              <div class="games-section-title">September 11</div>
+              <div class="game-score-line" data-team-away="NAS" data-team-home="LYN">
+                <span class="winner">Nashua Dodgers 6</span>, <span class="">Lynn Red Sox 3</span>
+              </div>
+              <br>
+              <div class="games-section-title">September 12</div>
+              <div class="game-score-line" data-team-away="LYN" data-team-home="NAS">
+                <span class="">Lynn Red Sox 2</span>, <span class="winner">Nashua Dodgers 8</span>
+              </div>
+              <br>
+              </td></tr></table>
+            </div>
+          </div>
+        </div>
+    <div class='page'>
+      <div class='boxscores-title'>PLAYOFF BOX SCORES</div>
+      <div class='boxscores-container'>
+       <div class="game-container" data-team-away="PAW" data-team-home="NAS">
+         <div class="game-header">Nashua Dodgers 1<br>Pawtucket Slaters 0</div>
+         <div class="game-location">Wednesday, September  4, 1946 (Night) <br>at Holman Stadium (Nashua, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Pawtucket Slaters</div>
+            <div class="team-score">000 000 000 &mdash; 0 &numsp; 2 &numsp; 0 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">000 000 001 &mdash; 1 &numsp; 5 &numsp; 0 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Ken Therrian rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jimmy Coughlin ss</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Alex Nahigian cf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Eugene Nafie lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">James Hanlon 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Paul Gaulin 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Richard Sills 1b</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Pullano c</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joseph Belforti p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">26</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">9</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Harvey Porter lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">George Brown p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">13</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"> <b>LOB:</b> Pawtucket Slaters 5, Nashua Dodgers 6. <b>2B:</b> Roy Campanella. <b>SH:</b> Alex Nahigian, Oscar Galipeau. <b>SB:</b> Stanley Lipka.  <b>DP:</b> Nashua Dodgers (Stanley Lipka-Charles Wood-Oscar Galipeau), (George Brown-Billy DeMars-Charles Wood). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Joseph Belforti (L)</td>
+              <td class="ip-col">8.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">6</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">George Brown (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">7</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">7</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">No outs when winning run scored.
+<br>Joseph Belforti faced 2 batters in the 9th inning.
+<br><b>Umpires:</b> David Clarety, Jack Brady, Joseph Lefebvre. <b>T:</b> 1:50. <b>A:</b> 1837. <b>Notes:</b> Game 1 of semifinal playoff series (Nashua leads 1-0). Campanella game-winning RBI double in bottom of the ninth.
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="PAW" data-team-home="NAS">
+         <div class="game-header">Nashua Dodgers 3<br>Pawtucket Slaters 1</div>
+         <div class="game-location">Thursday, September  5, 1946 (Night) <br>at Holman Stadium (Nashua, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Pawtucket Slaters</div>
+            <div class="team-score">000 010 000 &mdash; 1 &numsp; 5 &numsp; 2 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">102 000 00x &mdash; 3 &numsp; 9 &numsp; 2 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Ken Therrian cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jimmy Coughlin ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam Gentile rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Eugene Nafie lf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">James Hanlon 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Paul Gaulin 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Richard Sills 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Pullano c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">William Marshall p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Alex Nahigian ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Ernie Johnson p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Roy Talcott ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Mike Forline p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">30</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">12</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+            </tr>
+            <tr>
+              <td class="player-col">John Wernert rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Larry Shepard p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">32</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">13</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Alex Nahigian pinch-hit in the 5th. Roy Talcott pinch-hit in the 8th. <br>
+ <b>E:</b> Oscar Galipeau, John Wernert.  <b>LOB:</b> Pawtucket Slaters 4, Nashua Dodgers 6. <b>2B:</b> Roy Campanella.  <b>DP:</b> Nashua Dodgers (Billy DeMars-Charles Wood-Oscar Galipeau), (Billy DeMars-Oscar Galipeau). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">William Marshall (L)</td>
+              <td class="ip-col">4.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ernie Johnson</td>
+              <td class="ip-col">3.0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Mike Forline</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">7</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Larry Shepard (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Bernie Friberg, Anthony Routhouska, Roland Mackey. <b>T:</b> 1:45. <b>A:</b> 1900. <b>Notes:</b> Game 2 of semifinal playoff series (Nashua leads 2-0)
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="NAS" data-team-home="PAW">
+         <div class="game-header">Nashua Dodgers 3<br>Pawtucket Slaters 0</div>
+         <div class="game-location">Friday, September  6, 1946 (Night) <br>at McCoy Stadium (Pawtucket, RI)</div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">010 000 200 &mdash; 3 &numsp; 6 &numsp; 3 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Pawtucket Slaters</div>
+            <div class="team-score">000 000 000 &mdash; 0 &numsp; 5 &numsp; 2 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Don Newcombe p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">30</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">13</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Ken Therrian rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jimmy Coughlin ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Alex Nahigian cf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Eugene Nafie lf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">James Hanlon 3b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Paul Gaulin 2b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Richard Sills 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Pullano c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Krakowski p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Sam Gentile ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Hal Schacker p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Roy Talcott ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Lou Forys p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">29</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">13</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Sam Gentile pinch-hit in the 4th. Roy Talcott pinch-hit in the 7th. <br>
+ <b>E:</b> Jimmy Coughlin, Paul Gaulin.  <b>LOB:</b> Nashua Dodgers 5, Pawtucket Slaters 10. <b>2B:</b> Don Newcombe, Ken Therrian. <b>3B:</b> Charles Wood. <b>SH:</b> Edward Yaeger, Charles Wood, Bill Kalbaugh, James Hanlon 2, Richard Sills.  <b>DP:</b> Nashua Dodgers (Billy DeMars-Charles Wood-Oscar Galipeau). Pawtucket Slaters (Jimmy Coughlin-Paul Gaulin-Richard Sills). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Don Newcombe (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">5</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">5</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Pawtucket Slaters</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Joe Krakowski (L)</td>
+              <td class="ip-col">4.0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Hal Schacker</td>
+              <td class="ip-col">3.0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Lou Forys</td>
+              <td class="ip-col">2.0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>WP:</b> Hal Schacker <b>Umpires:</b> Joseph Lefebvre, David Clarety, Jack Brady. <b>T:</b> 2:05. <b>A:</b> 5000. <b>Notes:</b> Game 3 of semifinal playoff series (Nashua wins 3-0).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="MAN" data-team-home="LYN">
+         <div class="game-header">Lynn Red Sox 9<br>Manchester Giants 7</div>
+         <div class="game-location">Wednesday, September  4, 1946 (Night) <br>at Fraser Field (Lynn, MA)</div>
+          <div class="team-line">
+            <div class="team-name">Manchester Giants</div>
+            <div class="team-score">000 210 112 &mdash; 7 &numsp; 17 &numsp; 1 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">010 431 00x &mdash; 9 &numsp; 13 &numsp; 1 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">John Ayvazian ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bass Clifton 1b</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Mo Mozzali cf</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Clinton Dahlberg rf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Victor Tetreault lf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sal Yvars c</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">John Murphy 3b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joseph Kosinski 2b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">5</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Cain p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Paul Froning p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">John Raczka ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Ernie Carpenter p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Bud Hardin ph</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Mitchell Wozniak p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Charlie Fox ph</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">44</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">17</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">13</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Edward Lynk rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Matt Batts c</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roger Wright p</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Jim Davis p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">33</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">13</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">14</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">John Raczka pinch-hit in the 6th. Bud Hardin pinch-hit in the 8th. Charlie Fox pinch-hit in the 9th. <br>
+ <b>E:</b> Sam DiBlasi.  <b>LOB:</b> Manchester Giants 14. <b>2B:</b> Clinton Dahlberg, Matt Batts, Sam DiBlasi. <b>SH:</b> Edward Lynk. <b>HBP:</b> Ray Piano (by Bob Cain). <b>DP:</b> Manchester Giants (John Ayvazian-Joseph Kosinski-Bass Clifton), (Clinton Dahlberg-Sal Yvars-John Murphy-Joseph Kosinski). Lynn Red Sox (Bill Sommers-Joe Kaney). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bob Cain (L)</td>
+              <td class="ip-col">3.2</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Paul Froning</td>
+              <td class="ip-col">1.1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ernie Carpenter</td>
+              <td class="ip-col">2.0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Mitchell Wozniak</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">13</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Roger Wright (W)</td>
+              <td class="ip-col">8.2</td>
+              <td class="stat-col">17</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jim Davis</td>
+              <td class="ip-col">0.1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">17</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">3</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Roland Mackey, Bernie Friberg, Anthony Routhouska. <b>T:</b> 2:16. <b>A:</b> 3000. <b>Notes:</b> Game 1 of semifinal playoff series (Lynn leads 1-0).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="MAN" data-team-home="LYN">
+         <div class="game-header">Lynn Red Sox 3<br>Manchester Giants 2</div>
+         <div class="game-location">Thursday, September  5, 1946 (Night) <br>at Fraser Field (Lynn, MA)</div>
+          <div class="team-line">
+            <div class="team-name">Manchester Giants</div>
+            <div class="team-score">000 100 010 &mdash; 2 &numsp; 8 &numsp; 1 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">210 000 00x &mdash; 3 &numsp; 5 &numsp; 1 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">John Ayvazian ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bass Clifton 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Mo Mozzali cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Clinton Dahlberg rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">John Raczka lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">John Murphy 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joseph Kosinski 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charlie Fox c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Bridges p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Victor Tetreault ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Bud Hardin pr</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Ernie Carpenter p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Sal Yvars ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">33</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">11</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">13</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Langworthy c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Bullwinkel p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">29</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">14</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Victor Tetreault pinch-hit in the 8th. Sal Yvars pinch-hit in the 9th. Bud Hardin pinch-ran in the 8th.<br>
+ <b>E:</b> Joe Kaney. <b>2B:</b> John Murphy, Bob Sperry. <b>3B:</b> Mo Mozzali. <b>SH:</b> Joseph Kosinski, Charlie Fox, Bill Sommers.  <b>DP:</b> Lynn Red Sox (Robert Bullwinkel-Joe Langworthy-Bob Sperry), (Bill Sommers-Joe Kaney-Bob Sperry). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Roy Bridges (L)</td>
+              <td class="ip-col">7.0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ernie Carpenter</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">4</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Robert Bullwinkel (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Jack Brady, David Clarety, Joseph Lefebvre. <b>T:</b> 1:49. <b>A:</b> Unknown. <b>Notes:</b> Game 2 of semifinal playoff series (Lynn leads 2-0).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="LYN" data-team-home="MAN">
+         <div class="game-header">Lynn Red Sox 6<br>Manchester Giants 3</div>
+         <div class="game-location">Friday, September  6, 1946 (Night) <br>at Athletic Field (Manchester, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">211 001 010 &mdash; 6 &numsp;&numsp; 9 &numsp; 2 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Manchester Giants</div>
+            <div class="team-score">010 010 001 &mdash; 3 &numsp; 11 &numsp; 5 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Langworthy c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Walker Cress p</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">35</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">7</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">John Ayvazian ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bass Clifton 1b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Mo Mozzali cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sal Yvars rf-c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Victor Tetreault lf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">John Murphy 3b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joseph Kosinski 2b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charlie Fox c</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Clinton Dahlberg rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Neil Saulia p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Bob Cain p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">John Raczka ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Ernie Carpenter p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">39</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">16</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">John Raczka pinch-hit in the 8th. <br>
+ <b>E:</b> John Ayvazian, Bass Clifton, Sal Yvars, Joseph Kosinski, Neil Saulia. <b>2B:</b> Bill Boyce, John Murphy. <b>3B:</b> Sal Yvars. <b>SH:</b> Joe Langworthy, Sam DiBlasi, Joe Kaney.  <b>DP:</b> Manchester Giants (John Murphy-Joseph Kosinski-Bass Clifton), (Sal Yvars-Bass Clifton). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Walker Cress (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">10</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">10</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Manchester Giants</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Neil Saulia (L)</td>
+              <td class="ip-col">2.1</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Cain</td>
+              <td class="ip-col">5.2</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ernie Carpenter</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">5</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Anthony Routhouska, Roland Mackey, Bernie Friberg. <b>T:</b> 2:09. <b>A:</b> Unknown. <b>Notes:</b> Game 3 of semifinal playoff series (Lynn wins 3-0).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="NAS" data-team-home="LYN">
+         <div class="game-header">Nashua Dodgers 2<br>Lynn Red Sox 0</div>
+         <div class="game-location">Sunday, September  8, 1946 (Day) <br>at Fraser Field (Lynn, MA)</div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">000 000 110 &mdash; 2 &numsp; 8 &numsp; 0 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">000 000 000 &mdash; 0 &numsp; 3 &numsp; 2 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Michael Nozinski p</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">32</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">11</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Langworthy c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Matt Batts ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Lawrence Kennedy ss</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roger Wright p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Edward Lynk ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Carl Meurn p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">30</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">12</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Matt Batts pinch-hit in the 8th. Edward Lynk pinch-hit in the 8th. <br>
+ <b>E:</b> Joe Kaney, Lawrence Kennedy. <b>3B:</b> Roy Campanella. <b>SH:</b> Edward Yaeger, Charles Wood, Bill Kalbaugh, Joe Langworthy. <b>SB:</b> Edward Yaeger, Oscar Galipeau, Charles Wood, Bill Kalbaugh.  <b>DP:</b> Lynn Red Sox (Sam DiBlasi-Bill Sommers-Bob Sperry). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Michael Nozinski (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Roger Wright (L)</td>
+              <td class="ip-col">8.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Carl Meurn</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> David Clarety, Bernie Friberg, Roland Mackey, Anthony Routhouska. <b>T:</b> 1:29. <b>A:</b> 4171. <b>Notes:</b> Game 1 of championship series (Nashua leads 1-0).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="LYN" data-team-home="NAS">
+         <div class="game-header">Lynn Red Sox 3<br>Nashua Dodgers 2</div>
+         <div class="game-location">Sunday, September  8, 1946 (Night) <br>at Holman Stadium (Nashua, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">000 110 100 &mdash; 3 &numsp; 5 &numsp; 2 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">000 002 000 &mdash; 2 &numsp; 6 &numsp; 0 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Matt Batts c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jim Suchecki p</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">32</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">9</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Walter Alston ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Frank Ruminski pr</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Richard Mlady p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Don Newcombe ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">33</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">7</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Walter Alston pinch-hit in the 9th. Don Newcombe pinch-hit in the 9th. Frank Ruminski pinch-ran in the 9th.<br>
+ <b>E:</b> Bill Sommers, Sam DiBlasi. <b>2B:</b> Oscar Galipeau. <b>3B:</b> Bob Van Eman, Stanley Lipka. <b>HR:</b> Bill Boyce. <b>SB:</b> Matt Batts. 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Jim Suchecki (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">9</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">9</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Richard Mlady (L)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">10</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">10</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>T:</b> 2:04. <b>A:</b> 3900. <b>Notes:</b> Game 2 of championship series (Series tied 1-1).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="LYN" data-team-home="NAS">
+         <div class="game-header">Nashua Dodgers 4<br>Lynn Red Sox 2</div>
+         <div class="game-location">Monday, September  9, 1946 (Night) <br>at Holman Stadium (Nashua, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">100 000 100 &mdash; 2 &numsp; 6 &numsp; 0 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">000 100 03x &mdash; 4 &numsp; 8 &numsp; 1 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Langworthy c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jim Davis p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">28</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">10</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">George Brown p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">29</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">16</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"> <b>E:</b> Robert Kellogg.  <b>LOB:</b> Lynn Red Sox 3, Nashua Dodgers 5. <b>3B:</b> Ray Piano. <b>HR:</b> Roy Campanella. <b>SH:</b> Sam DiBlasi, Stanley Lipka 2, Bill Kalbaugh.  <b>DP:</b> Nashua Dodgers (Charles Wood-Billy DeMars-Oscar Galipeau), (George Brown-Stanley Lipka). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Jim Davis (L)</td>
+              <td class="ip-col">8.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">6</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">George Brown (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">4</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Roland Mackey, Anthony Routhouska, David Clarety, Bernie Friberg. <b>T:</b> 1:40. <b>A:</b> 3900. <b>Notes:</b> Game 3 of championship series (Nashua leads 2-1).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="NAS" data-team-home="LYN">
+         <div class="game-header">Lynn Red Sox 10<br>Nashua Dodgers 6</div>
+         <div class="game-location">Tuesday, September 10, 1946 (Night) <br>at Fraser Field (Lynn, MA)</div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">013 000 020 &mdash; &numsp;6 &numsp; 11 &numsp; 3 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">303 012 10x &mdash; 10 &numsp; 12 &numsp; 0 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Larry Shepard p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">James MacFaden p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Don Newcombe ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Richard Mlady p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">37</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">11</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Matt Batts c</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Walker Cress p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Carl Meurn p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">37</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">11</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Don Newcombe pinch-hit in the 8th. <br>
+ <b>E:</b> Charles Wood, Billy DeMars, James MacFaden.  <b>LOB:</b> Nashua Dodgers 6, Lynn Red Sox 7. <b>2B:</b> Oscar Galipeau. <b>3B:</b> Roy Campanella, Matt Batts, Sam DiBlasi. <b>HR:</b> Robert Kellogg.  <b>DP:</b> Nashua Dodgers (Billy DeMars-Roy Campanella-Stanley Lipka). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Larry Shepard (L)</td>
+              <td class="ip-col">2.1</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">James MacFaden</td>
+              <td class="ip-col">4.2</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Richard Mlady</td>
+              <td class="ip-col">1.0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">8</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Walker Cress</td>
+              <td class="ip-col">2.0</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Carl Meurn (W)</td>
+              <td class="ip-col">7.0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">5</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>Umpires:</b> Anthony Routhouska, David Clarety, Bernie Friberg, Roland Mackey. <b>T:</b> 2:09. <b>A:</b> 4735. <b>Notes:</b> Game 4 of championship series (Series tied 2-2).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="NAS" data-team-home="LYN">
+         <div class="game-header">Nashua Dodgers 6<br>Lynn Red Sox 3</div>
+         <div class="game-location">Wednesday, September 11, 1946 (Night) <br>at Fraser Field (Lynn, MA)</div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">000 004 110 &mdash; 6 &numsp;&numsp; 9 &numsp; 1 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">100 000 002 &mdash; 3 &numsp; 10 &numsp; 5 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">11</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Don Newcombe p</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">33</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">10</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">14</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Matt Batts c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">5</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Joe Langworthy ph</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">7</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Edward Lynk ph</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Bullwinkel p</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Roger Wright p</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Lawrence Kennedy ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">35</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">21</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Joe Langworthy pinch-hit in the 9th. Edward Lynk pinch-hit in the 9th. Lawrence Kennedy pinch-hit in the 9th. <br>
+ <b>E:</b> Bob Sperry, Bill Sommers, Sam DiBlasi 2, Robert Bullwinkel.  <b>LOB:</b> Nashua Dodgers 5, Lynn Red Sox 10. <b>2B:</b> Bill Boyce. <b>3B:</b> Billy DeMars. <b>SH:</b> Edward Yaeger, Charles Wood, Bob Sperry.  <b>DP:</b> Nashua Dodgers (Stanley Lipka-Charles Wood-Oscar Galipeau). Lynn Red Sox (Bill Sommers-Joe Kaney-Bob Sperry), (Roger Wright-Joe Kaney-Bob Sperry). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Don Newcombe (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">7</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">10</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">7</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Robert Bullwinkel (L)</td>
+              <td class="ip-col">5.2</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roger Wright</td>
+              <td class="ip-col">3.1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">9</td>
+              <td class="stat-col">6</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes"><b>WP:</b> Roger Wright <b>Umpires:</b> David Clarety, Bernie Friberg, Roland Mackey, Anthony Routhauska. <b>T:</b> 2:09. <b>A:</b> 4242. <b>Notes:</b> Game 5 of championship series (Nashua leads 3-2).
+          </div>
+       </div> <!-- end of game-container -->
+
+       <div class="game-container" data-team-away="LYN" data-team-home="NAS">
+         <div class="game-header">Nashua Dodgers 8<br>Lynn Red Sox 2</div>
+         <div class="game-location">Thursday, September 12, 1946 (Day) <br>at Holman Stadium (Nashua, NH)</div>
+          <div class="team-line">
+            <div class="team-name">Lynn Red Sox</div>
+            <div class="team-score">100 100 000 &mdash; 2 &numsp; 8 &numsp; 0 </div>
+          </div>
+          <div class="team-line">
+            <div class="team-name">Nashua Dodgers</div>
+            <div class="team-score">400 001 03x &mdash; 8 &numsp; 7 &numsp; 0 </div>
+          </div>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Bill Boyce cf</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Sommers 2b</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Van Eman rf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Langworthy c</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bob Sperry 1b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Ray Piano lf</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Sam DiBlasi 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Joe Kaney ss</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Edward Lynk ph</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Jim Suchecki p</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Walker Cress p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col-substitute">Lawrence Kennedy ph</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">32</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">24</td>
+              <td class="stat-col">9</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="batting-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="stat-col">AB</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">BI</th>
+              <th class="stat-col">PO</th>
+              <th class="stat-col">A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Edward Yaeger cf</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Robert Kellogg lf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Stanley Lipka 3b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Roy Campanella c</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Oscar Galipeau 1b</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">1</td>
+            </tr>
+            <tr>
+              <td class="player-col">Charles Wood 2b</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">5</td>
+            </tr>
+            <tr>
+              <td class="player-col">Billy DeMars ss</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">12</td>
+              <td class="stat-col">3</td>
+            </tr>
+            <tr>
+              <td class="player-col">Bill Kalbaugh rf</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">1</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Michael Nozinski p</td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">0</td>
+              <td class="stat-col">2</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">30</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">27</td>
+              <td class="stat-col">12</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Edward Lynk pinch-hit in the 9th. Lawrence Kennedy pinch-hit in the 9th. <br>
+ <b>LOB:</b> Lynn Red Sox 10, Nashua Dodgers 3. <b>2B:</b> Ray Piano, Stanley Lipka. <b>SH:</b> Sam DiBlasi. <b>SB:</b> Roy Campanella.  <b>DP:</b> Nashua Dodgers (Charles Wood-Billy DeMars-Oscar Galipeau), (Charles Wood-Billy DeMars-Oscar Galipeau). 
+          </div>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Lynn Red Sox</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Jim Suchecki (L)</td>
+              <td class="ip-col">0.0</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">2</td>
+              <td class="stat-col">0</td>
+            </tr>
+            <tr>
+              <td class="player-col">Walker Cress</td>
+              <td class="ip-col">8.0</td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">4</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">3</td>
+              <td class="stat-col">6</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">8.0</td>
+              <td class="stat-col">7</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">5</td>
+              <td class="stat-col">6</td>
+            </tr>
+          </tbody>
+          </table>
+          <table class="pitching-table">
+          <thead>
+            <tr>
+              <th class="player-col">Nashua Dodgers</th>
+              <th class="ip-col">IP</th>
+              <th class="stat-col">H</th>
+              <th class="stat-col">R</th>
+              <th class="stat-col">ER</th>
+              <th class="stat-col">BB</th>
+              <th class="stat-col">SO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="player-col">Michael Nozinski (W)</td>
+              <td class="ip-col">9.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">4</td>
+            </tr>
+            <tr>
+              <td class="player-col">Totals</td>
+              <td class="stat-col">9.0</td>
+              <td class="stat-col">8</td>
+              <td class="stat-col">2</td>
+              <td class="stat-col"></td>
+              <td class="stat-col">4</td>
+              <td class="stat-col">4</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="notes">Jim Suchecki faced 4 batters in the 1st inning.
+<br><b>Umpires:</b> Bernie Friberg, Roland Mackey, Anthony Routhouska, David Clarety. <b>T:</b> 1:59. <b>A:</b> 3650. <b>Notes:</b> Game 6 of championship series (Nashua wins 4-2). Game played in the afternoon due to conflict with previously scheduled game between Nashua Coffey Post Senior team (4) vs. Manchester Sweeney Post Senior team (0) at 8PM.
+          </div>
+       </div> <!-- end of game-container -->
+
+
+       </div>
+    </div>      
+    <div class="credit-line">HTML CSS styles adapted from <a href='https://www.waldrn.com/boxscores/'>David Waldron's daily box scores</a></div>
+  </div>
+</body>
